@@ -1,10 +1,30 @@
 import React, { Component } from 'react';
 import User from './User';
+import AddUser from './AddUser';
 
 export default class Team extends Component {
 
   state = {
     counter: 0,
+    btn: false,
+    id: 1,
+    name: '',
+    surname: '',
+    stamp: '',
+    comp: '',
+    branch: '',
+    tel: '',
+    birth: '',
+    join: '',
+    doctor: '',
+    train: '',
+    kpp: '',
+    ground1: '',
+    ground2: '',
+    osrg1: '',
+    osrg2: '',
+    under1: '',
+    under2: '',
     team: [
       {
         id: 1,
@@ -19,14 +39,12 @@ export default class Team extends Component {
         doctor: '2020-01-01',
         train: '2019-01-01',
         kpp: '2020-02-02',
-        exercises: {
-          ground1: '01.01',
-          ground2: '03.03',
-          osrg1: '05.05',
-          osrg2: '07.07',
-          under1: '09.09',
-          under2: '11.11'
-        }
+        ground1: '01.01',
+        ground2: '03.03',
+        osrg1: '05.05',
+        osrg2: '07.07',
+        under1: '09.09',
+        under2: '11.11'
       },
       {
         id: 2,
@@ -41,23 +59,40 @@ export default class Team extends Component {
         doctor: '1234-54-54',
         train: '2344-42-43',
         kpp: '3423-44-44',
-        exercises: {
-          ground1: '32.04',
-          ground2: '34.43',
-          osrg1: '34.34',
-          osrg2: '34.43',
-          under1: '21.12',
-          under2: '55.54',
-        },
+        ground1: '32.04',
+        ground2: '34.43',
+        osrg1: '34.34',
+        osrg2: '34.43',
+        under1: '21.12',
+        under2: '55.54',
         dateOfedit: '12-12-2012'
       }
     ]
   }
 
-  addUser = (name, surname, stamp, comp, branch, tel, birth, join, doctor, train, kpp, exe1, exe2, exe3, exe4, exe5, exe6) => {
-    let counter = this.counter
-    const user = {
-      id: counter,
+  buttonChange = () => {
+    let btn = this.state.btn
+    this.setState({
+      btn: !btn
+    })
+  }
+
+  handleChange = (e) => {
+
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    let team = [...this.state.team];
+    let btn = this.state.btn;
+    let id = this.state.counter;
+    const { name, surname, stamp, comp, branch, tel, birth, join, doctor, train, kpp, ground1, ground2, osrg1, osrg2, under1, under2 } = this.state
+
+    team.push({
+      id,
       name,
       surname,
       stamp,
@@ -69,51 +104,65 @@ export default class Team extends Component {
       doctor,
       train,
       kpp,
-      exe1,
-      exe2,
-      exe3,
-      exe4,
-      exe5,
-      exe6
-    }
-    counter++
+      ground1,
+      ground2,
+      osrg1,
+      osrg2,
+      under1,
+      under2,
+    });
 
     this.setState({
-      team: [...this.state.team, user]
-    })
-  }
+      team,
+      id: id++,
+      name,
+      surname,
+      stamp,
+      comp,
+      branch,
+      tel,
+      birth,
+      join,
+      doctor,
+      train,
+      kpp,
+      ground1,
+      ground2,
+      osrg1,
+      osrg2,
+      under1,
+      under2,
+      btn: !btn
+    });
+  };
 
   render() {
-
+    const { name, surname, stamp, comp, branch, tel, birth, join, doctor, train, kpp, ground1, ground2, osrg1, osrg2, under1, under2, btn } = this.state
     return (
       <div>
-        <table className='table table-striped table-hover table-bordered'>
-          <thead>
-            <tr>
-              <th scope='col'>#</th>
-              <th scope='col'>Imię</th>
-              <th scope='col'>Nazwisko</th>
-              <th scope='col'>Znaczek</th>
-              <th scope='col'>Numer stały</th>
-              <th scope='col'>Oddział</th>
-              <th scope='col'>Oddz. tel</th>
-              <th scope='col'>Data urodzenia</th>
-              <th scope='col'>Doł. do KSRG</th>
-              <th scope='col'>Badania</th>
-              <th scope='col'>Szkolenie</th>
-              <th scope='col'>Termin KPP</th>
-              <th scope='col'>Ćw. pow1</th>
-              <th scope='col'>Ćw. pow2</th>
-              <th scope='col'>Ćw. OSRG1</th>
-              <th scope='col'>Ćw. OSRG2</th>
-              <th scope='col'>Ćw. dół1</th>
-              <th scope='col'>Ćw. dół2</th>
-            </tr>
-          </thead>
-          <tbody>
-            <User user={this.state.team} />
-          </tbody>
-        </table>
+        {btn ?
+          <AddUser
+            name={name}
+            surname={surname}
+            stamp={stamp}
+            comp={comp}
+            branch={branch}
+            tel={tel}
+            birth={birth}
+            join={join}
+            doctor={doctor}
+            train={train}
+            kpp={kpp}
+            ground1={ground1}
+            ground2={ground2}
+            osrg1={osrg1}
+            osrg2={osrg2}
+            under1={under1}
+            under2={under2}
+            change={this.handleChange}
+            submit={this.handleSubmit}
+          /> : <User user={this.state.team} />}
+        <button className='btn btn-primary' onClick={btn ? this.handleSubmit : this.buttonChange}>Dodaj </button>
       </div>
     )
   }

@@ -7,7 +7,6 @@ const Navigation = () => {
     { name: 'Start', path: '/', exact: true },
     { name: 'Harmonogram', path: '/harmonogram' },
     { name: 'Drużyna', path: '/druzyna' },
-    { name: 'Dodaj Ratownika', path: '/dodaj_ratownika' },
     { name: 'Kontakt', path: '/kontakt' },
   ]
 
