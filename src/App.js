@@ -21,13 +21,13 @@ class App extends Component {
           <main>
             <div className="container-fluid">
               <div className="row">
-                <div className='col-2'>
+                <div className='col-1'>
                   <aside>
                     {<Navigation />}
                   </aside>
                 </div>
-                <div className="col-10">
-                  <section className='text-center' >
+                <div className="col-11">
+                  <section className='text-center'>
                     {<Page />}
                   </section>
                 </div>

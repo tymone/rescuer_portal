@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import Team from '../pages/Team';
 import Contact from './Contact';
-import Harmonogram from '../pages/Harmonogram';
+import Timetable from '../pages/Timetable';
 
 const Page = () => {
   return (
@@ -12,7 +12,7 @@ const Page = () => {
 
       <Switch>
         <Route path='/' exact component={HomePage} />
-        <Route path='/harmonogram' component={Harmonogram} />
+        <Route path='/harmonogram' component={Timetable} />
         <Route path='/druzyna' component={Team} />
         <Route path='/kontakt' component={Contact} />
       </Switch>
