@@ -1,9 +1,9 @@
 import React from 'react';
 
 const User = props => {
-  const user = props.user.map(user => (
-    <tr key={user.id}>
-      <th scope='row'>{user.id}</th>
+  const user = props.user.map((user, i) => (
+    <tr key={i}>
+      <th scope='row'>{i}</th>
       <td>{user.name}</td>
       <td>{user.surname}</td>
       <td>{user.stamp}</td>

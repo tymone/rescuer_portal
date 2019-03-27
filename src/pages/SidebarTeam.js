@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 
 export default class SidebarTeam extends Component {
-  state = {
-    team: []
+  constructor(props) {
+    super(props);
+    this.state = {
+      team: []
+    }
   }
+
 
   render() {
 
@@ -12,28 +16,7 @@ export default class SidebarTeam extends Component {
         <p>Jan Kowalski tel: 1234</p>
         <p>Jan Kowalski tel: 1234</p>
         <p>Jan Kowalski tel: 1234</p>
-        <p>Jan Kowalski tel: 1234</p>
-        <p>Jan Kowalski tel: 1234</p>
-        <p>Jan Kowalski tel: 1234</p>
-        <p>Jan Kowalski tel: 1234</p>
-        <p>Jan Kowalski tel: 1234</p>
-        <p>Jan Kowalski tel: 1234</p>
-        <p>Jan Kowalski tel: 1234</p>
-        <p>Jan Kowalski tel: 1234</p>
-        <p>Jan Kowalski tel: 1234</p>
-        <p>Jan Kowalski tel: 1234</p>
-        <p>Jan Kowalski tel: 1234</p>
-        <p>Jan Kowalski tel: 1234</p>
-        <p>Jan Kowalski</p>
-        <p>Jan Kowalski</p>
-        <p>Jan Kowalski</p>
-        <p>Jan Kowalski</p>
-        <p>Jan Kowalski</p>
-        <p>Jan Kowalski</p>
-        <p>Jan Kowalski</p>
-        <p>Jan Kowalski</p>
-        <p>Jan Kowalski</p>
-        <p>Jan Kowalski</p>
+
       </div>
     )
   }

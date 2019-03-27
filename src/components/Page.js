@@ -6,10 +6,10 @@ import Team from '../pages/Team';
 import Contact from './Contact';
 import Timetable from '../pages/Timetable';
 
+
 const Page = () => {
   return (
     <div>
-
       <Switch>
         <Route path='/' exact component={HomePage} />
         <Route path='/harmonogram' component={Timetable} />
