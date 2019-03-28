@@ -25,7 +25,7 @@ const User = props => {
     </tr>))
 
   const tableHeadValue = ['#', 'Imię', 'Nazwisko', 'Znaczek', 'Numer Stały', 'Oddział', 'Oddz. tel', 'Data urodzenia', 'Doł. do KSRG', 'Badania', 'Szkolenie', 'Termin KPP', 'Ćw. pow1', 'Ćw. pow2', 'Ćw. OSRG1', 'Ćw. OSRG2', 'Ćw. doł1', 'Ćw. doł2']
-  const tableHead = tableHeadValue.map(value => (<th scope='col'>{value}</th>))
+  const tableHead = tableHeadValue.map((value, i) => (<th key={i} scope='col'>{value}</th>))
 
   return (
     <table className='table table-striped table-hover table-bordered'><thead>
