@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import User from './User';
 import AddUser from './AddUser';
-import SidebarTeam from './SidebarTeam';
 
 export default class Team extends Component {
 
@@ -164,10 +163,6 @@ export default class Team extends Component {
             submit={this.handleSubmit}
           /> : <User user={this.state.team} />}
         <button className='btn btn-primary' onClick={btn ? this.handleSubmit : this.buttonChange}>Dodaj </button>
-        <div className="invisible">
-          {/* find better resolve  for this v */}
-          <SidebarTeam team={this.state.team} />
-        </div>
       </div>
     )
   }

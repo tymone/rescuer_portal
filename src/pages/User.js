@@ -2,8 +2,8 @@ import React from 'react';
 
 const User = props => {
   const user = props.user.map((user, i) => (
-    <tr key={i}>
-      <th scope='row'>{i}</th>
+    <tr key={i + 1}>
+      <th scope='row'>{i + 1}</th>
       <td>{user.name}</td>
       <td>{user.surname}</td>
       <td>{user.stamp}</td>
@@ -24,27 +24,13 @@ const User = props => {
 
     </tr>))
 
+  const tableHeadValue = ['#', 'Imię', 'Nazwisko', 'Znaczek', 'Numer Stały', 'Oddział', 'Oddz. tel', 'Data urodzenia', 'Doł. do KSRG', 'Badania', 'Szkolenie', 'Termin KPP', 'Ćw. pow1', 'Ćw. pow2', 'Ćw. OSRG1', 'Ćw. OSRG2', 'Ćw. doł1', 'Ćw. doł2']
+  const tableHead = tableHeadValue.map(value => (<th scope='col'>{value}</th>))
+
   return (
     <table className='table table-striped table-hover table-bordered'><thead>
       <tr>
-        <th scope='col'>#</th>
-        <th scope='col'>Imię</th>
-        <th scope='col'>Nazwisko</th>
-        <th scope='col'>Znaczek</th>
-        <th scope='col'>Numer stały</th>
-        <th scope='col'>Oddział</th>
-        <th scope='col'>Oddz. tel</th>
-        <th scope='col'>Data urodzenia</th>
-        <th scope='col'>Doł. do KSRG</th>
-        <th scope='col'>Badania</th>
-        <th scope='col'>Szkolenie</th>
-        <th scope='col'>Termin KPP</th>
-        <th scope='col'>Ćw. pow1</th>
-        <th scope='col'>Ćw. pow2</th>
-        <th scope='col'>Ćw. OSRG1</th>
-        <th scope='col'>Ćw. OSRG2</th>
-        <th scope='col'>Ćw. dół1</th>
-        <th scope='col'>Ćw. dół2</th>
+        {tableHead}
       </tr>
     </thead>
       <tbody>

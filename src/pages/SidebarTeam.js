@@ -4,19 +4,18 @@ export default class SidebarTeam extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      team: []
+      team: [{ name: 'Jan', surname: 'Kowalski', tel: '1234' }]
     }
   }
 
 
   render() {
+    const team = this.state.team
+    const teamMap = team.map((user, i) => (<p key={i}>{user.name} {user.surname} {`tel: ${user.tel}`}</p>))
 
     return (
       <div>
-        <p>Jan Kowalski tel: 1234</p>
-        <p>Jan Kowalski tel: 1234</p>
-        <p>Jan Kowalski tel: 1234</p>
-
+        {teamMap}
       </div>
     )
   }

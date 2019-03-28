@@ -16,13 +16,15 @@ export default class Table extends Component {
 
   render() {
     // const monday = this.getDate(new Date())
-    // console.log(monday);
+
+    const days = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela']
+    const headTable = days.map((day, i) => <th scope='col' key={i} colSpan='2'>{day}</th>)
 
     return (
       <table className='table table-bordered'>
         <thead>
           <tr>
-            <th scope='col' colSpan='2'></th>
+            {headTable}
           </tr>
         </thead>
         <tbody>
