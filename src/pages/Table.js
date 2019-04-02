@@ -1,72 +1,90 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Table extends Component {
-  state = {
-    date: new Date()
-  }
-
-  // getDate = (date) => {
-  //   date = new Date(date)
-  //   let day = date.getDay()
-  //   let diff = date.getDate() - day + (day === 2 ? -6 : 1)
-  //   return new Date(date.setDate(diff))
+const week = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela']
 
 
-  // }
+const Table = () => {
 
-  render() {
-    // const monday = this.getDate(new Date())
+  const days = week.map((day, i) => (<th scope='col' colSpan='2' key={i}>{day}</th >))
+  const shift = (time) => (week.map((shift, i) => <th scope='row' colSpan='2' key={i}>{time}</th>))
 
-    const days = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela']
-    const headTable = days.map((day, i) => <th scope='col' key={i} colSpan='2'>{day}</th>)
-    const bodyShift = (time) => days.map(i => (<th scope='col' key={i} colSpan='2'>{time}</th>))
+  const employee = (row, shift) => (week.map((day, i) => (
+    <React.Fragment key={i}>
+      <th scope='row' style={{ fontWeight: 'normal' }} key={day + row + shift}>Kowalski 1</th>
+      <td key={day + row + shift + 2}>Kowalski 2</td>
+    </React.Fragment>)))
 
-    //change bodyEmployee func to less better line, find fooking unique key for each...
-    const bodyEmployee1 = [1, 2, 3, 4, 5]
-    const bodyEmployee = (shift) => bodyEmployee1.map((body, i) => (
-      <React.Fragment>
-        <tr>
-          <th scope='row' key={body + shift + i}>iksiński1</th>
-          <td key={body + i}>Kowalski2</td>
-          <td key={body + i}>Kowalski3</td>
-          <td key={body + i}>Kowalski4</td>
-          <td key={body + i}>Kowalski5</td>
-          <td key={body + i}>Kowalski6</td>
-          <td key={body + i}>Kowalski7</td>
-          <td key={body + i}>Kowalski8</td>
-          <td key={body + i}>Kowalski9</td>
-          <td key={body + i}>Kowalski10</td>
-          <td key={body + i}>Kowalski11</td>
-          <td key={body + i}>Kowalski12</td>
-          <td key={body + i}>Kowalski13</td>
-          <td key={body + i}>Kowalski14</td>
-        </tr>
-      </React.Fragment>
-    ))
 
-    return (
-      <table className='table table-bordered'>
+
+
+
+  return (
+    <React.Fragment>
+      <p>01.04-08.04</p>
+      <table className="table table-bordered">
         <thead>
           <tr>
-            {headTable}
+            {days}
           </tr>
         </thead>
         <tbody>
           <tr>
-            {bodyShift('6:30')}
+            {shift('6:30')}
           </tr>
-          {bodyEmployee('1 shift')}
           <tr>
-            {bodyShift('14:00')}
+            {employee(1, 1)}
           </tr>
-          {bodyEmployee('2 shift')}
           <tr>
-            {bodyShift('21:30')}
+            {employee(2, 1)}
           </tr>
-          {bodyEmployee('3 shift')}
+          <tr>
+            {employee(3, 1)}
+          </tr>
+          <tr>
+            {employee(4, 1)}
+          </tr>
+          <tr>
+            {employee(5, 1)}
+          </tr>
+          <tr>
+            {shift('14:00')}
+          </tr>
+          <tr>
+            {employee(1, 2)}
+          </tr>
+          <tr>
+            {employee(2, 2)}
+          </tr>
+          <tr>
+            {employee(3, 2)}
+          </tr>
+          <tr>
+            {employee(4, 2)}
+          </tr>
+          <tr>
+            {employee(5, 2)}
+          </tr>
+          <tr>
+            {shift('21:30')}
+          </tr>
+          <tr>
+            {employee(1, 3)}
+          </tr>
+          <tr>
+            {employee(2, 3)}
+          </tr>
+          <tr>
+            {employee(3, 3)}
+          </tr>
+          <tr>
+            {employee(4, 3)}
+          </tr>
+          <tr>
+            {employee(5, 3)}
+          </tr>
         </tbody>
-
       </table>
-    )
-  }
+    </React.Fragment>
+  )
 }
+export default Table
