@@ -15,7 +15,8 @@ class Timetable extends Component {
     return (
       <div className='row'>
         <div className="col-12">
-          <Table />
+          <Table date={this.state.week[0]} />
+          <Table date={this.state.week[1]} />
         </div>
       </div>
     )

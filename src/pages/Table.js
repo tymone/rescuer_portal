@@ -3,7 +3,7 @@ import React from 'react';
 const week = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela']
 
 
-const Table = () => {
+const Table = (props) => {
 
   const days = week.map((day, i) => (<th scope='col' colSpan='2' key={i}>{day}</th >))
   const shift = (time) => (week.map((shift, i) => <th scope='row' colSpan='2' key={i}>{time}</th>))
@@ -20,7 +20,7 @@ const Table = () => {
 
   return (
     <React.Fragment>
-      <p>01.04-08.04</p>
+      <p>{props.date}</p>
       <table className="table table-bordered">
         <thead>
           <tr>
@@ -81,6 +81,9 @@ const Table = () => {
           </tr>
           <tr>
             {employee(5, 3)}
+          </tr>
+          <tr>
+            <th scope='row' colSpan='14'>Osoby poza obłożeniem: </th>
           </tr>
         </tbody>
       </table>
