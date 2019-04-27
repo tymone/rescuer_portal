@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/table.css'
 
 const week = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela']
 
@@ -10,7 +11,7 @@ const Table = (props) => {
 
   const employee = (row, shift) => (week.map((day, i) => (
     <React.Fragment key={i}>
-      <th scope='row' style={{ fontWeight: 'normal' }} key={day + row + shift}>Kowalski 1</th>
+      <td scope='row' key={day + row + shift}>Kowalski 1</td>
       <td key={day + row + shift + 2}>Kowalski 2</td>
     </React.Fragment>)))
 
@@ -43,7 +44,7 @@ const Table = (props) => {
           <tr>
             {employee(4, 1)}
           </tr>
-          <tr>
+          <tr className='bold'>
             {employee(5, 1)}
           </tr>
           <tr>
@@ -61,7 +62,7 @@ const Table = (props) => {
           <tr>
             {employee(4, 2)}
           </tr>
-          <tr>
+          <tr className='bold'>
             {employee(5, 2)}
           </tr>
           <tr>
@@ -79,7 +80,7 @@ const Table = (props) => {
           <tr>
             {employee(4, 3)}
           </tr>
-          <tr>
+          <tr className='bold'>
             {employee(5, 3)}
           </tr>
           <tr>

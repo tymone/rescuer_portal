@@ -32,7 +32,7 @@ class App extends Component {
                 </div>
               </div>
             </div>
-            <footer className='fixed-bottom text-center'>
+            <footer>
               {<Footer />}
             </footer>
           </main>
