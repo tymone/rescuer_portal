@@ -1,28 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "../styles/navbar.css";
 
 class Navbar extends Component {
   state = {
-    date: ''
-  }
+    date: ""
+  };
 
   handleDate = () => {
-    const date = new Date().toLocaleTimeString()
+    const date = new Date().toLocaleTimeString();
     this.setState({
       date
-    })
-  }
+    });
+  };
 
   componentDidMount() {
-    this.date = setInterval(this.handleDate, 1000)
+    this.date = setInterval(this.handleDate, 1000);
   }
 
   render() {
     return (
-      <nav className="navbar navbar-dark bg-dark">
-        <div>{this.state.date}</div>
-        <div>Wyloguj</div>
-      </nav>
+      <header>
+        <nav>
+          <div>{this.state.date}</div>
+          <div>
+            <Link to="login">Logowanie</Link>
+          </div>
+        </nav>
+      </header>
     );
   }
 }

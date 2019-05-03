@@ -1,6 +1,8 @@
-nav ul li{
+aside {
+  width: 150px;
+  background-color: #ddd;
+}
+nav ul li {
   list-style: none;
   padding: 5px 20px;
 }
-
-
