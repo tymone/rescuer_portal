@@ -4,7 +4,7 @@ import "../styles/Footer.css";
 const Footer = () => {
   return (
     <footer>
-      <p>Footer</p>
+      <p>&copy; 2019 Tymoteusz Hryniewiecki</p>
     </footer>
   );
 };

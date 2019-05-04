@@ -89,7 +89,7 @@ export default class HomePage extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="loginPage">
         <label htmlFor="login">
           <p>Login:</p>
           <input

@@ -10,7 +10,7 @@ const Navigation = () => {
     { name: "Kontakt", path: "/kontakt" }
     // { name: "Stwórz Harmonogram", path: "/stworz_harmonogram" }
   ];
-
+  
   const menu = list.map(item => (
     <li key={item.name}>
       <NavLink to={item.path} exact={item.exact ? item.exact : false}>

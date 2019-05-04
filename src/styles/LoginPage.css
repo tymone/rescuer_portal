@@ -1,4 +1,4 @@
-form {
+.loginPage {
   position: relative;
   top: 50%;
   left: 50%;
@@ -6,22 +6,24 @@ form {
   width: 600px;
   height: 320px;
   border: 2px solid black;
+  border-radius: 15px;
   background-color: #ddd;
   padding: 30px 20px;
   text-align: center;
   font-size: 30px;
 }
 
-label span {
+.loginPage label span {
   font-size: 15px;
   color: red;
 }
-label input {
+.loginPage label input {
   display: block;
   margin: 1px auto;
   height: 40px;
   width: 70%;
   font-size: 20px;
+  border-radius: 5px;
 }
 
 button {
@@ -29,4 +31,5 @@ button {
   margin: 20px auto;
   font-size: 20px;
   padding: 5px 10px;
+  border-radius: 5px;
 }

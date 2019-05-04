@@ -24,7 +24,9 @@ class Navbar extends Component {
         <nav>
           <div>{this.state.date}</div>
           <div>
-            <Link to="login">Logowanie</Link>
+            <Link to="login" style={{ textDecoration: "none", color: "white" }}>
+              Logowanie
+            </Link>
           </div>
         </nav>
       </header>
