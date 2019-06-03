@@ -5,6 +5,7 @@ import HomePage from "../pages/HomePage";
 import Team from "../pages/Team";
 import Contact from "./Contact";
 import LoginPage from "../pages/LoginPage";
+import ToDo from "../pages/ToDo.js";
 
 const Page = () => {
   return (
@@ -14,6 +15,7 @@ const Page = () => {
         <Route path="/login" component={LoginPage} />
         <Route path="/druzyna" component={Team} />
         <Route path="/kontakt" component={Contact} />
+        <Route path="/zadania" component={ToDo} />
       </Switch>
     </section>
   );

@@ -7,10 +7,11 @@ const Navigation = () => {
     { name: "Start", path: "/", exact: true },
     // { name: "Harmonogram", path: "/harmonogram" },
     { name: "Drużyna", path: "/druzyna" },
-    { name: "Kontakt", path: "/kontakt" }
+    { name: "Kontakt", path: "/kontakt" },
+    { name: "Lista zadań", path: "/zadania" }
     // { name: "Stwórz Harmonogram", path: "/stworz_harmonogram" }
   ];
-  
+
   const menu = list.map(item => (
     <li key={item.name}>
       <NavLink to={item.path} exact={item.exact ? item.exact : false}>
