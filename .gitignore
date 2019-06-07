@@ -2,6 +2,10 @@
 
 # dependencies
 /node_modules
+/backend/node_modules
+/backend/config.js
+/backend/pass.txt
+/backend/config.js
 /.pnp
 .pnp.js
 

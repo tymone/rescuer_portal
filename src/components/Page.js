@@ -14,6 +14,7 @@ const Page = () => {
         <Route path="/" exact component={HomePage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/druzyna" component={Team} />
+        {/* <Route path='/druzyna/edytuj/:id' component={Edit} /> */}
         <Route path="/kontakt" component={Contact} />
         <Route path="/zadania" component={ToDo} />
       </Switch>
