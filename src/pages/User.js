@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/User.css";
+import "../styles/style.css";
 
 const User = props => {
   const user = props.user.map((user, i) => (
@@ -13,15 +13,15 @@ const User = props => {
       {/* <td>{user.tel}</td> */}
       {/* <td>{user.birth}</td> */}
       {/* <td>{user.join}</td> */}
-      <td>{user.doctor}</td>
-      <td>{user.train}</td>
-      <td>{user.kpp}</td>
-      <td>{user.ground1}</td>
-      <td>{user.ground2}</td>
-      <td>{user.osrg1}</td>
-      <td>{user.osrg2}</td>
-      <td>{user.under1}</td>
-      <td>{user.under2}</td>
+      <td>{user.doctor.slice(0, 10)}</td>
+      <td>{user.train.slice(0, 10)}</td>
+      <td>{user.kpp.slice(0, 10)}</td>
+      <td>{user.ground1.slice(0, 10)}</td>
+      <td>{user.ground2.slice(0, 10)}</td>
+      <td>{user.osrg1.slice(0, 10)}</td>
+      <td>{user.osrg2.slice(0, 10)}</td>
+      <td>{user.under1.slice(0, 10)}</td>
+      <td>{user.under2.slice(0, 10)}</td>
     </tr>
   ));
 
@@ -48,7 +48,7 @@ const User = props => {
   const tableHead = tableHeadValue.map((value, i) => <th key={i}>{value}</th>);
 
   return (
-    <table>
+    <table className='user'>
       <thead>
         <tr>{tableHead}</tr>
       </thead>

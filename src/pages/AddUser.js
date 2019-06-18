@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../styles/AddUser.css";
+import "../styles/style.css";
 
 const AddUser = props => {
   const {

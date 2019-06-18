@@ -65,6 +65,7 @@ export default class Team extends Component {
       under1: this.state.under1,
       under2: this.state.under2
     }
+
     axios
       .post('http://localhost:5000/druzyna', newRescuer)
       .then(res => console.log(res.data))

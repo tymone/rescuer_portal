@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../styles/LoginPage.css";
+import "../styles/style.css";
 
 export default class HomePage extends Component {
   state = {
