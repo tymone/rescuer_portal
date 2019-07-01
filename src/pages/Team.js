@@ -75,6 +75,7 @@ export default class Team extends Component {
   };
 
   render() {
+
     const btn = this.state.btn;
     return (
       <React.Fragment>

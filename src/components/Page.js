@@ -5,7 +5,7 @@ import HomePage from "../pages/HomePage";
 import Team from "../pages/Team";
 import Contact from "./Contact";
 import LoginPage from "../pages/LoginPage";
-import ToDo from "../pages/ToDo.js";
+import Tasks from "../pages/Tasks.js";
 
 const Page = () => {
   return (
@@ -16,7 +16,7 @@ const Page = () => {
         <Route path="/druzyna" component={Team} />
         {/* <Route path='/druzyna/edytuj/:id' component={Edit} /> */}
         <Route path="/kontakt" component={Contact} />
-        <Route path="/zadania" component={ToDo} />
+        <Route path="/zadania" component={Tasks} />
       </Switch>
     </section>
   );
