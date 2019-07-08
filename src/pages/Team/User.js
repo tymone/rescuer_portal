@@ -21,6 +21,7 @@ const User = props => {
       <td>{new Date(user.osrg2).toLocaleString().slice(0, 5)}</td>
       <td>{new Date(user.under1).toLocaleString().slice(0, 5)}</td>
       <td>{new Date(user.under2).toLocaleString().slice(0, 5)}</td>
+      <td onClick={() => props.edit(i)}><i className="fas fa-bars"></i> <i className="fas fa-trash"></i></td>
     </tr>
   ));
 

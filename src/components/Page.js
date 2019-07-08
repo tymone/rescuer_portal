@@ -2,10 +2,10 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 
 import HomePage from "../pages/HomePage";
-import Team from "../pages/Team";
+import Team from "../pages/Team/Team";
 import Contact from "./Contact";
 import LoginPage from "../pages/LoginPage";
-import Tasks from "../pages/Tasks.js";
+import Tasks from "../pages/Tasks/Tasks.js";
 
 const Page = () => {
   return (

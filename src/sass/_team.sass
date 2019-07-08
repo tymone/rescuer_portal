@@ -2,9 +2,20 @@ table.team
   width: 100%
   thead tr 
     line-height: 30px
+    th:hover
+      cursor: pointer
   tbody 
     text-align: center
     tr 
       line-height: 30px
       &:nth-of-type(even) 
         background-color: #ccc
+      &:hover
+        background-color: #aaa
+      td
+        cursor: pointer
+        i 
+          &.fa-bars
+            padding-right: 5px
+          &.fa-trash
+            padding-left: 5px

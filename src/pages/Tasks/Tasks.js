@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import '../styles/style.css';
+import '../../styles/style.css';
 
 import Task from './Task';
 import AddTask from './AddTask';

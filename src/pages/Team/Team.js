@@ -3,6 +3,8 @@ import User from "./User";
 import AddUser from "./AddUser";
 import axios from "axios";
 
+import "../../styles/style.css";
+
 export default class Team extends Component {
   state = {
     btn: false,
@@ -78,24 +80,28 @@ export default class Team extends Component {
     } else { alert('Nie wszystkie pola zostały wypełnione') }
   };
 
+  handleSort = (i) => {
+    this.setState({
+      toggle: !this.state.toggle
+    })
+    console.log(i, this.state.toggle)
+  }
+
+  //< i className="fas fa-caret-down" ></i >
+  //<i className="fas fa-caret-up"></i>
+
+  edit = (i) => {
+    console.log(i + 'go to edit wind')
+  }
   render() {
     const btn = this.state.btn;
 
     const tableHeadValue = [
-      "#",
-      "Imię",
-      "Nazwisko",
-      "Badania",
-      "Szkolenie",
-      "Termin KPP",
-      "Ćw. pow1",
-      "Ćw. pow2",
-      "Ćw. OSRG1",
-      "Ćw. OSRG2",
-      "Ćw. doł1",
-      "Ćw. doł2"
+      "#", "Imię", "Nazwisko", "Badania", "Szkolenie", "Termin KPP", "Ćw. pow1", "Ćw. pow2", "Ćw. OSRG1", "Ćw. OSRG2", "Ćw. doł1", "Ćw. doł2", "Edycja"
     ];
-    const tableHead = tableHeadValue.map((value, i) => <th key={i}>{value}</th>);
+    // 
+    // 
+    const tableHead = tableHeadValue.map((value, i) => <th key={i} onClick={() => this.handleSort(i)}> {value} {this.state.toggle ? < i className="fas fa-caret-down" ></i > : <i className="fas fa-caret-up"></i>}</ th>);
 
     return (
       <React.Fragment>
@@ -104,7 +110,7 @@ export default class Team extends Component {
             <tr>{tableHead}</tr>
           </thead>
           <tbody>
-            <User user={this.state.team} />
+            <User user={this.state.team} edit={this.edit} />
             {btn ? <AddUser team={this.state} change={this.handleChange} /> : null}
           </tbody>
         </table>
@@ -115,5 +121,3 @@ export default class Team extends Component {
     );
   }
 }
-
-
