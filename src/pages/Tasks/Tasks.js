@@ -136,6 +136,15 @@ export default class Tasks extends Component {
     })
   }
 
+  toggleTask = (id, className) => {
+    let task = document.querySelector(`.${className} li:nth-child(${id}) div`)
+    task.classList.toggle('on')
+  }
+
+  editTask = (id) => {
+    console.log('edit task ' + id)
+  }
+
   render() {
     return (
       <div className='TasksMain'>
@@ -144,14 +153,7 @@ export default class Tasks extends Component {
           <button onClick={this.toggleAddTask}>Dodaj zadanie</button>
           <AddTask change={this.handleChange} addTask={this.addTask} title={this.state.title} value={this.state.value} />
         </div>
-        <div className="toDo">
-          <h2>do wykonania ({this.state.tasks.filter(task => task.active).length})</h2>
-          <Task taskToDo={this.state.tasks.filter(task => task.active)} moveToDone={this.moveTaskToDone} deleteTask={this.deleteTask} />
-        </div>
-        <div className="done">
-          <h2>wykonane ({this.state.tasks.filter(task => !task.active).length})</h2>
-          <Task taskToDo={this.state.tasks.filter(task => !task.active)} deleteTask={this.deleteTask} />
-        </div>
+        <Task tasks={this.state.tasks} moveToDone={this.moveTaskToDone} deleteTask={this.deleteTask} toggleTask={this.toggleTask} toggle={this.state.toggle} edit={this.editTask} />
       </div>
     );
   }
