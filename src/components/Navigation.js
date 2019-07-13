@@ -1,15 +1,14 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import "../styles/style.css";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import '../styles/style.css';
 
 const Navigation = () => {
   const list = [
-    { name: "Start", path: "/", exact: true },
-    // { name: "Harmonogram", path: "/harmonogram" },
-    { name: "Drużyna", path: "/druzyna" },
-    { name: "Kontakt", path: "/kontakt" },
-    { name: "Lista zadań", path: "/zadania" }
-    // { name: "Stwórz Harmonogram", path: "/stworz_harmonogram" }
+    { name: 'Start', path: '/', exact: true },
+    { name: 'Drużyna', path: '/druzyna' },
+    { name: 'Kontakt', path: '/kontakt' },
+    { name: 'Lista zadań', path: '/zadania' },
+    { name: 'Harmonogram', path: '/harmonogram' }
   ];
 
   const menu = list.map(item => (

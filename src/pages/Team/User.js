@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 const User = props => {
-  const user = props.user.map((user, i) => (
+  const user = props.team.map((user, i) => (
     <tr key={i + 1}>
-      <th scope="row">{i + 1}</th>
+      <th scope='row'>{i + 1}</th>
       <td>{user.name}</td>
       <td>{user.surname}</td>
       {/* <td>{user.stamp}</td> */}
@@ -21,15 +21,14 @@ const User = props => {
       <td>{new Date(user.osrg2).toLocaleString().slice(0, 5)}</td>
       <td>{new Date(user.under1).toLocaleString().slice(0, 5)}</td>
       <td>{new Date(user.under2).toLocaleString().slice(0, 5)}</td>
-      <td><i onClick={() => props.edit(i)} className="fas fa-bars"></i> <i onClick={() => props.delete(user.id)} className="fas fa-trash"></i></td>
+      <td>
+        <i onClick={() => props.edit(i)} className='fas fa-bars' />{' '}
+        <i onClick={() => props.delete(user.id)} className='fas fa-trash' />
+      </td>
     </tr>
   ));
 
-  return (
-    <>
-      {user}
-    </>
-  );
+  return <>{user}</>;
 };
 
 export default User;
