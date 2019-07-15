@@ -6,7 +6,7 @@ import Team from '../pages/Team/Team';
 import Contact from './Contact';
 import LoginPage from '../pages/LoginPage';
 import Tasks from '../pages/Tasks/Tasks.js';
-import Schedule from '../pages/Schedule';
+import Schedule from '../pages/Schedule/Schedule';
 
 const Page = () => {
   return (

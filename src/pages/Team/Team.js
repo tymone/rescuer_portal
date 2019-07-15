@@ -5,7 +5,25 @@ import Table from './Table';
 import '../../styles/style.css';
 
 export default class Team extends Component {
+  counter = 12
   state = {
+    name: '',
+    surname: '',
+    stamp: '',
+    comp: '',
+    branch: '',
+    tel: '',
+    birth: '',
+    join: '',
+    doctor: '',
+    train: '',
+    kpp: '',
+    ground1: '',
+    ground2: '',
+    osrg1: '',
+    osrg2: '',
+    under1: '',
+    under2: '',
     team: [
       {
         id: 0,
@@ -187,20 +205,48 @@ export default class Team extends Component {
   //       console.log(err)
   //     })
   // }
-  // componentDidUpdate = () => { -albo Will update <-- sprawdzić
-  // axios
-  //   .post('http://localhost:5000/druzyna', newRescuer)
-  //   .then(res => console.log(res.data))
-  // this.setState({
-  //   btn: !this.state.btn
-  // });
-  // alert('Pomyślnie dodano ratownika do bazy.')
-  // };
+
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const {
+      name, surname, doctor, train, kpp, ground1, ground2, osrg1, osrg2, under1, under2
+    } = this.state;
+    const id = this.counter;
+    if (name && surname && doctor && train && kpp && ground1 && ground2 && osrg1 && osrg2 && under1 && under2) {
+      const newRescuer = { id, name, surname, doctor, train, kpp, ground1, ground2, osrg1, osrg2, under1, under2 };
+      this.setState({
+        team: [...this.state.team, newRescuer],
+        btn: false
+      });
+      this.counter++;
+    } else {
+      alert('Nie wszystkie pola zostały wypełnione');
+    }
+  };
+
+  delete = i => {
+    const team = [...this.state.team];
+    const index = team.findIndex(user => user.id === i);
+    team.splice(index, 1);
+    this.setState({
+      team
+    });
+  };
+
+  edit = i => {
+    console.log('edit user' + i);
+  };
 
   render() {
     return (
       <React.Fragment>
-        <Table team={this.state.team} />
+        <Table team={this.state.team} handleChange={this.handleChange} handleSubmit={this.handleSubmit} delete={this.delete} edit={this.edit} />
       </React.Fragment>
     );
   }

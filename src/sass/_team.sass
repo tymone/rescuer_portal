@@ -2,8 +2,14 @@ table.team
   width: 100%
   thead tr 
     line-height: 30px
-    th:hover
-      cursor: pointer
+    th
+      &:hover
+        cursor: pointer
+      i
+        display: none
+      &:first-child, &:last-child
+        i
+          display: none
   tbody 
     text-align: center
     tr 

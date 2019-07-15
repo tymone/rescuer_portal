@@ -5,10 +5,10 @@ import '../styles/style.css';
 const Navigation = () => {
   const list = [
     { name: 'Start', path: '/', exact: true },
+    { name: 'Harmonogram', path: '/harmonogram' },
     { name: 'Drużyna', path: '/druzyna' },
     { name: 'Kontakt', path: '/kontakt' },
     { name: 'Lista zadań', path: '/zadania' },
-    { name: 'Harmonogram', path: '/harmonogram' }
   ];
 
   const menu = list.map(item => (
