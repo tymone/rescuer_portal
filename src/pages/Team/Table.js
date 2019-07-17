@@ -47,7 +47,7 @@ class Table extends Component {
             {btn ? (<AddUser team={this.props.team} change={this.props.handleChange} />) : null}
           </tbody>
         </table>
-        <button onClick={btn ? this.props.handleSubmit : this.buttonChange}>Dodaj</button>
+        <button onClick={btn ? this.props.handleSubmit : this.buttonChange}>{btn ? 'Zapisz' : 'Dodaj'}</button>
       </>
     );
   }

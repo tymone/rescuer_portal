@@ -7,8 +7,8 @@ const Navigation = () => {
     { name: 'Start', path: '/', exact: true },
     { name: 'Harmonogram', path: '/harmonogram' },
     { name: 'Drużyna', path: '/druzyna' },
-    { name: 'Kontakt', path: '/kontakt' },
     { name: 'Lista zadań', path: '/zadania' },
+    { name: 'Kontakt', path: '/kontakt' },
   ];
 
   const menu = list.map(item => (
