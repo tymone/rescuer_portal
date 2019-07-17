@@ -7,6 +7,7 @@ import Contact from './Contact';
 import LoginPage from '../pages/LoginPage';
 import Tasks from '../pages/Tasks/Tasks.js';
 import Schedule from '../pages/Schedule/Schedule';
+import CreateSchedule from '../pages/Schedule/CreateSchedule';
 
 const Page = () => {
   return (
@@ -19,6 +20,7 @@ const Page = () => {
         <Route path='/kontakt' component={Contact} />
         <Route path='/zadania' component={Tasks} />
         <Route path='/harmonogram' component={Schedule} />
+        <Route path='/harmonogram/stworz' component={CreateSchedule} />
       </Switch>
     </section>
   );
