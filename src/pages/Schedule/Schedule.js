@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 import Table from './Table.js';
-// import CreateSchedule from './CreateSchedule';
 
 class Schedule extends Component {
   state = {
@@ -738,7 +738,8 @@ class Schedule extends Component {
   render() {
     return (
       <>
-        <Table schedule={this.state.schedule} />{/* <CreateSchedule /> */}
+        <Link to='/harmonogram/stworz'>utwórz</Link>
+        <Table schedule={this.state.schedule} />
       </>
     );
   }

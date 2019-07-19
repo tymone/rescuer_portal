@@ -16,31 +16,31 @@ const AddUser = props => {
         <input value={surname} name="surname" onChange={change} type="text" placeholder='Nazwisko' />
       </td>
       <td>
-        <input value={doctor} name="doctor" onChange={change} type="date" placeholder='Badania' />
+        <input value={doctor} name="doctor" onChange={change} type="date" />
       </td>
       <td>
-        <input value={train} name="train" onChange={change} type="date" placeholder='Szkolenie' />
+        <input value={train} name="train" onChange={change} type="date" />
       </td>
       <td>
-        <input value={kpp} name="kpp" onChange={change} type="date" placeholder='Termin KPP' />
+        <input value={kpp} name="kpp" onChange={change} type="date" />
       </td>
       <td>
-        <input value={ground1} name="ground1" onChange={change} type="date" placeholder='Ćw. pow. 1' />
+        <input value={ground1} name="ground1" onChange={change} type="date" />
       </td>
       <td>
-        <input value={ground2} name="ground2" onChange={change} type="date" placeholder='Ćw. pow. 2' />
+        <input value={ground2} name="ground2" onChange={change} type="date" />
       </td>
       <td>
-        <input value={osrg1} name="osrg1" onChange={change} type="date" placeholder='Ćw. OSRG 1' />
+        <input value={osrg1} name="osrg1" onChange={change} type="date" />
       </td>
       <td>
-        <input value={osrg2} name="osrg2" onChange={change} type="date" placeholder='Ćw. OSRG 2' />
+        <input value={osrg2} name="osrg2" onChange={change} type="date" />
       </td>
       <td>
-        <input value={under1} name="under1" onChange={change} type="date" placeholder='Ćw. dół 1' />
+        <input value={under1} name="under1" onChange={change} type="date" />
       </td>
       <td>
-        <input value={under2} name="under2" onChange={change} type="date" placeholder='Ćw. dół 2' />
+        <input value={under2} name="under2" onChange={change} type="date" />
       </td>
     </tr>
   );

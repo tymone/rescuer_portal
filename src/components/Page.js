@@ -19,7 +19,7 @@ const Page = () => {
         {/* <Route path='/druzyna/edytuj/:id' component={Edit} /> */}
         <Route path='/kontakt' component={Contact} />
         <Route path='/zadania' component={Tasks} />
-        <Route path='/harmonogram' component={Schedule} />
+        <Route path='/harmonogram' exact component={Schedule} />
         <Route path='/harmonogram/stworz' component={CreateSchedule} />
       </Switch>
     </section>

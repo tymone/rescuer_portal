@@ -4,8 +4,8 @@ class CreateSchedule extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dateFrom: '16.6',
-      dateTo: '22.6',
+      dateFrom: '16.07.2019',
+      dateTo: '22.07.2019',
       MondayShift1Multitude1User1: '',
       MondayShift1Multitude1User2: '',
       MondayShift1Multitude1User3: '',
@@ -219,8 +219,81 @@ class CreateSchedule extends Component {
     };
   }
 
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  // MondayShift1Multitude1User1
+  // value={this.state.()} name={`${day}${shift.charAt(0).toUpperCase() + shift.slice(1)}${classNameMultitude.charAt(0).toUpperCase() + classNameMultitude.slice(1)}User${i}`} onChange={this.handleChange}
+  multitude = (classNameMultitude, day, shift) => {
+     let multitude = [1, 2, 3, 4, 5]
+    return (
+    multitude.map( i => <input type="text" value={`this.state.${day}${shift.charAt(0).toUpperCase() + shift.slice(1)}${classNameMultitude.charAt(0).toUpperCase() + classNameMultitude.slice(1)}User${i}`} name={`${day}${shift.charAt(0).toUpperCase() + shift.slice(1)}${classNameMultitude.charAt(0).toUpperCase() + classNameMultitude.slice(1)}User${i}`} onChange={this.handleChange}  placeholder='Nazwisko' />)
+      
+    
+      // <div className={classNameMultitude}>
+      //   <input type="text" value={''} name={`${day}${shift.charAt(0).toUpperCase() + shift.slice(1)}${classNameMultitude.charAt(0).toUpperCase() + classNameMultitude.slice(1)}User1`} onChange={this.handleChange} placeholder='Nazwisko' />
+      //   <input type="text" value={''} name={`${day}${shift.charAt(0).toUpperCase() + shift.slice(1)}${classNameMultitude.charAt(0).toUpperCase() + classNameMultitude.slice(1)}User2`} onChange={this.handleChange} placeholder='Nazwisko' />
+      //   <input type="text" value={''} name={`${day}${shift.charAt(0).toUpperCase() + shift.slice(1)}${classNameMultitude.charAt(0).toUpperCase() + classNameMultitude.slice(1)}User3`} onChange={this.handleChange} placeholder='Nazwisko' />
+      //   <input type="text" value={''} name={`${day}${shift.charAt(0).toUpperCase() + shift.slice(1)}${classNameMultitude.charAt(0).toUpperCase() + classNameMultitude.slice(1)}User4`} onChange={this.handleChange} placeholder='Nazwisko' />
+      //   <input type="text" value={''} name={`${day}${shift.charAt(0).toUpperCase() + shift.slice(1)}${classNameMultitude.charAt(0).toUpperCase() + classNameMultitude.slice(1)}User4`} onChange={this.handleChange} placeholder='Nazwisko' />
+      //   {console.log(`${day}${shift.charAt(0).toUpperCase() + shift.slice(1)}${classNameMultitude.charAt(0).toUpperCase() + classNameMultitude.slice(1)}User1`)}
+      // </div>
+    )}
+
+  shift = (classNameShift, hours, dayClassName) => {
+    return (
+      <div className={classNameShift}>
+        <p>{hours}</p>
+        <div className='multitude1'>
+        {this.multitude('multitude1', dayClassName, classNameShift)}
+        </div>
+        <div className='multitude2'>
+        {this.multitude('multitude2', dayClassName, classNameShift)}
+        </div>
+      </div>
+      // <div className={classNameShift}>
+      //   <p>{hours}</p>
+      //   {this.multitude('multitude1', dayClassName, classNameShift)}
+      //   {this.multitude('multitude2', dayClassName, classNameShift)}
+      // </div>
+    )
+  }
+
+  day = (dayClassName, dayPL, shift1 = 'shift1', shift2 = 'shift2', shift3 = 'shift3', hours1 = '6:30', hours2 = '14:30', hours3 = '21:30') => {
+    return (
+      <div className={`day ${dayClassName}`}>
+        {dayPL}
+        {this.shift(shift1, hours1, dayClassName)}
+        {this.shift(shift2, hours2, dayClassName)}
+        {this.shift(shift3, hours3, dayClassName)}
+
+      </div>
+    )
+  }
+
   render() {
-    return <p>kreator harmonogramu</p>;
+    return (
+      <div className="schedule">
+        <h1>
+          Harmonogram od:
+          <input value={this.state.dateFrom} name="dateFrom" onChange={this.onChange} type="date" />
+          do:
+          <input value={this.state.dateTo} name='dateTo' onChange={this.onChange} type="date" />
+        </h1>
+        <div className="table">
+          {this.day('Monday', 'Poniedziałek')}
+          {this.day('Tuesday', 'Wtorek')}
+          {this.day('Wednesday', 'Środa')}
+          {this.day('Thursday', 'Czwartek')}
+          {this.day('Friday', 'Piątek')}
+          {this.day('Saturday', 'Sobota')}
+          {this.day('Sunday', 'Niedziela')}
+        </div>
+      </div>
+    );
   }
 }
 
