@@ -14,7 +14,7 @@ const User = props => {
       {/* <td>{user.join}</td> */}
       <td>{new Date(user.doctor).toLocaleString().slice(0, 5)}</td>
       <td>{new Date(user.train).toLocaleString().slice(0, 5)}</td>
-      <td>{new Date(user.kpp).toLocaleString().slice(0, 9)}</td>
+      <td>{new Date(user.kpp).toLocaleString().slice(0, 10)}</td>
       <td>{new Date(user.ground1).toLocaleString().slice(0, 5)}</td>
       <td>{new Date(user.ground2).toLocaleString().slice(0, 5)}</td>
       <td>{new Date(user.osrg1).toLocaleString().slice(0, 5)}</td>

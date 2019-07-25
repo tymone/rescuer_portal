@@ -11,6 +11,7 @@ export default class Tasks extends Component {
     id: 0,
     title: '',
     value: '',
+    editValue: '',
     active: false,
     tasks: [
       {
@@ -18,7 +19,7 @@ export default class Tasks extends Component {
         title: 'tytuł zadania do wykonania nr1',
         value: 'treść zadania do wykonania nr 1',
         active: true,
-        addDate: '2019-01-01',
+        addDate: 1564048205997,
         finishDate: null,
       },
       {
@@ -26,7 +27,7 @@ export default class Tasks extends Component {
         title: 'tytuł zadania do wykonania nr2',
         value: 'treść zadania do wykonania nr 2',
         active: true,
-        addDate: '2019-01-02',
+        addDate: 1564048305997,
         finishDate: null,
       },
       {
@@ -34,7 +35,7 @@ export default class Tasks extends Component {
         title: 'tytuł zadania do wykonania nr3',
         value: 'treść zadania do wykonania nr 3',
         active: true,
-        addDate: '2019-01-03',
+        addDate: 1564048405997,
         finishDate: null,
       },
       {
@@ -42,7 +43,7 @@ export default class Tasks extends Component {
         title: 'tytuł zadania do wykonania nr4',
         value: 'treść zadania do wykonania nr 4',
         active: true,
-        addDate: '2019-01-04',
+        addDate: 1564047505997,
         finishDate: null,
       },
       {
@@ -51,7 +52,7 @@ export default class Tasks extends Component {
         value: 'treść wykonanego zadania nr 1',
         active: false,
         addDate: null,
-        finishDate: '2019-01-05',
+        finishDate: 1563048505997,
       },
       {
         id: 5,
@@ -59,7 +60,7 @@ export default class Tasks extends Component {
         value: 'treść wykonanego zadania nr 2',
         active: false,
         addDate: null,
-        finishDate: '2019-01-06',
+        finishDate: 1562048505997,
       },
       {
         id: 6,
@@ -67,7 +68,7 @@ export default class Tasks extends Component {
         value: 'treść wykonanego zadania nr 3',
         active: false,
         addDate: null,
-        finishDate: '2019-01-07',
+        finishDate: 1561048505997,
       },
       {
         id: 7,
@@ -75,7 +76,7 @@ export default class Tasks extends Component {
         value: 'treść wykonanego zadania nr 4',
         active: false,
         addDate: null,
-        finishDate: '2019-01-08',
+        finishDate: 1264048505997,
       },
     ],
   }
@@ -100,7 +101,7 @@ export default class Tasks extends Component {
         title: this.state.title,
         value: this.state.value,
         active: true,
-        addDate: new Date().toLocaleString(),
+        addDate: new Date().getTime(),
         finishDate: null,
       }
       this.counter++
@@ -117,7 +118,7 @@ export default class Tasks extends Component {
 
   }
   moveTaskToDone = (id) => {
-    const date = new Date().toLocaleString();
+    const date = new Date().getTime();
     const tasks = [...this.state.tasks];
     const index = tasks.findIndex(task => task.id === id)
     tasks[index].active = false
@@ -142,10 +143,29 @@ export default class Tasks extends Component {
   }
 
   editTask = (id) => {
-    console.log('edit task ' + id)
+    let task = document.querySelector(`.toDo li:nth-child(${id}) div.toggle-p`)
+    let taskEdit = document.querySelector(`.toDo li:nth-child(${id}) div.toggle-textarea`)
+    task.classList.toggle('off')
+    taskEdit.classList.toggle('show')
+  }
+
+  saveEdit = i => {
+    let tasks = [...this.state.tasks]
+    const index = tasks.findIndex(task => task.id === i)
+    tasks[index].value = this.state.editValue
+    this.setState({
+      tasks
+    })
+    alert('zapisano zmiany')
   }
 
   render() {
+    let tasks = this.state.tasks
+    let active = tasks.filter(task => task.active)
+    let done = tasks.filter(task => !task.active)
+
+    done.sort((a, b) => (b.finishDate - a.finishDate))
+    active.sort((a, b) => (a.addDate - b.addDate))
     return (
       <div className='TasksMain'>
         <h1>Lista zadań</h1>
@@ -153,7 +173,41 @@ export default class Tasks extends Component {
           <button onClick={this.toggleAddTask}>Dodaj zadanie</button>
           <AddTask change={this.handleChange} addTask={this.addTask} title={this.state.title} value={this.state.value} />
         </div>
-        <Task tasks={this.state.tasks} moveToDone={this.moveTaskToDone} deleteTask={this.deleteTask} toggleTask={this.toggleTask} toggle={this.state.toggle} edit={this.editTask} />
+        <div className="toDo">
+          <h2>do wykonania ({active.length})</h2>
+          <ul>
+            {active.length ? active.map((task, i) => (
+              <Task
+                key={task.id}
+                i={i}
+                date={task.addDate}
+                task={task}
+                moveToDone={this.moveTaskToDone}
+                deleteTask={this.deleteTask}
+                toggleTask={this.toggleTask}
+                toggle={this.state.toggle}
+                edit={this.editTask}
+                saveEdit={this.saveEdit}
+                handleChange={this.handleChange} />
+            )) : 'Brak zadań.'}
+          </ul>
+        </div>
+        <div className="done">
+          <h2>wykonane ({done.length})</h2>
+          <ul>
+            {done.length ? done.map((task, i) => (
+              <Task
+                key={task.id}
+                i={i}
+                task={task}
+                date={task.finishDate}
+                moveToDone={this.moveTaskToDone}
+                deleteTask={this.deleteTask}
+                toggleTask={this.toggleTask}
+              />
+            )) : 'Brak zadań.'}
+          </ul>
+        </div>
       </div>
     );
   }

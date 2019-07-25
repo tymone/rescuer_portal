@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Table from './Table.js';
 import CreateSchedule from './CreateSchedule';
 
+
 class Schedule extends Component {
   state = {
     display: false,
@@ -769,8 +770,8 @@ class Schedule extends Component {
           multitude2: [this.state.WednesdayShift2Multitude2User1, this.state.WednesdayShift2Multitude2User2, this.state.WednesdayShift2Multitude2User3, this.state.WednesdayShift2Multitude2User4, this.state.WednesdayShift2Multitude2User5],
         },
         shift3: {
-          multitude1: [this.state.WednesdayShif3tMultitude1User1, this.state.WednesdayShift3Multitude1User2, this.state.WednesdayShift3Multitude1User3, this.state.WednesdayShift3Multitude1User4, this.state.WednesdayShift3Multitude1User5],
-          multitude2: [this.state.WednesdayShif3tMultitude2User1, this.state.WednesdayShift3Multitude2User2, this.state.WednesdayShift3Multitude2User3, this.state.WednesdayShift3Multitude2User4, this.state.WednesdayShift3Multitude2User5],
+          multitude1: [this.state.WednesdayShift3Multitude1User1, this.state.WednesdayShift3Multitude1User2, this.state.WednesdayShift3Multitude1User3, this.state.WednesdayShift3Multitude1User4, this.state.WednesdayShift3Multitude1User5],
+          multitude2: [this.state.WednesdayShift3Multitude2User1, this.state.WednesdayShift3Multitude2User2, this.state.WednesdayShift3Multitude2User3, this.state.WednesdayShift3Multitude2User4, this.state.WednesdayShift3Multitude2User5],
         }
       },
       Thursday: {
@@ -783,8 +784,8 @@ class Schedule extends Component {
           multitude2: [this.state.ThursdayShift2Multitude2User1, this.state.ThursdayShift2Multitude2User2, this.state.ThursdayShift2Multitude2User3, this.state.ThursdayShift2Multitude2User4, this.state.ThursdayShift2Multitude2User5],
         },
         shift3: {
-          multitude1: [this.state.ThursdayShif3tMultitude1User1, this.state.ThursdayShift3Multitude1User2, this.state.ThursdayShift3Multitude1User3, this.state.ThursdayShift3Multitude1User4, this.state.ThursdayShift3Multitude1User5],
-          multitude2: [this.state.ThursdayShif3tMultitude2User1, this.state.ThursdayShift3Multitude2User2, this.state.ThursdayShift3Multitude2User3, this.state.ThursdayShift3Multitude2User4, this.state.ThursdayShift3Multitude2User5],
+          multitude1: [this.state.ThursdayShift3Multitude1User1, this.state.ThursdayShift3Multitude1User2, this.state.ThursdayShift3Multitude1User3, this.state.ThursdayShift3Multitude1User4, this.state.ThursdayShift3Multitude1User5],
+          multitude2: [this.state.ThursdayShift3Multitude2User1, this.state.ThursdayShift3Multitude2User2, this.state.ThursdayShift3Multitude2User3, this.state.ThursdayShift3Multitude2User4, this.state.ThursdayShift3Multitude2User5],
         }
       },
       Friday: {
@@ -798,7 +799,7 @@ class Schedule extends Component {
         },
         shift3: {
           multitude1: [this.state.FridayShift3Multitude1User1, this.state.FridayShift3Multitude1User2, this.state.FridayShift3Multitude1User3, this.state.FridayShift3Multitude1User4, this.state.FridayShift3Multitude1User5],
-          multitude2: [this.state.FridayShif3tMultitude2User1, this.state.FridayShift3Multitude2User2, this.state.FridayShift3Multitude2User3, this.state.FridayShift3Multitude2User4, this.state.FridayShift3Multitude2User5],
+          multitude2: [this.state.FridayShift3Multitude2User1, this.state.FridayShift3Multitude2User2, this.state.FridayShift3Multitude2User3, this.state.FridayShift3Multitude2User4, this.state.FridayShift3Multitude2User5],
         }
       },
       Saturday: {
@@ -811,8 +812,8 @@ class Schedule extends Component {
           multitude2: [this.state.SaturdayShift2Multitude2User1, this.state.SaturdayShift2Multitude2User2, this.state.SaturdayShift2Multitude2User3, this.state.SaturdayShift2Multitude2User4, this.state.SaturdayShift2Multitude2User5],
         },
         shift3: {
-          multitude1: [this.state.SaturdayShif3tMultitude1User1, this.state.SaturdayShift3Multitude1User2, this.state.SaturdayShift3Multitude1User3, this.state.SaturdayShift3Multitude1User4, this.state.SaturdayShift3Multitude1User5],
-          multitude2: [this.state.SaturdayShif3tMultitude2User1, this.state.SaturdayShift3Multitude2User2, this.state.SaturdayShift3Multitude2User3, this.state.SaturdayShift3Multitude2User4, this.state.SaturdayShift3Multitude2User5],
+          multitude1: [this.state.SaturdayShift3Multitude1User1, this.state.SaturdayShift3Multitude1User2, this.state.SaturdayShift3Multitude1User3, this.state.SaturdayShift3Multitude1User4, this.state.SaturdayShift3Multitude1User5],
+          multitude2: [this.state.SaturdayShift3Multitude2User1, this.state.SaturdayShift3Multitude2User2, this.state.SaturdayShift3Multitude2User3, this.state.SaturdayShift3Multitude2User4, this.state.SaturdayShift3Multitude2User5],
         }
       },
       Sunday: {
@@ -825,8 +826,8 @@ class Schedule extends Component {
           multitude2: [this.state.SundayShift2Multitude2User1, this.state.SundayShift2Multitude2User2, this.state.SundayShift2Multitude2User3, this.state.SundayShift2Multitude2User4, this.state.SundayShift2Multitude2User5],
         },
         shift3: {
-          multitude1: [this.state.SundayShif3tMultitude1User1, this.state.SundayShift3Multitude1User2, this.state.SundayShift3Multitude1User3, this.state.SundayShift3Multitude1User4, this.state.SundayShift3Multitude1User5],
-          multitude2: [this.state.SundayShif3tMultitude2User1, this.state.SundayShift3Multitude2User2, this.state.SundayShift3Multitude2User3, this.state.SundayShift3Multitude2User4, this.state.SundayShift3Multitude2User5],
+          multitude1: [this.state.SundayShift3Multitude1User1, this.state.SundayShift3Multitude1User2, this.state.SundayShift3Multitude1User3, this.state.SundayShift3Multitude1User4, this.state.SundayShift3Multitude1User5],
+          multitude2: [this.state.SundayShift3Multitude2User1, this.state.SundayShift3Multitude2User2, this.state.SundayShift3Multitude2User3, this.state.SundayShift3Multitude2User4, this.state.SundayShift3Multitude2User5],
         }
       },
     }
@@ -843,12 +844,16 @@ class Schedule extends Component {
     })
   }
 
+  editSchedule = () => {
+    console.log('edit')
+  }
+
   render() {
     return (
       <>
-        <button onClick={this.toggleDisplay}>Dodaj</button>
+        {this.state.display ? null : <button onClick={this.toggleDisplay}>Dodaj</button>}
         {this.state.display ? <CreateSchedule schedule={this.state.schedule} dateFrom={this.state.dateFrom} dateTo={this.state.dateTo} handleChange={this.handleChange} handleSubmit={this.handleSubmit} /> : null}
-        <Table schedule={this.state.schedule} />
+        <Table schedule={this.state.schedule} edit={this.editSchedule} />
       </>
     );
   }

@@ -8,6 +8,7 @@ import LoginPage from '../pages/LoginPage';
 import Tasks from '../pages/Tasks/Tasks.js';
 import Schedule from '../pages/Schedule/Schedule';
 import CreateSchedule from '../pages/Schedule/CreateSchedule';
+import EditSchedule from '../pages/Schedule/EditSchedule';
 
 const Page = () => {
   return (
@@ -21,6 +22,7 @@ const Page = () => {
         <Route path='/zadania' component={Tasks} />
         <Route path='/harmonogram' exact component={Schedule} />
         <Route path='/harmonogram/stworz' component={CreateSchedule} />
+        <Route path='/harmonogram/edytuj' component={EditSchedule} />
       </Switch>
     </section>
   );

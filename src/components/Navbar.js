@@ -8,7 +8,7 @@ class Navbar extends Component {
   };
 
   handleDate = () => {
-    const date = new Date().toLocaleTimeString();
+    const date = new Date().toLocaleDateString();
     this.setState({
       date
     });

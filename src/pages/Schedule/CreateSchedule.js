@@ -18,12 +18,8 @@ const CreateSchedule = (props) => {
     return (
       <div className={classNameShift}>
         <p>{hours}</p>
-        <div className='multitude1'>
-          {multitude('multitude1', dayClassName, classNameShift)}
-        </div>
-        <div className='multitude2'>
-          {multitude('multitude2', dayClassName, classNameShift)}
-        </div>
+        {multitude('multitude1', dayClassName, classNameShift)}
+        {multitude('multitude2', dayClassName, classNameShift)}
       </div>
     )
   }

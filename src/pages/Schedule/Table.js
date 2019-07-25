@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import '../../styles/style.css';
 
@@ -8,7 +9,7 @@ const Table = props => {
     return (
       <div className={className}>
         {multitude.map((user, i) => (
-          <p key={`Dzień:${day}, Zmiana:${classNameShift}, Ratownik${i + 1}`}>{user}</p>
+          <p key={`Dzień:${day}, Zmiana:${classNameShift}, Ratownik${i + 1}`}>{user ? user : `---`}</p>
         ))}
       </div>
     );
@@ -39,8 +40,9 @@ const Table = props => {
     <div key={i} className='schedule'>
       <h1>
         {' '}
-        Harmonogram na okres: {week.dateFrom} - {week.dateTo}
+        Harmonogram na okres: {week.dateFrom} - {week.dateTo} <Link to='/harmonogram/edytuj'><i className="fas fa-bars" onClick={props.edit}></i></Link>
       </h1>
+      {console.log(week.dateFrom)}
       <div className='table'>
         {day(
           'Monday', 'Poniedziałek',

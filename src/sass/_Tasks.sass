@@ -26,26 +26,44 @@
       font-size: 20px
     h2
       border: 1px solid black
-  ul
-    li
-      list-style: none
-      cursor: pointer
-      font-size: 24px
-      div
-        display: none
-        font-size: 20px
-        &.on
-          display: block
-        p
-          background-color: #eee
-          border-radius: 15px
-          margin: 5px 50px
-          font-size: 24px
-      i
-        padding: 0 5px
+    ul
+      li
+        list-style: none
+        cursor: pointer
+        font-size: 24px
+        div.toggle
+          display: none
+          font-size: 20px
+          &.on
+            display: block
+            div.toggle-p.off
+              display: none
+            div.toggle-textarea.show
+              display: block
+            .toggle-textarea
+              display: none
+              textarea
+                width: 80%
+                max-width: 90%
+                font-size: 24px
+                background-color: #eee
+                border-radius: 15px
+                padding: 5px
+              .fa-check
+                color: green
+          p
+            display: inline-block
+            background-color: #eee
+            border-radius: 15px
+            margin-right: 10px
+            width: 90%
+            font-size: 24px
+            
+        i
+          padding: 0 5px
 
-          
+            
 
-    
+      
 
 
