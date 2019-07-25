@@ -1,5 +1,0 @@
-mail: ksrg.jan01@gmail.com
-      1234_Qwer
-
-mongo:
-
