@@ -37,13 +37,12 @@ const Table = props => {
   }
 
   const week = props.schedule.map((week, i) => (
-    <div key={i} className='schedule'>
-      <h1>
-        {' '}
-        Harmonogram na okres: {week.dateFrom} - {week.dateTo} <Link to='/harmonogram/edytuj'><i className="fas fa-bars" onClick={props.edit}></i></Link>
-      </h1>
-      {console.log(week.dateFrom)}
+    <li key={week.id}>
       <div className='table'>
+        <h1>
+          {' '}
+          Harmonogram na okres: {week.dateFrom} - {week.dateTo} <Link to={`/harmonogram/${week.id}`}><i className="fas fa-bars" onClick={props.edit}></i></Link>
+        </h1>
         {day(
           'Monday', 'Poniedziałek',
           week.Monday.shift1.multitude1, week.Monday.shift1.multitude2,
@@ -87,10 +86,12 @@ const Table = props => {
           week.Sunday.shift3.multitude1, week.Sunday.shift3.multitude2,
           multitude)}
       </div>
-    </div>
+    </li>
   ));
 
-  return <>{week}</>
+  return (
+    <ul>{week}</ul>
+  )
 };
 
 export default Table;

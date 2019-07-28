@@ -8,7 +8,8 @@ import LoginPage from '../pages/LoginPage';
 import Tasks from '../pages/Tasks/Tasks.js';
 import Schedule from '../pages/Schedule/Schedule';
 import CreateSchedule from '../pages/Schedule/CreateSchedule';
-import EditSchedule from '../pages/Schedule/EditSchedule';
+// import EditSchedule from '../pages/Schedule/EditSchedule';
+import PageNotFound from '../pages/PageNotFound';
 
 const Page = () => {
   return (
@@ -17,12 +18,12 @@ const Page = () => {
         <Route path='/' exact component={HomePage} />
         <Route path='/login' component={LoginPage} />
         <Route path='/druzyna' component={Team} />
-        {/* <Route path='/druzyna/edytuj/:id' component={Edit} /> */}
         <Route path='/kontakt' component={Contact} />
         <Route path='/zadania' component={Tasks} />
         <Route path='/harmonogram' exact component={Schedule} />
         <Route path='/harmonogram/stworz' component={CreateSchedule} />
-        <Route path='/harmonogram/edytuj' component={EditSchedule} />
+        {/* <Route path='/harmonogram/:id' component={EditSchedule} /> */}
+        <Route component={PageNotFound} />
       </Switch>
     </section>
   );

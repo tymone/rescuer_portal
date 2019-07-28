@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Prompt } from 'react-router-dom';
 
 import '../../styles/style.css';
 
@@ -98,8 +99,8 @@ export default class Tasks extends Component {
 
       const newTask = {
         id: this.counter,
-        title: this.state.title,
-        value: this.state.value,
+        title,
+        value,
         active: true,
         addDate: new Date().getTime(),
         finishDate: null,
@@ -149,14 +150,19 @@ export default class Tasks extends Component {
     taskEdit.classList.toggle('show')
   }
 
-  saveEdit = i => {
+  saveEdit = (i, id) => {
     let tasks = [...this.state.tasks]
     const index = tasks.findIndex(task => task.id === i)
     tasks[index].value = this.state.editValue
     this.setState({
-      tasks
+      tasks,
+      editValue: ''
     })
-    alert('zapisano zmiany')
+    let task = document.querySelector(`.toDo li:nth-child(${id}) div.toggle-p`)
+    let taskEdit = document.querySelector(`.toDo li:nth-child(${id}) div.toggle-textarea`)
+    task.classList.toggle('off')
+    taskEdit.classList.toggle('show')
+
   }
 
   render() {
@@ -167,48 +173,51 @@ export default class Tasks extends Component {
     done.sort((a, b) => (b.finishDate - a.finishDate))
     active.sort((a, b) => (a.addDate - b.addDate))
     return (
-      <div className='TasksMain'>
-        <h1>Lista zadań</h1>
-        <div className="addTask">
-          <button onClick={this.toggleAddTask}>Dodaj zadanie</button>
-          <AddTask change={this.handleChange} addTask={this.addTask} title={this.state.title} value={this.state.value} />
+      <>
+        <div className='TasksMain'>
+          <h1>Lista zadań</h1>
+          <div className="addTask">
+            <button onClick={this.toggleAddTask}>Dodaj zadanie</button>
+            <AddTask change={this.handleChange} addTask={this.addTask} title={this.state.title} value={this.state.value} />
+          </div>
+          <div className="toDo">
+            <h2>do wykonania ({active.length})</h2>
+            <ul>
+              {active.length ? active.map((task, i) => (
+                <Task
+                  key={task.id}
+                  i={i}
+                  date={task.addDate}
+                  task={task}
+                  moveToDone={this.moveTaskToDone}
+                  deleteTask={this.deleteTask}
+                  toggleTask={this.toggleTask}
+                  toggle={this.state.toggle}
+                  edit={this.editTask}
+                  saveEdit={this.saveEdit}
+                  handleChange={this.handleChange} />
+              )) : 'Brak zadań.'}
+            </ul>
+          </div>
+          <div className="done">
+            <h2>wykonane ({done.length})</h2>
+            <ul>
+              {done.length ? done.map((task, i) => (
+                <Task
+                  key={task.id}
+                  i={i}
+                  task={task}
+                  date={task.finishDate}
+                  moveToDone={this.moveTaskToDone}
+                  deleteTask={this.deleteTask}
+                  toggleTask={this.toggleTask}
+                />
+              )) : 'Brak zadań.'}
+            </ul>
+          </div>
         </div>
-        <div className="toDo">
-          <h2>do wykonania ({active.length})</h2>
-          <ul>
-            {active.length ? active.map((task, i) => (
-              <Task
-                key={task.id}
-                i={i}
-                date={task.addDate}
-                task={task}
-                moveToDone={this.moveTaskToDone}
-                deleteTask={this.deleteTask}
-                toggleTask={this.toggleTask}
-                toggle={this.state.toggle}
-                edit={this.editTask}
-                saveEdit={this.saveEdit}
-                handleChange={this.handleChange} />
-            )) : 'Brak zadań.'}
-          </ul>
-        </div>
-        <div className="done">
-          <h2>wykonane ({done.length})</h2>
-          <ul>
-            {done.length ? done.map((task, i) => (
-              <Task
-                key={task.id}
-                i={i}
-                task={task}
-                date={task.finishDate}
-                moveToDone={this.moveTaskToDone}
-                deleteTask={this.deleteTask}
-                toggleTask={this.toggleTask}
-              />
-            )) : 'Brak zadań.'}
-          </ul>
-        </div>
-      </div>
+        <Prompt when={this.state.editValue} message={'Masz niezapisany formularz. Czy na pewno chcesz opuścić stronę?'} />
+      </>
     );
   }
 }

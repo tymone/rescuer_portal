@@ -13,11 +13,11 @@ const Task = props => {
         <div className='toggle'>
           <div className='toggle-p'>
             <p>{props.task.value}</p>
-            {props.task.active ? <i className="fas fa-bars" onClick={() => props.edit(props.i + 1)}></i> : null}
+            {props.task.active ? <i className="fas fa-edit" onClick={() => props.edit(props.i + 1)}></i> : null}
           </div>
           <div className='toggle-textarea'>
             <textarea defaultValue={props.task.value} name='editValue' onChange={props.handleChange}></textarea>
-            <i className="fas fa-check" onClick={() => props.saveEdit(props.task.id)}></i>
+            <i className="fas fa-check" onClick={() => props.saveEdit(props.task.id, props.i + 1)}></i>
           </div>
 
         </div>

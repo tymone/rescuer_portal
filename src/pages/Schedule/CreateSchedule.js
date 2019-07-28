@@ -35,24 +35,21 @@ const CreateSchedule = (props) => {
     )
   }
 
-
   return (
-    <div className="schedule">
+    <div className='table'>
       <h1>
         Harmonogram od:
           <input value={props.dateFrom} name="dateFrom" onChange={props.handleChange} type="date" />
         do:
           <input value={props.dateTo} name='dateTo' onChange={props.handleChange} type="date" />
       </h1>
-      <div className="table">
-        {day('Monday', 'Poniedziałek')}
-        {day('Tuesday', 'Wtorek')}
-        {day('Wednesday', 'Środa')}
-        {day('Thursday', 'Czwartek')}
-        {day('Friday', 'Piątek')}
-        {day('Saturday', 'Sobota')}
-        {day('Sunday', 'Niedziela')}
-      </div>
+      {day('Monday', 'Poniedziałek')}
+      {day('Tuesday', 'Wtorek')}
+      {day('Wednesday', 'Środa')}
+      {day('Thursday', 'Czwartek')}
+      {day('Friday', 'Piątek')}
+      {day('Saturday', 'Sobota')}
+      {day('Sunday', 'Niedziela')}
       <button onClick={props.handleSubmit}>Zapisz</button>
     </div>
   );

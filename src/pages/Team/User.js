@@ -2,7 +2,7 @@ import React from 'react';
 
 const User = props => {
   const user = props.team.map((user, i) => (
-    <tr key={i + 1}>
+    <tr key={user.id}>
       <th scope='row'>{i + 1}</th>
       <td>{user.name}</td>
       <td>{user.surname}</td>
@@ -22,7 +22,7 @@ const User = props => {
       <td>{new Date(user.under1).toLocaleString().slice(0, 5)}</td>
       <td>{new Date(user.under2).toLocaleString().slice(0, 5)}</td>
       <td>
-        <i onClick={() => props.edit(i)} className='fas fa-bars' />{' '}
+        <i onClick={() => props.edit(user.id)} className='fas fa-edit' />{' '}
         <i onClick={() => props.delete(user.id)} className='fas fa-trash' />
       </td>
     </tr>

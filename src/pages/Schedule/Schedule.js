@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Prompt } from 'react-router-dom';
 
 import Table from './Table.js';
 import CreateSchedule from './CreateSchedule';
@@ -11,6 +12,7 @@ class Schedule extends Component {
     dateTo: '',
     schedule: [
       {
+        id: 0,
         dateFrom: '16.6',
         dateTo: '22.6',
         Monday: {
@@ -365,6 +367,7 @@ class Schedule extends Component {
         }
       },
       {
+        id: 1,
         dateFrom: '24.7',
         dateTo: '31.7',
         Monday: {
@@ -832,9 +835,9 @@ class Schedule extends Component {
       },
     }
     this.setState({
-      schedule: [newSchedule, ...this.state.schedule]
+      schedule: [newSchedule, ...this.state.schedule],
+      display: !this.state.display
     })
-    console.log(this.state.schedule)
   }
 
   toggleDisplay = () => {
@@ -850,11 +853,12 @@ class Schedule extends Component {
 
   render() {
     return (
-      <>
+      <div className='schedule'>
         {this.state.display ? null : <button onClick={this.toggleDisplay}>Dodaj</button>}
         {this.state.display ? <CreateSchedule schedule={this.state.schedule} dateFrom={this.state.dateFrom} dateTo={this.state.dateTo} handleChange={this.handleChange} handleSubmit={this.handleSubmit} /> : null}
         <Table schedule={this.state.schedule} edit={this.editSchedule} />
-      </>
+        <Prompt when={this.state.display} message={'Masz niezapisany formularz. Czy na pewno chcesz opuścić stronę?'} />
+      </div>
     );
   }
 }

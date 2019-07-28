@@ -4,19 +4,8 @@ import "../styles/style.css";
 
 class Navbar extends Component {
   state = {
-    date: ""
+    date: new Date().toLocaleDateString()
   };
-
-  handleDate = () => {
-    const date = new Date().toLocaleDateString();
-    this.setState({
-      date
-    });
-  };
-
-  componentDidMount() {
-    this.date = setInterval(this.handleDate, 1000);
-  }
 
   render() {
     return (
