@@ -7,12 +7,10 @@ import '../../styles/style.css';
 
 
 class Table extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      btn: false,
-    };
-  }
+  state = {
+    btn: false,
+  };
+
 
   buttonChange = () => {
     let btn = this.state.btn;
@@ -21,14 +19,15 @@ class Table extends Component {
     });
   };
 
-  
+
   render() {
     const btn = this.state.btn;
+    const { sort, team, edit, deleteUser, handleChange, handleSubmit } = this.props
     const tableHeadValue = [
       '#', 'Imię', 'Nazwisko', 'Badania', 'Szkolenie', 'Termin KPP', 'Ćw. pow1', 'Ćw. pow2', 'Ćw. OSRG1', 'Ćw. OSRG2', 'Ćw. doł1', 'Ćw. doł2', 'Edycja'
     ];
     const tableHead = tableHeadValue.map((value, i) => (
-      <th key={i} onClick={() => this.props.sort(i)}>
+      <th key={i} onClick={() => sort(i)}>
         {value}{this.state.sortMove ? <i className="fas fa-sort-up"></i> : <i className="fas fa-sort-down"></i>}
       </th>
     ));
@@ -39,12 +38,12 @@ class Table extends Component {
             <tr>{tableHead}</tr>
           </thead>
           <tbody>
-            <User team={this.props.team} edit={this.props.edit} delete={this.props.delete} />
-            {btn ? (<AddUser team={this.props.team} change={this.props.handleChange} />) : null}
+            <User team={team} edit={edit} delete={deleteUser} />
+            {btn ? (<AddUser team={team} change={handleChange} />) : null}
           </tbody>
         </table>
-        <button onClick={btn ? this.props.handleSubmit : this.buttonChange}>{btn ? 'Zapisz' : 'Dodaj'}</button>
-        
+        <button onClick={btn ? handleSubmit : this.buttonChange}>{btn ? 'Zapisz' : 'Dodaj'}</button>
+
       </>
     );
   }

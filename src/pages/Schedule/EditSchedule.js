@@ -1,10 +1,11 @@
 import React from 'react';
 
-const EditSchedule = ({ match }) => {
-  console.log(match)
+const EditSchedule = () => {
+
   return (
-    <p>edit</p>
+    <p>edit schedule component</p>
   )
+
 }
 
 export default EditSchedule

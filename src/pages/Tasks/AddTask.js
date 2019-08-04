@@ -1,12 +1,10 @@
 import React from 'react';
 
-const AddTask = (props) => {
-  const { change, title, value, addTask } = props
+const AddTask = ({ change, title, value, editActive }) => {
   return (
-    <label className='toggleDisplay'>
+    <label className={editActive ? 'active' : ''}>
       <input type="text" placeholder='Wpisz tytuł' onChange={change} name='title' value={title} />
       <input type="text" placeholder='Wpisz treść' onChange={change} name='value' value={value} />
-      <button onClick={addTask}>Zapisz</button>
     </label>
   )
 }

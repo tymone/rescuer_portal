@@ -2,22 +2,22 @@ import React from 'react';
 
 import '../../styles/style.css';
 
-const Task = props => {
+const Task = ({ task, toggleTask, i, date, moveToDone, deleteTask, edit, handleChange, saveEdit }) => {
 
   return (
     <>
-      <li key={props.task.id}>
-        <span onClick={() => props.toggleTask(props.i + 1, props.task.active ? 'toDo' : 'done')}>{props.task.title}({new Date(props.date).toLocaleString().slice(0, 10)})</span>
-        <i className="fas fa-arrow-right" onClick={() => props.moveToDone(props.task.id)}></i>
-        <i className="fas fa-trash" onClick={() => props.deleteTask(props.task.id)}></i>
+      <li key={task.id}>
+        <span onClick={() => toggleTask(i + 1, task.active ? 'toDo' : 'done')}>{task.title}({new Date(date).toLocaleString().slice(0, 10)})</span>
+        <i className="fas fa-arrow-right" onClick={() => moveToDone(task.id)}></i>
+        <i className="fas fa-trash" onClick={() => deleteTask(task.id)}></i>
         <div className='toggle'>
           <div className='toggle-p'>
-            <p>{props.task.value}</p>
-            {props.task.active ? <i className="fas fa-edit" onClick={() => props.edit(props.i + 1)}></i> : null}
+            <p>{task.value}</p>
+            {task.active ? <i className="fas fa-edit" onClick={() => edit(i + 1)}></i> : null}
           </div>
           <div className='toggle-textarea'>
-            <textarea defaultValue={props.task.value} name='editValue' onChange={props.handleChange}></textarea>
-            <i className="fas fa-check" onClick={() => props.saveEdit(props.task.id, props.i + 1)}></i>
+            <textarea defaultValue={task.value} name='editValue' onChange={handleChange}></textarea>
+            <i className="fas fa-check" onClick={() => saveEdit(task.id, i + 1)}></i>
           </div>
 
         </div>

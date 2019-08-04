@@ -299,7 +299,7 @@ export default class Team extends Component {
   render() {
     return (
       <React.Fragment>
-        <Table team={this.state.team} handleChange={this.handleChange} handleSubmit={this.handleSubmit} delete={this.delete} edit={this.edit} sort={this.handleSort}/>
+        <Table team={this.state.team} handleChange={this.handleChange} handleSubmit={this.handleSubmit} deleteUser={this.delete} edit={this.edit} sort={this.handleSort}/>
       </React.Fragment>
     );
   }

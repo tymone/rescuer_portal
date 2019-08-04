@@ -13,6 +13,7 @@ export default class Tasks extends Component {
     title: '',
     value: '',
     editValue: '',
+    editActive: false,
     active: false,
     tasks: [
       {
@@ -82,10 +83,13 @@ export default class Tasks extends Component {
     ],
   }
 
-  toggleAddTask = () => {
-    const btn = document.querySelector('.toggleDisplay')
-    btn.style.display = 'block'
+  activeBtn = () => {
+    let editActive = this.state.editActive
+    this.setState({
+      editActive: !editActive
+    })
   }
+
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -111,6 +115,7 @@ export default class Tasks extends Component {
         tasks: [...prevState.tasks, newTask],
         title: '',
         value: '',
+        editActive: false
       })
       )
     } else {
@@ -153,7 +158,7 @@ export default class Tasks extends Component {
   saveEdit = (i, id) => {
     let tasks = [...this.state.tasks]
     const index = tasks.findIndex(task => task.id === i)
-    tasks[index].value = this.state.editValue
+    tasks[index].value = this.state.editValue ? this.state.editValue : tasks[index].value
     this.setState({
       tasks,
       editValue: ''
@@ -177,8 +182,8 @@ export default class Tasks extends Component {
         <div className='TasksMain'>
           <h1>Lista zadań</h1>
           <div className="addTask">
-            <button onClick={this.toggleAddTask}>Dodaj zadanie</button>
-            <AddTask change={this.handleChange} addTask={this.addTask} title={this.state.title} value={this.state.value} />
+            <AddTask change={this.handleChange} title={this.state.title} value={this.state.value} editActive={this.state.editActive} />
+            <button onClick={this.state.editActive ? this.addTask : this.activeBtn}>{this.state.editActive ? 'Zapisz' : 'Dodaj zadanie'}</button>
           </div>
           <div className="toDo">
             <h2>do wykonania ({active.length})</h2>
@@ -216,7 +221,7 @@ export default class Tasks extends Component {
             </ul>
           </div>
         </div>
-        <Prompt when={this.state.editValue} message={'Masz niezapisany formularz. Czy na pewno chcesz opuścić stronę?'} />
+        <Prompt when={this.state.editActive} message={'Masz niezapisany formularz. Czy na pewno chcesz opuścić stronę?'} />
       </>
     );
   }

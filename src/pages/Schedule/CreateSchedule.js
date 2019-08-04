@@ -1,15 +1,21 @@
 import React from 'react';
 
-const CreateSchedule = (props) => {
+const CreateSchedule = ({ handleChange, handleSubmit, dateFrom, dateTo }) => {
+
 
   let multitude = (classNameMultitude, day, shift) => {
     return (
       <div className={classNameMultitude}>
-        <input type="text" name={`${day}${shift.charAt(0).toUpperCase() + shift.slice(1)}${classNameMultitude.charAt(0).toUpperCase() + classNameMultitude.slice(1)}User1`} onChange={props.handleChange} placeholder='Nazwisko' />
-        <input type="text" name={`${day}${shift.charAt(0).toUpperCase() + shift.slice(1)}${classNameMultitude.charAt(0).toUpperCase() + classNameMultitude.slice(1)}User2`} onChange={props.handleChange} placeholder='Nazwisko' />
-        <input type="text" name={`${day}${shift.charAt(0).toUpperCase() + shift.slice(1)}${classNameMultitude.charAt(0).toUpperCase() + classNameMultitude.slice(1)}User3`} onChange={props.handleChange} placeholder='Nazwisko' />
-        <input type="text" name={`${day}${shift.charAt(0).toUpperCase() + shift.slice(1)}${classNameMultitude.charAt(0).toUpperCase() + classNameMultitude.slice(1)}User4`} onChange={props.handleChange} placeholder='Nazwisko' />
-        <input type="text" name={`${day}${shift.charAt(0).toUpperCase() + shift.slice(1)}${classNameMultitude.charAt(0).toUpperCase() + classNameMultitude.slice(1)}User5`} onChange={props.handleChange} placeholder='Nazwisko' />
+        <input type='text' placeholder='nazwisko'
+          name={`${day}${shift}${classNameMultitude}${`User1`}`} onChange={handleChange} />
+        <input type='text' placeholder='nazwisko'
+          name={`${day}${shift}${classNameMultitude}${`User2`}`} onChange={handleChange} />
+        <input type='text' placeholder='nazwisko'
+          name={`${day}${shift}${classNameMultitude}${`User3`}`} onChange={handleChange} />
+        <input type='text' placeholder='nazwisko'
+          name={`${day}${shift}${classNameMultitude}${`User4`}`} onChange={handleChange} />
+        <input type='text' placeholder='nazwisko'
+          name={`${day}${shift}${classNameMultitude}${`User5`}`} onChange={handleChange} />
       </div>
     )
   }
@@ -18,13 +24,13 @@ const CreateSchedule = (props) => {
     return (
       <div className={classNameShift}>
         <p>{hours}</p>
-        {multitude('multitude1', dayClassName, classNameShift)}
-        {multitude('multitude2', dayClassName, classNameShift)}
+        {multitude('Multitude1', dayClassName, classNameShift)}
+        {multitude('Multitude2', dayClassName, classNameShift)}
       </div>
     )
   }
 
-  let day = (dayClassName, dayPL, shift1 = 'shift1', shift2 = 'shift2', shift3 = 'shift3', hours1 = '6:30', hours2 = '14:30', hours3 = '21:30') => {
+  let day = (dayClassName, dayPL, shift1 = 'Shift1', shift2 = 'Shift2', shift3 = 'Shift3', hours1 = '6:30', hours2 = '14:30', hours3 = '21:30') => {
     return (
       <div className={`day ${dayClassName}`}>
         {dayPL}
@@ -36,22 +42,24 @@ const CreateSchedule = (props) => {
   }
 
   return (
-    <div className='table'>
+    <>
       <h1>
         Harmonogram od:
-          <input value={props.dateFrom} name="dateFrom" onChange={props.handleChange} type="date" />
+          <input value={dateFrom} name="dateFrom" onChange={handleChange} type="date" />
         do:
-          <input value={props.dateTo} name='dateTo' onChange={props.handleChange} type="date" />
+          <input value={dateTo} name='dateTo' onChange={handleChange} type="date" />
       </h1>
-      {day('Monday', 'Poniedziałek')}
-      {day('Tuesday', 'Wtorek')}
-      {day('Wednesday', 'Środa')}
-      {day('Thursday', 'Czwartek')}
-      {day('Friday', 'Piątek')}
-      {day('Saturday', 'Sobota')}
-      {day('Sunday', 'Niedziela')}
-      <button onClick={props.handleSubmit}>Zapisz</button>
-    </div>
+      <div className='table'>
+        {day('Monday', 'Poniedziałek')}
+        {day('Tuesday', 'Wtorek')}
+        {day('Wednesday', 'Środa')}
+        {day('Thursday', 'Czwartek')}
+        {day('Friday', 'Piątek')}
+        {day('Saturday', 'Sobota')}
+        {day('Sunday', 'Niedziela')}
+      </div>
+      <button onClick={handleSubmit}>Zapisz</button>
+    </>
   );
 
 }

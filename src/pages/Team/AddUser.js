@@ -2,10 +2,8 @@ import React from "react";
 
 import "../../styles/style.css";
 
-const AddUser = props => {
-  const {
-    name, surname, doctor, train, kpp, ground1, ground2, osrg1, osrg2, under1, under2, change } = props;
-
+const AddUser = ({
+  name, surname, doctor, train, kpp, ground1, ground2, osrg1, osrg2, under1, under2, change }) => {
   return (
     <tr>
       <th scope='row'>#</th>

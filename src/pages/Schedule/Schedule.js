@@ -4,10 +4,10 @@ import { Prompt } from 'react-router-dom';
 import Table from './Table.js';
 import CreateSchedule from './CreateSchedule';
 
-
 class Schedule extends Component {
   state = {
-    display: false,
+    create: false,
+    getEdit: false,
     dateFrom: '',
     dateTo: '',
     schedule: [
@@ -732,132 +732,195 @@ class Schedule extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { dateFrom, dateTo } = this.state
+    let id = this.state.schedule.length
+
     const newSchedule = {
+      id: id,
       dateFrom: dateFrom,
       dateTo: dateTo,
       Monday: {
         shift1: {
-          multitude1: [this.state.MondayShift1Multitude1User1, this.state.MondayShift1Multitude1User2, this.state.MondayShift1Multitude1User3, this.state.MondayShift1Multitude1User4, this.state.MondayShift1Multitude1User5],
-          multitude2: [this.state.MondayShift1Multitude2User1, this.state.MondayShift1Multitude2User2, this.state.MondayShift1Multitude2User3, this.state.MondayShift1Multitude2User4, this.state.MondayShift1Multitude2User5],
+          multitude1:
+            [this.state.MondayShift1Multitude1User1, this.state.MondayShift1Multitude1User2, this.state.MondayShift1Multitude1User3, this.state.MondayShift1Multitude1User4, this.state.MondayShift1Multitude1User5],
+          multitude2:
+            [this.state.MondayShift1Multitude2User1, this.state.MondayShift1Multitude2User2, this.state.MondayShift1Multitude2User3, this.state.MondayShift1Multitude2User4, this.state.MondayShift1Multitude2User5],
         },
         shift2: {
-          multitude1: [this.state.MondayShift2Multitude1User1, this.state.MondayShift2Multitude1User2, this.state.MondayShift2Multitude1User3, this.state.MondayShift2Multitude1User4, this.state.MondayShift2Multitude1User5],
-          multitude2: [this.state.MondayShift2Multitude2User1, this.state.MondayShift2Multitude2User2, this.state.MondayShift2Multitude2User3, this.state.MondayShift2Multitude2User4, this.state.MondayShift2Multitude2User5],
+          multitude1:
+            [this.state.MondayShift2Multitude1User1, this.state.MondayShift2Multitude1User2, this.state.MondayShift2Multitude1User3, this.state.MondayShift2Multitude1User4, this.state.MondayShift2Multitude1User5],
+          multitude2:
+            [this.state.MondayShift2Multitude2User1, this.state.MondayShift2Multitude2User2, this.state.MondayShift2Multitude2User3, this.state.MondayShift2Multitude2User4, this.state.MondayShift2Multitude2User5],
         },
         shift3: {
-          multitude1: [this.state.MondayShift3Multitude1User1, this.state.MondayShift3Multitude1User2, this.state.MondayShift3Multitude1User3, this.state.MondayShift3Multitude1User4, this.state.MondayShift3Multitude1User5],
-          multitude2: [this.state.MondayShift3Multitude2User1, this.state.MondayShift3Multitude2User2, this.state.MondayShift3Multitude2User3, this.state.MondayShift3Multitude2User4, this.state.MondayShift3Multitude2User5],
+          multitude1:
+            [this.state.MondayShift3Multitude1User1, this.state.MondayShift3Multitude1User2, this.state.MondayShift3Multitude1User3, this.state.MondayShift3Multitude1User4, this.state.MondayShift3Multitude1User5],
+          multitude2:
+            [this.state.MondayShift3Multitude2User1, this.state.MondayShift3Multitude2User2, this.state.MondayShift3Multitude2User3, this.state.MondayShift3Multitude2User4, this.state.MondayShift3Multitude2User5],
         }
       },
       Tuesday: {
         shift1: {
-          multitude1: [this.state.TuesdayShift1Multitude1User1, this.state.TuesdayShift1Multitude1User2, this.state.TuesdayShift1Multitude1User3, this.state.TuesdayShift1Multitude1User4, this.state.TuesdayShift1Multitude1User5],
-          multitude2: [this.state.TuesdayShift1Multitude2User1, this.state.TuesdayShift1Multitude2User2, this.state.TuesdayShift1Multitude2User3, this.state.TuesdayShift1Multitude2User4, this.state.TuesdayShift1Multitude2User5],
+          multitude1:
+            [this.state.TuesdayShift1Multitude1User1, this.state.TuesdayShift1Multitude1User2, this.state.TuesdayShift1Multitude1User3, this.state.TuesdayShift1Multitude1User4, this.state.TuesdayShift1Multitude1User5],
+          multitude2:
+            [this.state.TuesdayShift1Multitude2User1, this.state.TuesdayShift1Multitude2User2, this.state.TuesdayShift1Multitude2User3, this.state.TuesdayShift1Multitude2User4, this.state.TuesdayShift1Multitude2User5],
         },
         shift2: {
-          multitude1: [this.state.TuesdayShift2Multitude1User1, this.state.TuesdayShift2Multitude1User2, this.state.TuesdayShift2Multitude1User3, this.state.TuesdayShift2Multitude1User4, this.state.TuesdayShift2Multitude1User5],
-          multitude2: [this.state.TuesdayShift2Multitude2User1, this.state.TuesdayShift2Multitude2User2, this.state.TuesdayShift2Multitude2User3, this.state.TuesdayShift2Multitude2User4, this.state.TuesdayShift2Multitude2User5],
+          multitude1:
+            [this.state.TuesdayShift2Multitude1User1, this.state.TuesdayShift2Multitude1User2, this.state.TuesdayShift2Multitude1User3, this.state.TuesdayShift2Multitude1User4, this.state.TuesdayShift2Multitude1User5],
+          multitude2:
+            [this.state.TuesdayShift2Multitude2User1, this.state.TuesdayShift2Multitude2User2, this.state.TuesdayShift2Multitude2User3, this.state.TuesdayShift2Multitude2User4, this.state.TuesdayShift2Multitude2User5],
         },
         shift3: {
-          multitude1: [this.state.TuesdayShift3Multitude1User1, this.state.TuesdayShift3Multitude1User2, this.state.TuesdayShift3Multitude1User3, this.state.TuesdayShift3Multitude1User4, this.state.TuesdayShift3Multitude1User5],
-          multitude2: [this.state.TuesdayShift3Multitude2User1, this.state.TuesdayShift3Multitude2User2, this.state.TuesdayShift3Multitude2User3, this.state.TuesdayShift3Multitude2User4, this.state.TuesdayShift3Multitude2User5],
+          multitude1:
+            [this.state.TuesdayShift3Multitude1User1, this.state.TuesdayShift3Multitude1User2, this.state.TuesdayShift3Multitude1User3, this.state.TuesdayShift3Multitude1User4, this.state.TuesdayShift3Multitude1User5],
+          multitude2:
+            [this.state.TuesdayShift3Multitude2User1, this.state.TuesdayShift3Multitude2User2, this.state.TuesdayShift3Multitude2User3, this.state.TuesdayShift3Multitude2User4, this.state.TuesdayShift3Multitude2User5],
         }
       },
       Wednesday: {
         shift1: {
-          multitude1: [this.state.WednesdayShift1Multitude1User1, this.state.WednesdayShift1Multitude1User2, this.state.WednesdayShift1Multitude1User3, this.state.WednesdayShift1Multitude1User4, this.state.WednesdayShift1Multitude1User5],
-          multitude2: [this.state.WednesdayShift1Multitude2User1, this.state.WednesdayShift1Multitude2User2, this.state.WednesdayShift1Multitude2User3, this.state.WednesdayShift1Multitude2User4, this.state.WednesdayShift1Multitude2User5],
+          multitude1:
+            [this.state.WednesdayShift1Multitude1User1, this.state.WednesdayShift1Multitude1User2, this.state.WednesdayShift1Multitude1User3, this.state.WednesdayShift1Multitude1User4, this.state.WednesdayShift1Multitude1User5],
+          multitude2:
+            [this.state.WednesdayShift1Multitude2User1, this.state.WednesdayShift1Multitude2User2, this.state.WednesdayShift1Multitude2User3, this.state.WednesdayShift1Multitude2User4, this.state.WednesdayShift1Multitude2User5],
         },
         shift2: {
-          multitude1: [this.state.WednesdayShift2Multitude1User1, this.state.WednesdayShift2Multitude1User2, this.state.WednesdayShift2Multitude1User3, this.state.WednesdayShift2Multitude1User4, this.state.WednesdayShift2Multitude1User5],
-          multitude2: [this.state.WednesdayShift2Multitude2User1, this.state.WednesdayShift2Multitude2User2, this.state.WednesdayShift2Multitude2User3, this.state.WednesdayShift2Multitude2User4, this.state.WednesdayShift2Multitude2User5],
+          multitude1:
+            [this.state.WednesdayShift2Multitude1User1, this.state.WednesdayShift2Multitude1User2, this.state.WednesdayShift2Multitude1User3, this.state.WednesdayShift2Multitude1User4, this.state.WednesdayShift2Multitude1User5],
+          multitude2:
+            [this.state.WednesdayShift2Multitude2User1, this.state.WednesdayShift2Multitude2User2, this.state.WednesdayShift2Multitude2User3, this.state.WednesdayShift2Multitude2User4, this.state.WednesdayShift2Multitude2User5],
         },
         shift3: {
-          multitude1: [this.state.WednesdayShift3Multitude1User1, this.state.WednesdayShift3Multitude1User2, this.state.WednesdayShift3Multitude1User3, this.state.WednesdayShift3Multitude1User4, this.state.WednesdayShift3Multitude1User5],
-          multitude2: [this.state.WednesdayShift3Multitude2User1, this.state.WednesdayShift3Multitude2User2, this.state.WednesdayShift3Multitude2User3, this.state.WednesdayShift3Multitude2User4, this.state.WednesdayShift3Multitude2User5],
+          multitude1:
+            [this.state.WednesdayShift3Multitude1User1, this.state.WednesdayShift3Multitude1User2, this.state.WednesdayShift3Multitude1User3, this.state.WednesdayShift3Multitude1User4, this.state.WednesdayShift3Multitude1User5],
+          multitude2:
+            [this.state.WednesdayShift3Multitude2User1, this.state.WednesdayShift3Multitude2User2, this.state.WednesdayShift3Multitude2User3, this.state.WednesdayShift3Multitude2User4, this.state.WednesdayShift3Multitude2User5],
         }
       },
       Thursday: {
         shift1: {
-          multitude1: [this.state.ThursdayShift1Multitude1User1, this.state.ThursdayShift1Multitude1User2, this.state.ThursdayShift1Multitude1User3, this.state.ThursdayShift1Multitude1User4, this.state.ThursdayShift1Multitude1User5],
-          multitude2: [this.state.ThursdayShift1Multitude2User1, this.state.ThursdayShift1Multitude2User2, this.state.ThursdayShift1Multitude2User3, this.state.ThursdayShift1Multitude2User4, this.state.ThursdayShift1Multitude2User5],
+          multitude1:
+            [this.state.ThursdayShift1Multitude1User1, this.state.ThursdayShift1Multitude1User2, this.state.ThursdayShift1Multitude1User3, this.state.ThursdayShift1Multitude1User4, this.state.ThursdayShift1Multitude1User5],
+          multitude2:
+            [this.state.ThursdayShift1Multitude2User1, this.state.ThursdayShift1Multitude2User2, this.state.ThursdayShift1Multitude2User3, this.state.ThursdayShift1Multitude2User4, this.state.ThursdayShift1Multitude2User5],
         },
         shift2: {
-          multitude1: [this.state.ThursdayShift2Multitude1User1, this.state.ThursdayShift2Multitude1User2, this.state.ThursdayShift2Multitude1User3, this.state.ThursdayShift2Multitude1User4, this.state.ThursdayShift2Multitude1User5],
-          multitude2: [this.state.ThursdayShift2Multitude2User1, this.state.ThursdayShift2Multitude2User2, this.state.ThursdayShift2Multitude2User3, this.state.ThursdayShift2Multitude2User4, this.state.ThursdayShift2Multitude2User5],
+          multitude1:
+            [this.state.ThursdayShift2Multitude1User1, this.state.ThursdayShift2Multitude1User2, this.state.ThursdayShift2Multitude1User3, this.state.ThursdayShift2Multitude1User4, this.state.ThursdayShift2Multitude1User5],
+          multitude2:
+            [this.state.ThursdayShift2Multitude2User1, this.state.ThursdayShift2Multitude2User2, this.state.ThursdayShift2Multitude2User3, this.state.ThursdayShift2Multitude2User4, this.state.ThursdayShift2Multitude2User5],
         },
         shift3: {
-          multitude1: [this.state.ThursdayShift3Multitude1User1, this.state.ThursdayShift3Multitude1User2, this.state.ThursdayShift3Multitude1User3, this.state.ThursdayShift3Multitude1User4, this.state.ThursdayShift3Multitude1User5],
-          multitude2: [this.state.ThursdayShift3Multitude2User1, this.state.ThursdayShift3Multitude2User2, this.state.ThursdayShift3Multitude2User3, this.state.ThursdayShift3Multitude2User4, this.state.ThursdayShift3Multitude2User5],
+          multitude1:
+            [this.state.ThursdayShift3Multitude1User1, this.state.ThursdayShift3Multitude1User2, this.state.ThursdayShift3Multitude1User3, this.state.ThursdayShift3Multitude1User4, this.state.ThursdayShift3Multitude1User5],
+          multitude2:
+            [this.state.ThursdayShift3Multitude2User1, this.state.ThursdayShift3Multitude2User2, this.state.ThursdayShift3Multitude2User3, this.state.ThursdayShift3Multitude2User4, this.state.ThursdayShift3Multitude2User5],
         }
       },
       Friday: {
         shift1: {
-          multitude1: [this.state.FridayShift1Multitude1User1, this.state.FridayShift1Multitude1User2, this.state.FridayShift1Multitude1User3, this.state.FridayShift1Multitude1User4, this.state.FridayShift1Multitude1User5],
-          multitude2: [this.state.FridayShift1Multitude2User1, this.state.FridayShift1Multitude2User2, this.state.FridayShift1Multitude2User3, this.state.FridayShift1Multitude2User4, this.state.FridayShift1Multitude2User5],
+          multitude1:
+            [this.state.FridayShift1Multitude1User1, this.state.FridayShift1Multitude1User2, this.state.FridayShift1Multitude1User3, this.state.FridayShift1Multitude1User4, this.state.FridayShift1Multitude1User5],
+          multitude2:
+            [this.state.FridayShift1Multitude2User1, this.state.FridayShift1Multitude2User2, this.state.FridayShift1Multitude2User3, this.state.FridayShift1Multitude2User4, this.state.FridayShift1Multitude2User5],
         },
         shift2: {
-          multitude1: [this.state.FridayShift2Multitude1User1, this.state.FridayShift2Multitude1User2, this.state.FridayShift2Multitude1User3, this.state.FridayShift2Multitude1User4, this.state.FridayShift2Multitude1User5],
-          multitude2: [this.state.FridayShift2Multitude2User1, this.state.FridayShift2Multitude2User2, this.state.FridayShift2Multitude2User3, this.state.FridayShift2Multitude2User4, this.state.FridayShift2Multitude2User5],
+          multitude1:
+            [this.state.FridayShift2Multitude1User1, this.state.FridayShift2Multitude1User2, this.state.FridayShift2Multitude1User3, this.state.FridayShift2Multitude1User4, this.state.FridayShift2Multitude1User5],
+          multitude2:
+            [this.state.FridayShift2Multitude2User1, this.state.FridayShift2Multitude2User2, this.state.FridayShift2Multitude2User3, this.state.FridayShift2Multitude2User4, this.state.FridayShift2Multitude2User5],
         },
         shift3: {
-          multitude1: [this.state.FridayShift3Multitude1User1, this.state.FridayShift3Multitude1User2, this.state.FridayShift3Multitude1User3, this.state.FridayShift3Multitude1User4, this.state.FridayShift3Multitude1User5],
-          multitude2: [this.state.FridayShift3Multitude2User1, this.state.FridayShift3Multitude2User2, this.state.FridayShift3Multitude2User3, this.state.FridayShift3Multitude2User4, this.state.FridayShift3Multitude2User5],
+          multitude1:
+            [this.state.FridayShift3Multitude1User1, this.state.FridayShift3Multitude1User2, this.state.FridayShift3Multitude1User3, this.state.FridayShift3Multitude1User4, this.state.FridayShift3Multitude1User5],
+          multitude2:
+            [this.state.FridayShift3Multitude2User1, this.state.FridayShift3Multitude2User2, this.state.FridayShift3Multitude2User3, this.state.FridayShift3Multitude2User4, this.state.FridayShift3Multitude2User5],
         }
       },
       Saturday: {
         shift1: {
-          multitude1: [this.state.SaturdayShift1Multitude1User1, this.state.SaturdayShift1Multitude1User2, this.state.SaturdayShift1Multitude1User3, this.state.SaturdayShift1Multitude1User4, this.state.SaturdayShift1Multitude1User5],
-          multitude2: [this.state.SaturdayShift1Multitude2User1, this.state.SaturdayShift1Multitude2User2, this.state.SaturdayShift1Multitude2User3, this.state.SaturdayShift1Multitude2User4, this.state.SaturdayShift1Multitude2User5],
+          multitude1:
+            [this.state.SaturdayShift1Multitude1User1, this.state.SaturdayShift1Multitude1User2, this.state.SaturdayShift1Multitude1User3, this.state.SaturdayShift1Multitude1User4, this.state.SaturdayShift1Multitude1User5],
+          multitude2:
+            [this.state.SaturdayShift1Multitude2User1, this.state.SaturdayShift1Multitude2User2, this.state.SaturdayShift1Multitude2User3, this.state.SaturdayShift1Multitude2User4, this.state.SaturdayShift1Multitude2User5],
         },
         shift2: {
-          multitude1: [this.state.SaturdayShift2Multitude1User1, this.state.SaturdayShift2Multitude1User2, this.state.SaturdayShift2Multitude1User3, this.state.SaturdayShift2Multitude1User4, this.state.SaturdayShift2Multitude1User5],
-          multitude2: [this.state.SaturdayShift2Multitude2User1, this.state.SaturdayShift2Multitude2User2, this.state.SaturdayShift2Multitude2User3, this.state.SaturdayShift2Multitude2User4, this.state.SaturdayShift2Multitude2User5],
+          multitude1:
+            [this.state.SaturdayShift2Multitude1User1, this.state.SaturdayShift2Multitude1User2, this.state.SaturdayShift2Multitude1User3, this.state.SaturdayShift2Multitude1User4, this.state.SaturdayShift2Multitude1User5],
+          multitude2:
+            [this.state.SaturdayShift2Multitude2User1, this.state.SaturdayShift2Multitude2User2, this.state.SaturdayShift2Multitude2User3, this.state.SaturdayShift2Multitude2User4, this.state.SaturdayShift2Multitude2User5],
         },
         shift3: {
-          multitude1: [this.state.SaturdayShift3Multitude1User1, this.state.SaturdayShift3Multitude1User2, this.state.SaturdayShift3Multitude1User3, this.state.SaturdayShift3Multitude1User4, this.state.SaturdayShift3Multitude1User5],
-          multitude2: [this.state.SaturdayShift3Multitude2User1, this.state.SaturdayShift3Multitude2User2, this.state.SaturdayShift3Multitude2User3, this.state.SaturdayShift3Multitude2User4, this.state.SaturdayShift3Multitude2User5],
+          multitude1:
+            [this.state.SaturdayShift3Multitude1User1, this.state.SaturdayShift3Multitude1User2, this.state.SaturdayShift3Multitude1User3, this.state.SaturdayShift3Multitude1User4, this.state.SaturdayShift3Multitude1User5],
+          multitude2:
+            [this.state.SaturdayShift3Multitude2User1, this.state.SaturdayShift3Multitude2User2, this.state.SaturdayShift3Multitude2User3, this.state.SaturdayShift3Multitude2User4, this.state.SaturdayShift3Multitude2User5],
         }
       },
       Sunday: {
         shift1: {
-          multitude1: [this.state.SundayShift1Multitude1User1, this.state.SundayShift1Multitude1User2, this.state.SundayShift1Multitude1User3, this.state.SundayShift1Multitude1User4, this.state.SundayShift1Multitude1User5],
-          multitude2: [this.state.SundayShift1Multitude2User1, this.state.SundayShift1Multitude2User2, this.state.SundayShift1Multitude2User3, this.state.SundayShift1Multitude2User4, this.state.SundayShift1Multitude2User5],
+          multitude1:
+            [this.state.SundayShift1Multitude1User1, this.state.SundayShift1Multitude1User2, this.state.SundayShift1Multitude1User3, this.state.SundayShift1Multitude1User4, this.state.SundayShift1Multitude1User5],
+          multitude2:
+            [this.state.SundayShift1Multitude2User1, this.state.SundayShift1Multitude2User2, this.state.SundayShift1Multitude2User3, this.state.SundayShift1Multitude2User4, this.state.SundayShift1Multitude2User5],
         },
         shift2: {
-          multitude1: [this.state.SundayShift2Multitude1User1, this.state.SundayShift2Multitude1User2, this.state.SundayShift2Multitude1User3, this.state.SundayShift2Multitude1User4, this.state.SundayShift2Multitude1User5],
-          multitude2: [this.state.SundayShift2Multitude2User1, this.state.SundayShift2Multitude2User2, this.state.SundayShift2Multitude2User3, this.state.SundayShift2Multitude2User4, this.state.SundayShift2Multitude2User5],
+          multitude1:
+            [this.state.SundayShift2Multitude1User1, this.state.SundayShift2Multitude1User2, this.state.SundayShift2Multitude1User3, this.state.SundayShift2Multitude1User4, this.state.SundayShift2Multitude1User5],
+          multitude2:
+            [this.state.SundayShift2Multitude2User1, this.state.SundayShift2Multitude2User2, this.state.SundayShift2Multitude2User3, this.state.SundayShift2Multitude2User4, this.state.SundayShift2Multitude2User5],
         },
         shift3: {
-          multitude1: [this.state.SundayShift3Multitude1User1, this.state.SundayShift3Multitude1User2, this.state.SundayShift3Multitude1User3, this.state.SundayShift3Multitude1User4, this.state.SundayShift3Multitude1User5],
-          multitude2: [this.state.SundayShift3Multitude2User1, this.state.SundayShift3Multitude2User2, this.state.SundayShift3Multitude2User3, this.state.SundayShift3Multitude2User4, this.state.SundayShift3Multitude2User5],
+          multitude1:
+            [this.state.SundayShift3Multitude1User1, this.state.SundayShift3Multitude1User2, this.state.SundayShift3Multitude1User3, this.state.SundayShift3Multitude1User4, this.state.SundayShift3Multitude1User5],
+          multitude2:
+            [this.state.SundayShift3Multitude2User1, this.state.SundayShift3Multitude2User2, this.state.SundayShift3Multitude2User3, this.state.SundayShift3Multitude2User4, this.state.SundayShift3Multitude2User5],
         }
       },
     }
     this.setState({
       schedule: [newSchedule, ...this.state.schedule],
-      display: !this.state.display
+      create: !this.state.create
     })
   }
 
   toggleDisplay = () => {
-    let display = this.state.display
+    let create = this.state.create
     this.setState({
-      display: !display
+      create: !create
     })
   }
 
-  editSchedule = () => {
-    console.log('edit')
+  getEditSchedule = (id) => {
+    this.setState({
+      getEdit: true,
+    })
   }
 
+
+
   render() {
+    const { create, schedule, dateFrom, dateTo, getEdit } = this.state
     return (
       <div className='schedule'>
-        {this.state.display ? null : <button onClick={this.toggleDisplay}>Dodaj</button>}
-        {this.state.display ? <CreateSchedule schedule={this.state.schedule} dateFrom={this.state.dateFrom} dateTo={this.state.dateTo} handleChange={this.handleChange} handleSubmit={this.handleSubmit} /> : null}
-        <Table schedule={this.state.schedule} edit={this.editSchedule} />
-        <Prompt when={this.state.display} message={'Masz niezapisany formularz. Czy na pewno chcesz opuścić stronę?'} />
+        {create ? null : <button className={getEdit ? 'hide' : null} onClick={this.toggleDisplay}>Dodaj</button>}
+        {create ?
+          <CreateSchedule
+            schedule={schedule}
+            dateFrom={dateFrom}
+            dateTo={dateTo}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit} /> : null}
+        <Table
+          schedule={schedule}
+          getEdit={this.getEditSchedule}
+          editState={getEdit}
+          getId={this.getId}
+          handleChange={this.handleChange} />
+        <Prompt
+          when={create}
+          message={'Masz niezapisany formularz. Czy na pewno chcesz opuścić stronę?'} />
       </div>
     );
   }
