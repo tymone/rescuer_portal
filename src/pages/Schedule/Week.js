@@ -1,30 +1,19 @@
 import React from 'react';
 
-const Week = ({ week, editState, edit }) => {
+const Week = ({ week }) => {
 
-  const multitude = (multitude, className, day, classNameShift, handleChange) => {
-
-    // Priorytet =======================
-
-    return editState ?
-      <div className={className}>
-        {multitude.map((user, i) => <input type='text' placeholder={user}
-          name={`${day}${classNameShift}${className}${`User${i + 1}`}`} onChange={handleChange} />)}
-      </div>
-      :
-      (
-        <div className={className} >
-          {
-            multitude.map((user, i) => (
-              <p key={`Dzień:${day}, Zmiana:${classNameShift}, Ratownik${i + 1}`}>
-                {user ? user : `---`}
-              </p>
-            ))
-          }
-        </div >
-      );
-
-    // ==============================================
+  const multitude = (multitude, className, day, classNameShift) => {
+    return (
+      <div className={className} >
+        {
+          multitude.map((user, i) => (
+            <p key={`Dzień:${day}, Zmiana:${classNameShift}, Ratownik${i + 1}`}>
+              {user ? user : `---`}
+            </p>
+          ))
+        }
+      </div >
+    );
   };
 
   const shift = (classNameShift, hours, multitude1, multitude2, day, multitude, classNameMultitude1 = 'Multitude1', classNameMultitude2 = 'Multitude2') => {
@@ -46,6 +35,10 @@ const Week = ({ week, editState, edit }) => {
         {shift(shift3, hours3, multitude1Shift3, multitude2Shift3, day, multitude)}
       </div>
     )
+  }
+
+  let users = (title, name) => {
+    return (<p><b><u>{title}</u></b>: {name.length ? name.map(user => `${user}, `) : (' ---')}</p>)
   }
 
   return (
@@ -92,6 +85,13 @@ const Week = ({ week, editState, edit }) => {
         week.Sunday.shift2.multitude1, week.Sunday.shift2.multitude2,
         week.Sunday.shift3.multitude1, week.Sunday.shift3.multitude2,
         multitude)}
+      <div className='underTable'>
+        {users('Poza zastępem', week.outside)}
+        {users('Ćwiczenia', week.train)}
+        {users('L4', week.sick)}
+        {users('Kurs', week.course)}
+        {users('Urlop', week.leave)}
+      </div>
     </div>
   )
 }

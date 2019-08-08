@@ -3,16 +3,23 @@ import { Prompt } from 'react-router-dom';
 
 import Table from './Table.js';
 import CreateSchedule from './CreateSchedule';
+import EditSchedule from './EditSchedule';
 
 class Schedule extends Component {
   state = {
     create: false,
     getEdit: false,
+    editId: null,
     dateFrom: '',
     dateTo: '',
+    outsideMultitude: ['poza zastępem1', 'poza zastępem2'],
+    outsideTrain: ['Ćwiczenia1', 'Ćwiczenia2', 'Ćwiczenia3', 'Ćwiczenia4', 'Ćwiczenia5', 'Ćwiczenia6', 'Ćwiczenia7', 'Ćwiczenia8', 'Ćwiczenia9'],
+    outsideSick: ['chory1', 'chory2', 'chory3', 'chory4', 'chory5', 'chory6'],
+    outsideCourse: ['kursant1', 'kursant2', 'kursant3',],
+    outsideLeave: ['urlop1', 'urlop2', 'urlop3', 'urlop4'],
     schedule: [
       {
-        id: 0,
+        id: 1000,
         dateFrom: '16.6',
         dateTo: '22.6',
         Monday: {
@@ -364,7 +371,12 @@ class Schedule extends Component {
               'Nd noc2 5'
             ]
           }
-        }
+        },
+        train: ['Ćwiczenia1', 'Ćwiczenia2', 'Ćwiczenia3', 'Ćwiczenia4', 'Ćwiczenia5', 'Ćwiczenia6', 'Ćwiczenia7', 'Ćwiczenia8', 'Ćwiczenia9', 'Ćwiczenia10', 'Ćwiczenia11', 'Ćwiczenia12', 'Ćwiczenia13', 'Ćwiczenia14', 'Ćwiczenia 15', 'Ćwiczenia16', 'Ćwiczenia17', 'Ćwiczenia18', 'Ćwiczenia19', 'Ćwiczenia20'],
+        outside: ['pracownik1', 'pracownik2', 'pracownik3', 'pracownik4'],
+        sick: ['chory1', 'chory2', 'chory3', 'chory4', 'chory5', 'chory6'],
+        course: ['kursant1', 'kursant2', 'kursant3', 'kursant4', 'kursant5', 'kursant6'],
+        leave: ['urlopowicz1', 'urlopowicz2', 'urlopowicz3', 'urlopowicz4', 'urlopowicz5']
       },
       {
         id: 1,
@@ -719,7 +731,12 @@ class Schedule extends Component {
               'Nd noc2 5'
             ]
           }
-        }
+        },
+        train: ['Ćwiczenia1', 'Ćwiczenia2', 'Ćwiczenia3', 'Ćwiczenia4', 'Ćwiczenia5', 'Ćwiczenia6', 'Ćwiczenia7', 'Ćwiczenia8', 'Ćwiczenia9', 'Ćwiczenia10', 'Ćwiczenia11', 'Ćwiczenia12', 'Ćwiczenia13', 'Ćwiczenia14', 'Ćwiczenia 15', 'Ćwiczenia16', 'Ćwiczenia17', 'Ćwiczenia18', 'Ćwiczenia19', 'Ćwiczenia20'],
+        outside: ['pracownik1', 'pracownik2', 'pracownik3', 'pracownik4'],
+        sick: ['chory1', 'chory2', 'chory3', 'chory4', 'chory5', 'chory6'],
+        course: ['kursant1', 'kursant2', 'kursant3', 'kursant4', 'kursant5', 'kursant6'],
+        leave: ['urlopowicz1', 'urlopowicz2', 'urlopowicz3', 'urlopowicz4', 'urlopowicz5']
       }
     ]
   };
@@ -895,13 +912,14 @@ class Schedule extends Component {
   getEditSchedule = (id) => {
     this.setState({
       getEdit: true,
+      editId: id,
     })
   }
 
 
 
   render() {
-    const { create, schedule, dateFrom, dateTo, getEdit } = this.state
+    const { create, outsideMultitude, outsideTrain, outsideSick, outsideCourse, outsideLeave, schedule, dateFrom, dateTo, getEdit, editId } = this.state
     return (
       <div className='schedule'>
         {create ? null : <button className={getEdit ? 'hide' : null} onClick={this.toggleDisplay}>Dodaj</button>}
@@ -911,13 +929,20 @@ class Schedule extends Component {
             dateFrom={dateFrom}
             dateTo={dateTo}
             handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit} /> : null}
-        <Table
-          schedule={schedule}
-          getEdit={this.getEditSchedule}
-          editState={getEdit}
-          getId={this.getId}
-          handleChange={this.handleChange} />
+            handleSubmit={this.handleSubmit}
+            outsideMultitude={outsideMultitude}
+            outsideTrain={outsideTrain}
+            outsideSick={outsideSick}
+            outsideCourse={outsideCourse}
+            outsideLeave={outsideLeave} /> : null}
+        {getEdit ?
+          <EditSchedule editId={editId} schedule={schedule} handleChange={this.handleChange} />
+          :
+          <Table
+            schedule={schedule}
+            getEdit={this.getEditSchedule}
+            getId={this.getId} />
+        }
         <Prompt
           when={create}
           message={'Masz niezapisany formularz. Czy na pewno chcesz opuścić stronę?'} />

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CreateSchedule = ({ handleChange, handleSubmit, dateFrom, dateTo }) => {
+const CreateSchedule = ({ handleChange, outsideMultitude, outsideTrain, outsideSick, outsideCourse, outsideLeave, handleSubmit, dateFrom, dateTo }) => {
 
 
   let multitude = (classNameMultitude, day, shift) => {
@@ -41,6 +41,13 @@ const CreateSchedule = ({ handleChange, handleSubmit, dateFrom, dateTo }) => {
     )
   }
 
+  // ==================================================
+  // od nowa funkcja wyświetlania pracowników pod tabelą
+  // ... przez map.
+  let outsidePeople = (title, people) => {
+    return <p><b><u>{title}</u></b>: {people.map(person => `${person}, `)} </p>
+  }
+
   return (
     <>
       <h1>
@@ -57,7 +64,17 @@ const CreateSchedule = ({ handleChange, handleSubmit, dateFrom, dateTo }) => {
         {day('Friday', 'Piątek')}
         {day('Saturday', 'Sobota')}
         {day('Sunday', 'Niedziela')}
+        <div className='underTable'>
+          {outsidePeople('Poza zastępem', outsideMultitude)}
+          {outsidePeople('Ćwiczenia', outsideTrain)}
+          {outsidePeople('L4', outsideSick)}
+          {outsidePeople('Kurs', outsideCourse)}
+          {outsidePeople('Urlop', outsideLeave)}
+          {/* <p>Poza zastępem: <input value={outsideMultitude} name='outsidePeople' onChange={handleChange} type='text' /></p> */}
+
+        </div>
       </div>
+
       <button onClick={handleSubmit}>Zapisz</button>
     </>
   );
