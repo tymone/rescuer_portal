@@ -86,11 +86,11 @@ const Week = ({ week }) => {
         week.Sunday.shift3.multitude1, week.Sunday.shift3.multitude2,
         multitude)}
       <div className='underTable'>
-        {users('Poza zastępem', week.outside)}
-        {users('Ćwiczenia', week.train)}
-        {users('L4', week.sick)}
-        {users('Kurs', week.course)}
-        {users('Urlop', week.leave)}
+        {users('Poza zastępem', week.outside.multitude)}
+        {users('Ćwiczenia', week.outside.train)}
+        {users('L4', week.outside.sick)}
+        {users('Kurs', week.outside.course)}
+        {users('Urlop', week.outside.leave)}
       </div>
     </div>
   )

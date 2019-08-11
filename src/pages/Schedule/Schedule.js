@@ -10,13 +10,6 @@ class Schedule extends Component {
     create: false,
     getEdit: false,
     editId: null,
-    dateFrom: '',
-    dateTo: '',
-    outsideMultitude: ['poza zastępem1', 'poza zastępem2'],
-    outsideTrain: ['Ćwiczenia1', 'Ćwiczenia2', 'Ćwiczenia3', 'Ćwiczenia4', 'Ćwiczenia5', 'Ćwiczenia6', 'Ćwiczenia7', 'Ćwiczenia8', 'Ćwiczenia9'],
-    outsideSick: ['chory1', 'chory2', 'chory3', 'chory4', 'chory5', 'chory6'],
-    outsideCourse: ['kursant1', 'kursant2', 'kursant3',],
-    outsideLeave: ['urlop1', 'urlop2', 'urlop3', 'urlop4'],
     schedule: [
       {
         id: 1000,
@@ -372,11 +365,13 @@ class Schedule extends Component {
             ]
           }
         },
-        train: ['Ćwiczenia1', 'Ćwiczenia2', 'Ćwiczenia3', 'Ćwiczenia4', 'Ćwiczenia5', 'Ćwiczenia6', 'Ćwiczenia7', 'Ćwiczenia8', 'Ćwiczenia9', 'Ćwiczenia10', 'Ćwiczenia11', 'Ćwiczenia12', 'Ćwiczenia13', 'Ćwiczenia14', 'Ćwiczenia 15', 'Ćwiczenia16', 'Ćwiczenia17', 'Ćwiczenia18', 'Ćwiczenia19', 'Ćwiczenia20'],
-        outside: ['pracownik1', 'pracownik2', 'pracownik3', 'pracownik4'],
-        sick: ['chory1', 'chory2', 'chory3', 'chory4', 'chory5', 'chory6'],
-        course: ['kursant1', 'kursant2', 'kursant3', 'kursant4', 'kursant5', 'kursant6'],
-        leave: ['urlopowicz1', 'urlopowicz2', 'urlopowicz3', 'urlopowicz4', 'urlopowicz5']
+        outside: {
+          multitude: ['poza zastępem1', 'poza zastępem2'],
+          train: ['Ćwiczenia1', 'Ćwiczenia2', 'Ćwiczenia3', 'Ćwiczenia4', 'Ćwiczenia5', 'Ćwiczenia6', 'Ćwiczenia7', 'Ćwiczenia8', 'Ćwiczenia9'],
+          sick: ['chory1', 'chory2', 'chory3', 'chory4', 'chory5', 'chory6'],
+          course: ['kursant1', 'kursant2', 'kursant3',],
+          leave: ['urlop1', 'urlop2', 'urlop3', 'urlop4']
+        },
       },
       {
         id: 1,
@@ -732,174 +727,21 @@ class Schedule extends Component {
             ]
           }
         },
-        train: ['Ćwiczenia1', 'Ćwiczenia2', 'Ćwiczenia3', 'Ćwiczenia4', 'Ćwiczenia5', 'Ćwiczenia6', 'Ćwiczenia7', 'Ćwiczenia8', 'Ćwiczenia9', 'Ćwiczenia10', 'Ćwiczenia11', 'Ćwiczenia12', 'Ćwiczenia13', 'Ćwiczenia14', 'Ćwiczenia 15', 'Ćwiczenia16', 'Ćwiczenia17', 'Ćwiczenia18', 'Ćwiczenia19', 'Ćwiczenia20'],
-        outside: ['pracownik1', 'pracownik2', 'pracownik3', 'pracownik4'],
-        sick: ['chory1', 'chory2', 'chory3', 'chory4', 'chory5', 'chory6'],
-        course: ['kursant1', 'kursant2', 'kursant3', 'kursant4', 'kursant5', 'kursant6'],
-        leave: ['urlopowicz1', 'urlopowicz2', 'urlopowicz3', 'urlopowicz4', 'urlopowicz5']
+        outside: {
+          multitude: ['poza zastępem1', 'poza zastępem2'],
+          train: ['Ćwiczenia1', 'Ćwiczenia2', 'Ćwiczenia3', 'Ćwiczenia4', 'Ćwiczenia5', 'Ćwiczenia6', 'Ćwiczenia7', 'Ćwiczenia8', 'Ćwiczenia9'],
+          sick: ['chory1', 'chory2', 'chory3', 'chory4', 'chory5', 'chory6'],
+          course: ['kursant1', 'kursant2', 'kursant3',],
+          leave: ['urlop1', 'urlop2', 'urlop3', 'urlop4']
+        },
       }
     ]
   };
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     });
-  }
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const { dateFrom, dateTo } = this.state
-    let id = this.state.schedule.length
-
-    const newSchedule = {
-      id: id,
-      dateFrom: dateFrom,
-      dateTo: dateTo,
-      Monday: {
-        shift1: {
-          multitude1:
-            [this.state.MondayShift1Multitude1User1, this.state.MondayShift1Multitude1User2, this.state.MondayShift1Multitude1User3, this.state.MondayShift1Multitude1User4, this.state.MondayShift1Multitude1User5],
-          multitude2:
-            [this.state.MondayShift1Multitude2User1, this.state.MondayShift1Multitude2User2, this.state.MondayShift1Multitude2User3, this.state.MondayShift1Multitude2User4, this.state.MondayShift1Multitude2User5],
-        },
-        shift2: {
-          multitude1:
-            [this.state.MondayShift2Multitude1User1, this.state.MondayShift2Multitude1User2, this.state.MondayShift2Multitude1User3, this.state.MondayShift2Multitude1User4, this.state.MondayShift2Multitude1User5],
-          multitude2:
-            [this.state.MondayShift2Multitude2User1, this.state.MondayShift2Multitude2User2, this.state.MondayShift2Multitude2User3, this.state.MondayShift2Multitude2User4, this.state.MondayShift2Multitude2User5],
-        },
-        shift3: {
-          multitude1:
-            [this.state.MondayShift3Multitude1User1, this.state.MondayShift3Multitude1User2, this.state.MondayShift3Multitude1User3, this.state.MondayShift3Multitude1User4, this.state.MondayShift3Multitude1User5],
-          multitude2:
-            [this.state.MondayShift3Multitude2User1, this.state.MondayShift3Multitude2User2, this.state.MondayShift3Multitude2User3, this.state.MondayShift3Multitude2User4, this.state.MondayShift3Multitude2User5],
-        }
-      },
-      Tuesday: {
-        shift1: {
-          multitude1:
-            [this.state.TuesdayShift1Multitude1User1, this.state.TuesdayShift1Multitude1User2, this.state.TuesdayShift1Multitude1User3, this.state.TuesdayShift1Multitude1User4, this.state.TuesdayShift1Multitude1User5],
-          multitude2:
-            [this.state.TuesdayShift1Multitude2User1, this.state.TuesdayShift1Multitude2User2, this.state.TuesdayShift1Multitude2User3, this.state.TuesdayShift1Multitude2User4, this.state.TuesdayShift1Multitude2User5],
-        },
-        shift2: {
-          multitude1:
-            [this.state.TuesdayShift2Multitude1User1, this.state.TuesdayShift2Multitude1User2, this.state.TuesdayShift2Multitude1User3, this.state.TuesdayShift2Multitude1User4, this.state.TuesdayShift2Multitude1User5],
-          multitude2:
-            [this.state.TuesdayShift2Multitude2User1, this.state.TuesdayShift2Multitude2User2, this.state.TuesdayShift2Multitude2User3, this.state.TuesdayShift2Multitude2User4, this.state.TuesdayShift2Multitude2User5],
-        },
-        shift3: {
-          multitude1:
-            [this.state.TuesdayShift3Multitude1User1, this.state.TuesdayShift3Multitude1User2, this.state.TuesdayShift3Multitude1User3, this.state.TuesdayShift3Multitude1User4, this.state.TuesdayShift3Multitude1User5],
-          multitude2:
-            [this.state.TuesdayShift3Multitude2User1, this.state.TuesdayShift3Multitude2User2, this.state.TuesdayShift3Multitude2User3, this.state.TuesdayShift3Multitude2User4, this.state.TuesdayShift3Multitude2User5],
-        }
-      },
-      Wednesday: {
-        shift1: {
-          multitude1:
-            [this.state.WednesdayShift1Multitude1User1, this.state.WednesdayShift1Multitude1User2, this.state.WednesdayShift1Multitude1User3, this.state.WednesdayShift1Multitude1User4, this.state.WednesdayShift1Multitude1User5],
-          multitude2:
-            [this.state.WednesdayShift1Multitude2User1, this.state.WednesdayShift1Multitude2User2, this.state.WednesdayShift1Multitude2User3, this.state.WednesdayShift1Multitude2User4, this.state.WednesdayShift1Multitude2User5],
-        },
-        shift2: {
-          multitude1:
-            [this.state.WednesdayShift2Multitude1User1, this.state.WednesdayShift2Multitude1User2, this.state.WednesdayShift2Multitude1User3, this.state.WednesdayShift2Multitude1User4, this.state.WednesdayShift2Multitude1User5],
-          multitude2:
-            [this.state.WednesdayShift2Multitude2User1, this.state.WednesdayShift2Multitude2User2, this.state.WednesdayShift2Multitude2User3, this.state.WednesdayShift2Multitude2User4, this.state.WednesdayShift2Multitude2User5],
-        },
-        shift3: {
-          multitude1:
-            [this.state.WednesdayShift3Multitude1User1, this.state.WednesdayShift3Multitude1User2, this.state.WednesdayShift3Multitude1User3, this.state.WednesdayShift3Multitude1User4, this.state.WednesdayShift3Multitude1User5],
-          multitude2:
-            [this.state.WednesdayShift3Multitude2User1, this.state.WednesdayShift3Multitude2User2, this.state.WednesdayShift3Multitude2User3, this.state.WednesdayShift3Multitude2User4, this.state.WednesdayShift3Multitude2User5],
-        }
-      },
-      Thursday: {
-        shift1: {
-          multitude1:
-            [this.state.ThursdayShift1Multitude1User1, this.state.ThursdayShift1Multitude1User2, this.state.ThursdayShift1Multitude1User3, this.state.ThursdayShift1Multitude1User4, this.state.ThursdayShift1Multitude1User5],
-          multitude2:
-            [this.state.ThursdayShift1Multitude2User1, this.state.ThursdayShift1Multitude2User2, this.state.ThursdayShift1Multitude2User3, this.state.ThursdayShift1Multitude2User4, this.state.ThursdayShift1Multitude2User5],
-        },
-        shift2: {
-          multitude1:
-            [this.state.ThursdayShift2Multitude1User1, this.state.ThursdayShift2Multitude1User2, this.state.ThursdayShift2Multitude1User3, this.state.ThursdayShift2Multitude1User4, this.state.ThursdayShift2Multitude1User5],
-          multitude2:
-            [this.state.ThursdayShift2Multitude2User1, this.state.ThursdayShift2Multitude2User2, this.state.ThursdayShift2Multitude2User3, this.state.ThursdayShift2Multitude2User4, this.state.ThursdayShift2Multitude2User5],
-        },
-        shift3: {
-          multitude1:
-            [this.state.ThursdayShift3Multitude1User1, this.state.ThursdayShift3Multitude1User2, this.state.ThursdayShift3Multitude1User3, this.state.ThursdayShift3Multitude1User4, this.state.ThursdayShift3Multitude1User5],
-          multitude2:
-            [this.state.ThursdayShift3Multitude2User1, this.state.ThursdayShift3Multitude2User2, this.state.ThursdayShift3Multitude2User3, this.state.ThursdayShift3Multitude2User4, this.state.ThursdayShift3Multitude2User5],
-        }
-      },
-      Friday: {
-        shift1: {
-          multitude1:
-            [this.state.FridayShift1Multitude1User1, this.state.FridayShift1Multitude1User2, this.state.FridayShift1Multitude1User3, this.state.FridayShift1Multitude1User4, this.state.FridayShift1Multitude1User5],
-          multitude2:
-            [this.state.FridayShift1Multitude2User1, this.state.FridayShift1Multitude2User2, this.state.FridayShift1Multitude2User3, this.state.FridayShift1Multitude2User4, this.state.FridayShift1Multitude2User5],
-        },
-        shift2: {
-          multitude1:
-            [this.state.FridayShift2Multitude1User1, this.state.FridayShift2Multitude1User2, this.state.FridayShift2Multitude1User3, this.state.FridayShift2Multitude1User4, this.state.FridayShift2Multitude1User5],
-          multitude2:
-            [this.state.FridayShift2Multitude2User1, this.state.FridayShift2Multitude2User2, this.state.FridayShift2Multitude2User3, this.state.FridayShift2Multitude2User4, this.state.FridayShift2Multitude2User5],
-        },
-        shift3: {
-          multitude1:
-            [this.state.FridayShift3Multitude1User1, this.state.FridayShift3Multitude1User2, this.state.FridayShift3Multitude1User3, this.state.FridayShift3Multitude1User4, this.state.FridayShift3Multitude1User5],
-          multitude2:
-            [this.state.FridayShift3Multitude2User1, this.state.FridayShift3Multitude2User2, this.state.FridayShift3Multitude2User3, this.state.FridayShift3Multitude2User4, this.state.FridayShift3Multitude2User5],
-        }
-      },
-      Saturday: {
-        shift1: {
-          multitude1:
-            [this.state.SaturdayShift1Multitude1User1, this.state.SaturdayShift1Multitude1User2, this.state.SaturdayShift1Multitude1User3, this.state.SaturdayShift1Multitude1User4, this.state.SaturdayShift1Multitude1User5],
-          multitude2:
-            [this.state.SaturdayShift1Multitude2User1, this.state.SaturdayShift1Multitude2User2, this.state.SaturdayShift1Multitude2User3, this.state.SaturdayShift1Multitude2User4, this.state.SaturdayShift1Multitude2User5],
-        },
-        shift2: {
-          multitude1:
-            [this.state.SaturdayShift2Multitude1User1, this.state.SaturdayShift2Multitude1User2, this.state.SaturdayShift2Multitude1User3, this.state.SaturdayShift2Multitude1User4, this.state.SaturdayShift2Multitude1User5],
-          multitude2:
-            [this.state.SaturdayShift2Multitude2User1, this.state.SaturdayShift2Multitude2User2, this.state.SaturdayShift2Multitude2User3, this.state.SaturdayShift2Multitude2User4, this.state.SaturdayShift2Multitude2User5],
-        },
-        shift3: {
-          multitude1:
-            [this.state.SaturdayShift3Multitude1User1, this.state.SaturdayShift3Multitude1User2, this.state.SaturdayShift3Multitude1User3, this.state.SaturdayShift3Multitude1User4, this.state.SaturdayShift3Multitude1User5],
-          multitude2:
-            [this.state.SaturdayShift3Multitude2User1, this.state.SaturdayShift3Multitude2User2, this.state.SaturdayShift3Multitude2User3, this.state.SaturdayShift3Multitude2User4, this.state.SaturdayShift3Multitude2User5],
-        }
-      },
-      Sunday: {
-        shift1: {
-          multitude1:
-            [this.state.SundayShift1Multitude1User1, this.state.SundayShift1Multitude1User2, this.state.SundayShift1Multitude1User3, this.state.SundayShift1Multitude1User4, this.state.SundayShift1Multitude1User5],
-          multitude2:
-            [this.state.SundayShift1Multitude2User1, this.state.SundayShift1Multitude2User2, this.state.SundayShift1Multitude2User3, this.state.SundayShift1Multitude2User4, this.state.SundayShift1Multitude2User5],
-        },
-        shift2: {
-          multitude1:
-            [this.state.SundayShift2Multitude1User1, this.state.SundayShift2Multitude1User2, this.state.SundayShift2Multitude1User3, this.state.SundayShift2Multitude1User4, this.state.SundayShift2Multitude1User5],
-          multitude2:
-            [this.state.SundayShift2Multitude2User1, this.state.SundayShift2Multitude2User2, this.state.SundayShift2Multitude2User3, this.state.SundayShift2Multitude2User4, this.state.SundayShift2Multitude2User5],
-        },
-        shift3: {
-          multitude1:
-            [this.state.SundayShift3Multitude1User1, this.state.SundayShift3Multitude1User2, this.state.SundayShift3Multitude1User3, this.state.SundayShift3Multitude1User4, this.state.SundayShift3Multitude1User5],
-          multitude2:
-            [this.state.SundayShift3Multitude2User1, this.state.SundayShift3Multitude2User2, this.state.SundayShift3Multitude2User3, this.state.SundayShift3Multitude2User4, this.state.SundayShift3Multitude2User5],
-        }
-      },
-    }
-    this.setState({
-      schedule: [newSchedule, ...this.state.schedule],
-      create: !this.state.create
-    })
   }
 
   toggleDisplay = () => {
@@ -916,32 +758,36 @@ class Schedule extends Component {
     })
   }
 
-
+  addNewSchedule = (newSchedule) => {
+    let schedule = this.state.schedule
+    let create = this.state.create
+    this.setState({
+      schedule: [newSchedule, ...schedule],
+      create: !create
+    })
+  }
 
   render() {
-    const { create, outsideMultitude, outsideTrain, outsideSick, outsideCourse, outsideLeave, schedule, dateFrom, dateTo, getEdit, editId } = this.state
+    const { create, schedule, getEdit, editId } = this.state
     return (
       <div className='schedule'>
-        {create ? null : <button className={getEdit ? 'hide' : null} onClick={this.toggleDisplay}>Dodaj</button>}
+        {create ? null :
+          <button
+            className={getEdit ? 'hide' : null}
+            onClick={this.toggleDisplay}>Dodaj</button>}
         {create ?
           <CreateSchedule
             schedule={schedule}
-            dateFrom={dateFrom}
-            dateTo={dateTo}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-            outsideMultitude={outsideMultitude}
-            outsideTrain={outsideTrain}
-            outsideSick={outsideSick}
-            outsideCourse={outsideCourse}
-            outsideLeave={outsideLeave} /> : null}
+            addNewSchedule={this.addNewSchedule} /> : null}
         {getEdit ?
-          <EditSchedule editId={editId} schedule={schedule} handleChange={this.handleChange} />
+          <EditSchedule
+            editId={editId}
+            schedule={schedule}
+            handleChange={this.handleChange} />
           :
           <Table
             schedule={schedule}
-            getEdit={this.getEditSchedule}
-            getId={this.getId} />
+            getEdit={this.getEditSchedule} />
         }
         <Prompt
           when={create}
