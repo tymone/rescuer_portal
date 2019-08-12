@@ -738,12 +738,6 @@ class Schedule extends Component {
     ]
   };
 
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
-
   toggleDisplay = () => {
     let create = this.state.create
     this.setState({
@@ -751,10 +745,10 @@ class Schedule extends Component {
     })
   }
 
-  getEditSchedule = (id) => {
+  getEditSchedule = (index) => {
     this.setState({
       getEdit: true,
-      editId: id,
+      editId: index,
     })
   }
 
@@ -764,6 +758,18 @@ class Schedule extends Component {
     this.setState({
       schedule: [newSchedule, ...schedule],
       create: !create
+    })
+  }
+
+  submitEditSchedule = (editSchedule) => {
+    let schedule = this.state.schedule
+    let index = this.state.editId
+    let getEdit = this.state.getEdit
+    schedule.splice(index, 1, editSchedule)
+    this.setState({
+      schedule,
+      getEdit: !getEdit,
+      editId: null,
     })
   }
 
@@ -781,9 +787,8 @@ class Schedule extends Component {
             addNewSchedule={this.addNewSchedule} /> : null}
         {getEdit ?
           <EditSchedule
-            editId={editId}
-            schedule={schedule}
-            handleChange={this.handleChange} />
+            schedule={schedule[editId]}
+            submitEditSchedule={this.submitEditSchedule} />
           :
           <Table
             schedule={schedule}

@@ -6,10 +6,10 @@ import Week from './Week';
 
 const Table = ({ schedule, getEdit }) => {
 
-  const week = schedule.map((week) => (
+  const week = schedule.map((week, i) => (
     <li key={week.id}>
       <h1>
-        Harmonogram na okres: {week.dateFrom} - {week.dateTo}<i className="fas fa-edit" onClick={() => getEdit(week.id)}></i>
+        Harmonogram na okres: {week.dateFrom} - {week.dateTo}<i className="fas fa-edit" onClick={() => getEdit(i)}></i>
       </h1>
       <Week week={week} />
     </li>
