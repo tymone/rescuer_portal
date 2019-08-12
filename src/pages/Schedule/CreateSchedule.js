@@ -231,29 +231,49 @@ export default class CreateSchedule extends Component {
 
     switch (className) {
       case 'outsideMultitude':
-        this.setState({
-          outsideMultitudeArr: [...this.state.outsideMultitudeArr, outsideMultitudeValue],
-        })
+        (outsideMultitudeValue ?
+          this.setState({
+            outsideMultitudeArr: [...this.state.outsideMultitudeArr, outsideMultitudeValue],
+          })
+          :
+          alert('Nie podano nazwiska.')
+        )
         break;
       case 'outsideTrain':
-        this.setState({
-          outsideTrainArr: [...this.state.outsideTrainArr, outsideTrainValue]
-        })
+        (outsideTrainValue ?
+          this.setState({
+            outsideTrainArr: [...this.state.outsideTrainArr, outsideTrainValue]
+          })
+          :
+          alert('Nie podano nazwiska.')
+        )
         break;
       case 'outsideSick':
-        this.setState({
-          outsideSickArr: [...this.state.outsideSickArr, outsideSickValue]
-        })
+        (outsideSickValue ?
+          this.setState({
+            outsideSickArr: [...this.state.outsideSickArr, outsideSickValue]
+          })
+          :
+          alert('Nie podano nazwiska.')
+        )
         break;
       case 'outsideCourse':
-        this.setState({
-          outsideCourseArr: [...this.state.outsideCourseArr, outsideCourseValue]
-        })
+        (outsideCourseValue ?
+          this.setState({
+            outsideCourseArr: [...this.state.outsideCourseArr, outsideCourseValue]
+          })
+          :
+          alert('Nie podano nazwiska.')
+        )
         break;
       case 'outsideLeave':
-        this.setState({
-          outsideLeaveArr: [...this.state.outsideLeaveArr, outsideLeaveValue]
-        })
+        (outsideLeaveValue ?
+          this.setState({
+            outsideLeaveArr: [...this.state.outsideLeaveArr, outsideLeaveValue]
+          })
+          :
+          alert('Nie podano nazwiska.')
+        )
         break;
       default: console.log('')
     }
