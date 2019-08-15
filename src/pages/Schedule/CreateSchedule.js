@@ -4,11 +4,18 @@ export default class CreateSchedule extends Component {
 
   state = {
     schedule: [],
+    outsideMultitude: '',
+    outsideTrain: '',
+    outsideSick: '',
+    outsideCourse: '',
+    outsideLeave: '',
     outsideMultitudeArr: [],
     outsideTrainArr: [],
     outsideSickArr: [],
     outsideCourseArr: [],
     outsideLeaveArr: [],
+    allWeek: false,
+    showCheckbox: false,
   }
   handleChange = (e) => {
     this.setState({
@@ -182,7 +189,7 @@ export default class CreateSchedule extends Component {
     return (
       <div className={classNameMultitude}>
         <input type='text' placeholder='nazwisko'
-          name={`${day}${shift}${classNameMultitude}${`User1`}`} onChange={this.handleChange} />
+          name={`${day}${shift}${classNameMultitude}${`User1`}`} onChange={this.handleChange} onClick={this.showCheckbox} />
         <input type='text' placeholder='nazwisko'
           name={`${day}${shift}${classNameMultitude}${`User2`}`} onChange={this.handleChange} />
         <input type='text' placeholder='nazwisko'
@@ -223,102 +230,25 @@ export default class CreateSchedule extends Component {
   }
 
   addPerson = (className) => {
-    let outsideMultitudeValue = this.state.outsideMultitude
-    let outsideTrainValue = this.state.outsideTrain
-    let outsideSickValue = this.state.outsideSick
-    let outsideCourseValue = this.state.outsideCourse
-    let outsideLeaveValue = this.state.outsideLeave
 
-    switch (className) {
-      case 'outsideMultitude':
-        (outsideMultitudeValue ?
-          this.setState({
-            outsideMultitudeArr: [...this.state.outsideMultitudeArr, outsideMultitudeValue],
-          })
-          :
-          alert('Nie podano nazwiska.')
-        )
-        break;
-      case 'outsideTrain':
-        (outsideTrainValue ?
-          this.setState({
-            outsideTrainArr: [...this.state.outsideTrainArr, outsideTrainValue]
-          })
-          :
-          alert('Nie podano nazwiska.')
-        )
-        break;
-      case 'outsideSick':
-        (outsideSickValue ?
-          this.setState({
-            outsideSickArr: [...this.state.outsideSickArr, outsideSickValue]
-          })
-          :
-          alert('Nie podano nazwiska.')
-        )
-        break;
-      case 'outsideCourse':
-        (outsideCourseValue ?
-          this.setState({
-            outsideCourseArr: [...this.state.outsideCourseArr, outsideCourseValue]
-          })
-          :
-          alert('Nie podano nazwiska.')
-        )
-        break;
-      case 'outsideLeave':
-        (outsideLeaveValue ?
-          this.setState({
-            outsideLeaveArr: [...this.state.outsideLeaveArr, outsideLeaveValue]
-          })
-          :
-          alert('Nie podano nazwiska.')
-        )
-        break;
-      default: console.log('')
+    if (this.state[`${className}`].length > 0) {
+      this.setState({
+        [`${className}Arr`]: [...this.state[`${className}Arr`], this.state[`${className}`]],
+        [`${className}`]: ''
+      })
     }
-
+    else {
+      alert('Nie podano nazwiska.')
+    }
   }
 
   removePerson = (className, i) => {
-    switch (className) {
-      case 'outsideMultitude':
-        let outsideMultitudeArr = this.state.outsideMultitudeArr
-        outsideMultitudeArr.splice((i), 1)
-        this.setState({
-          outsideMultitudeArr,
-        })
-        break;
-      case 'outsideTrain':
-        let outsideTrainArr = this.state.outsideTrainArr
-        outsideTrainArr.splice((i), 1)
-        this.setState({
-          outsideTrainArr,
-        })
-        break;
-      case 'outsideSick':
-        let outsideSickArr = this.state.outsideSickArr
-        outsideSickArr.splice((i), 1)
-        this.setState({
-          outsideSickArr,
-        })
-        break;
-      case 'outsideCourse':
-        let outsideCourseArr = this.state.outsideCourseArr
-        outsideCourseArr.splice((i), 1)
-        this.setState({
-          outsideCourseArr,
-        })
-        break;
-      case 'outsideLeave':
-        let outsideLeaveArr = this.state.outsideLeaveArr
-        outsideLeaveArr.splice((i), 1)
-        this.setState({
-          outsideLeaveArr,
-        })
-        break;
-      default: console.log('')
-    }
+
+    let arr = this.state[`${className}Arr`]
+    arr.splice((i), 1)
+    this.setState({
+      [`${className}Arr`]: arr
+    })
   }
 
   outsidePeople = (title, people, className) => {
@@ -333,6 +263,7 @@ export default class CreateSchedule extends Component {
           <input
             type="text"
             name={`${className}`}
+            value={this.state[`${className}`]}
             onChange={this.handleChange} />
           <i className="fas fa-user-check" onClick={() => this.addPerson(className)}></i>
         </div>
@@ -342,6 +273,18 @@ export default class CreateSchedule extends Component {
 
   }
 
+  allWeek = (arg) => {
+    this.setState({
+      allWeek: true
+    })
+    console.log(`cały tydzień${arg}`, this.state.allWeek)
+  }
+
+  showCheckbox = () => {
+    this.setState({
+      showCheckbox: !this.state.showCheckbox
+    })
+  }
   render() {
     const { outsideMultitudeArr, outsideTrainArr, outsideSickArr, outsideCourseArr, outsideLeaveArr } = this.state
     return (
@@ -353,6 +296,24 @@ export default class CreateSchedule extends Component {
           <input name='dateTo' onChange={this.handleChange} type="date" />
         </h1>
         <div className='table'>
+          <div className="checkbox">
+            <i className="fas fa-angle-double-right"></i>
+            <input className={this.state.showCheckbox ? 'show' : null} type='checkbox' title='cały tydzień' onClick={() => this.allWeek(1)} />
+            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(2)} />
+            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(3)} />
+            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(4)} />
+            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(5)} />
+            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(6)} />
+            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(7)} />
+            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(8)} />
+            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(9)} />
+            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(10)} />
+            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(11)} />
+            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(12)} />
+            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(13)} />
+            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(14)} />
+            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(15)} />
+          </div>
           {this.day('Monday', 'Poniedziałek')}
           {this.day('Tuesday', 'Wtorek')}
           {this.day('Wednesday', 'Środa')}
