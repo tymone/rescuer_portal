@@ -15,12 +15,111 @@ export default class CreateSchedule extends Component {
     outsideCourseArr: [],
     outsideLeaveArr: [],
     allWeek: false,
-    showCheckbox: false,
+    Monday: {
+      Shift1: {
+        Multitude1: ['Kowalski', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      },
+      Shift2: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      },
+      Shift3: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      }
+    },
+    Tuesday: {
+      Shift1: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      },
+      Shift2: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      },
+      Shift3: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      }
+    },
+    Wednesday: {
+      Shift1: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      },
+      Shift2: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      },
+      Shift3: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      }
+    },
+    Thursday: {
+      Shift1: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      },
+      Shift2: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      },
+      Shift3: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      }
+    },
+    Friday: {
+      Shift1: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      },
+      Shift2: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      },
+      Shift3: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      }
+    },
+    Saturday: {
+      Shift1: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      },
+      Shift2: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      },
+      Shift3: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      }
+    },
+    Sunday: {
+      Shift1: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      },
+      Shift2: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      },
+      Shift3: {
+        Multitude1: ['', '', '', '', ''],
+        Multitude2: ['', '', '', '', '']
+      }
+    },
+
   }
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     });
+    console.log(e.target.value)
   }
   handleSubmit = (e) => {
     e.preventDefault();
@@ -186,18 +285,21 @@ export default class CreateSchedule extends Component {
   }
 
   multitude = (classNameMultitude, day, shift) => {
+    let dzien = this.state[`${day}`]
+    let zmiana = dzien[`${shift}`]
+    let zast = zmiana[`${classNameMultitude}`]
     return (
       <div className={classNameMultitude}>
         <input type='text' placeholder='nazwisko'
-          name={`${day}${shift}${classNameMultitude}${`User1`}`} onChange={this.handleChange} onClick={this.showCheckbox} />
+          name={zast[0]} value={zast[0]} onChange={this.handleChange} />
         <input type='text' placeholder='nazwisko'
-          name={`${day}${shift}${classNameMultitude}${`User2`}`} onChange={this.handleChange} />
+          name={zast[1]} value={zast[1]} onChange={this.handleChange} />
         <input type='text' placeholder='nazwisko'
-          name={`${day}${shift}${classNameMultitude}${`User3`}`} onChange={this.handleChange} />
+          name={zast[2]} value={zast[2]} onChange={this.handleChange} />
         <input type='text' placeholder='nazwisko'
-          name={`${day}${shift}${classNameMultitude}${`User4`}`} onChange={this.handleChange} />
+          name={zast[3]} value={zast[3]} onChange={this.handleChange} />
         <input type='text' placeholder='nazwisko'
-          name={`${day}${shift}${classNameMultitude}${`User5`}`} onChange={this.handleChange} />
+          name={zast[4]} value={zast[4]} onChange={this.handleChange} />
       </div>
     )
   }
@@ -273,64 +375,35 @@ export default class CreateSchedule extends Component {
 
   }
 
-  allWeek = (arg) => {
-    this.setState({
-      allWeek: true
-    })
-    console.log(`cały tydzień${arg}`, this.state.allWeek)
-  }
-
-  showCheckbox = () => {
-    this.setState({
-      showCheckbox: !this.state.showCheckbox
-    })
-  }
   render() {
     const { outsideMultitudeArr, outsideTrainArr, outsideSickArr, outsideCourseArr, outsideLeaveArr } = this.state
     return (
       <>
-        <h1>
-          Harmonogram od:
+        <form onSubmit={this.handleSubmit}>
+          <h1>
+            Harmonogram od:
           <input name="dateFrom" onChange={this.handleChange} type="date" />
-          do:
+            do:
           <input name='dateTo' onChange={this.handleChange} type="date" />
-        </h1>
-        <div className='table'>
-          <div className="checkbox">
-            <i className="fas fa-angle-double-right"></i>
-            <input className={this.state.showCheckbox ? 'show' : null} type='checkbox' title='cały tydzień' onClick={() => this.allWeek(1)} />
-            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(2)} />
-            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(3)} />
-            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(4)} />
-            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(5)} />
-            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(6)} />
-            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(7)} />
-            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(8)} />
-            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(9)} />
-            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(10)} />
-            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(11)} />
-            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(12)} />
-            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(13)} />
-            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(14)} />
-            <input type='checkbox' title='cały tydzień' onClick={() => this.allWeek(15)} />
+          </h1>
+          <div className='table'>
+            {this.day('Monday', 'Poniedziałek')}
+            {this.day('Tuesday', 'Wtorek')}
+            {this.day('Wednesday', 'Środa')}
+            {this.day('Thursday', 'Czwartek')}
+            {this.day('Friday', 'Piątek')}
+            {this.day('Saturday', 'Sobota')}
+            {this.day('Sunday', 'Niedziela')}
+            <div className='underTable'>
+              {this.outsidePeople('Poza zastępem', outsideMultitudeArr, 'outsideMultitude')}
+              {this.outsidePeople('Ćwiczenia', outsideTrainArr, 'outsideTrain')}
+              {this.outsidePeople('L4', outsideSickArr, 'outsideSick')}
+              {this.outsidePeople('Kurs', outsideCourseArr, 'outsideCourse')}
+              {this.outsidePeople('Urlop', outsideLeaveArr, 'outsideLeave')}
+            </div>
           </div>
-          {this.day('Monday', 'Poniedziałek')}
-          {this.day('Tuesday', 'Wtorek')}
-          {this.day('Wednesday', 'Środa')}
-          {this.day('Thursday', 'Czwartek')}
-          {this.day('Friday', 'Piątek')}
-          {this.day('Saturday', 'Sobota')}
-          {this.day('Sunday', 'Niedziela')}
-          <div className='underTable'>
-            {this.outsidePeople('Poza zastępem', outsideMultitudeArr, 'outsideMultitude')}
-            {this.outsidePeople('Ćwiczenia', outsideTrainArr, 'outsideTrain')}
-            {this.outsidePeople('L4', outsideSickArr, 'outsideSick')}
-            {this.outsidePeople('Kurs', outsideCourseArr, 'outsideCourse')}
-            {this.outsidePeople('Urlop', outsideLeaveArr, 'outsideLeave')}
-          </div>
-        </div>
-
-        <button onClick={this.handleSubmit}>Zapisz</button>
+          <button>Zapisz</button>
+        </form>
       </>
     )
   }
