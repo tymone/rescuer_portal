@@ -15,111 +15,11 @@ export default class CreateSchedule extends Component {
     outsideCourseArr: [],
     outsideLeaveArr: [],
     allWeek: false,
-    Monday: {
-      Shift1: {
-        Multitude1: ['Kowalski', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      },
-      Shift2: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      },
-      Shift3: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      }
-    },
-    Tuesday: {
-      Shift1: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      },
-      Shift2: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      },
-      Shift3: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      }
-    },
-    Wednesday: {
-      Shift1: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      },
-      Shift2: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      },
-      Shift3: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      }
-    },
-    Thursday: {
-      Shift1: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      },
-      Shift2: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      },
-      Shift3: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      }
-    },
-    Friday: {
-      Shift1: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      },
-      Shift2: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      },
-      Shift3: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      }
-    },
-    Saturday: {
-      Shift1: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      },
-      Shift2: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      },
-      Shift3: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      }
-    },
-    Sunday: {
-      Shift1: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      },
-      Shift2: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      },
-      Shift3: {
-        Multitude1: ['', '', '', '', ''],
-        Multitude2: ['', '', '', '', '']
-      }
-    },
-
   }
   handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
-    console.log(e.target.value)
   }
   handleSubmit = (e) => {
     e.preventDefault();
@@ -285,21 +185,18 @@ export default class CreateSchedule extends Component {
   }
 
   multitude = (classNameMultitude, day, shift) => {
-    let dzien = this.state[`${day}`]
-    let zmiana = dzien[`${shift}`]
-    let zast = zmiana[`${classNameMultitude}`]
     return (
       <div className={classNameMultitude}>
         <input type='text' placeholder='nazwisko'
-          name={zast[0]} value={zast[0]} onChange={this.handleChange} />
+          name={`${day}${shift}${classNameMultitude}User1`} onChange={this.handleChange} />
         <input type='text' placeholder='nazwisko'
-          name={zast[1]} value={zast[1]} onChange={this.handleChange} />
+          name={`${day}${shift}${classNameMultitude}User2`} onChange={this.handleChange} />
         <input type='text' placeholder='nazwisko'
-          name={zast[2]} value={zast[2]} onChange={this.handleChange} />
+          name={`${day}${shift}${classNameMultitude}User3`} onChange={this.handleChange} />
         <input type='text' placeholder='nazwisko'
-          name={zast[3]} value={zast[3]} onChange={this.handleChange} />
+          name={`${day}${shift}${classNameMultitude}User4`} onChange={this.handleChange} />
         <input type='text' placeholder='nazwisko'
-          name={zast[4]} value={zast[4]} onChange={this.handleChange} />
+          name={`${day}${shift}${classNameMultitude}User5`} onChange={this.handleChange} />
       </div>
     )
   }
@@ -326,13 +223,11 @@ export default class CreateSchedule extends Component {
   }
 
   showAddPerson = (className) => {
-
     let div = document.querySelector(`.underTable div div.${className} `)
     div.classList.toggle('show')
   }
 
   addPerson = (className) => {
-
     if (this.state[`${className}`].length > 0) {
       this.setState({
         [`${className}Arr`]: [...this.state[`${className}Arr`], this.state[`${className}`]],
@@ -345,7 +240,6 @@ export default class CreateSchedule extends Component {
   }
 
   removePerson = (className, i) => {
-
     let arr = this.state[`${className}Arr`]
     arr.splice((i), 1)
     this.setState({
@@ -379,31 +273,29 @@ export default class CreateSchedule extends Component {
     const { outsideMultitudeArr, outsideTrainArr, outsideSickArr, outsideCourseArr, outsideLeaveArr } = this.state
     return (
       <>
-        <form onSubmit={this.handleSubmit}>
-          <h1>
-            Harmonogram od:
+        <h1>
+          Harmonogram od:
           <input name="dateFrom" onChange={this.handleChange} type="date" />
-            do:
+          do:
           <input name='dateTo' onChange={this.handleChange} type="date" />
-          </h1>
-          <div className='table'>
-            {this.day('Monday', 'Poniedziałek')}
-            {this.day('Tuesday', 'Wtorek')}
-            {this.day('Wednesday', 'Środa')}
-            {this.day('Thursday', 'Czwartek')}
-            {this.day('Friday', 'Piątek')}
-            {this.day('Saturday', 'Sobota')}
-            {this.day('Sunday', 'Niedziela')}
-            <div className='underTable'>
-              {this.outsidePeople('Poza zastępem', outsideMultitudeArr, 'outsideMultitude')}
-              {this.outsidePeople('Ćwiczenia', outsideTrainArr, 'outsideTrain')}
-              {this.outsidePeople('L4', outsideSickArr, 'outsideSick')}
-              {this.outsidePeople('Kurs', outsideCourseArr, 'outsideCourse')}
-              {this.outsidePeople('Urlop', outsideLeaveArr, 'outsideLeave')}
-            </div>
+        </h1>
+        <div className='table'>
+          {this.day('Monday', 'Poniedziałek')}
+          {this.day('Tuesday', 'Wtorek')}
+          {this.day('Wednesday', 'Środa')}
+          {this.day('Thursday', 'Czwartek')}
+          {this.day('Friday', 'Piątek')}
+          {this.day('Saturday', 'Sobota')}
+          {this.day('Sunday', 'Niedziela')}
+          <div className='underTable'>
+            {this.outsidePeople('Poza zastępem', outsideMultitudeArr, 'outsideMultitude')}
+            {this.outsidePeople('Ćwiczenia', outsideTrainArr, 'outsideTrain')}
+            {this.outsidePeople('L4', outsideSickArr, 'outsideSick')}
+            {this.outsidePeople('Kurs', outsideCourseArr, 'outsideCourse')}
+            {this.outsidePeople('Urlop', outsideLeaveArr, 'outsideLeave')}
           </div>
-          <button>Zapisz</button>
-        </form>
+        </div>
+        <button onClick={this.handleSubmit}>Zapisz</button>
       </>
     )
   }
