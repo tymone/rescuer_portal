@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import HomePage from '../pages/HomePage';
 import Team from '../pages/Team/Team';
+import Train from '../pages/Train/Train';
 import Contact from './Contact';
 import LoginPage from '../pages/LoginPage';
 import Tasks from '../pages/Tasks/Tasks.js';
@@ -21,6 +22,7 @@ const Page = () => {
         <Route path='/zadania' component={Tasks} />
         <Route path='/harmonogram' exact component={Schedule} />
         <Route path='/harmonogram/stworz' component={CreateSchedule} />
+        <Route path='/cwiczenia' component={Train} />
         <Route component={PageNotFound} />
       </Switch>
     </section>

@@ -1,27 +1,83 @@
-table.team 
-  width: 100%
-  thead tr 
-    line-height: 30px
-    th
-      &:hover
-        cursor: pointer
-      i
-        display: none
-      &:first-child, &:last-child
-        i
-          display: none
-  tbody 
-    text-align: center
-    tr 
-      line-height: 30px
-      &:nth-of-type(even) 
-        background-color: #ccc
-      &:hover
-        background-color: #aaa
-      td
-        cursor: pointer
-        i 
-          &.fa-bars
-            padding-right: 5px
-          &.fa-trash
-            padding-left: 5px
+.team
+  .addUser
+
+    form
+      display: flex
+      flex-wrap: wrap
+      margin: 10px auto
+      padding: 10px 50px
+      width: 50%
+      border: 1px solid black
+      border-radius: 15px
+      
+      label
+        width: 50%
+        margin: 15px auto
+        padding: 0px 20px
+
+        & select
+          width: 100%
+          height: 30px
+          font-size: 16px
+
+        input
+          width: 100%
+          height: 30px
+          font-size: 16px
+          border-radius: 5px
+    
+  .table
+    width: 80%
+    margin: 10px auto
+    border: 2px solid black
+
+    .head
+      width: 100%
+      padding: 10px
+      border-bottom: 2px solid black
+    
+      span
+        display: inline-block
+        width: 25%
+        text-align: center
+
+    .users
+      padding: 10px
+
+      .user
+        display: flex
+        justify-content: space-around
+        padding: 3px
+
+        span
+          width: 25%
+          text-align: center      
+
+
+    // table.team 
+    // width: 100%
+    // thead tr 
+    //   line-height: 30px
+    //   th
+    //     &:hover
+    //       cursor: pointer
+    //     i
+    //       display: none
+    //     &:first-child, &:last-child
+    //       i
+    //         display: none
+    // tbody 
+    //   text-align: center
+    //   tr 
+    //     line-height: 30px
+    //     &:nth-of-type(even) 
+    //       background-color: #ccc
+    //     &:hover
+    //       background-color: #aaa
+    //     td
+    //       cursor: pointer
+    //       i 
+    //         &.fa-bars
+    //           padding-right: 5px
+    //         &.fa-trash
+    //           padding-left: 5px

@@ -1,25 +1,64 @@
-import React from "react";
+import React, { Component } from "react";
 
 import "../../styles/style.css";
 
-const AddUser = ({
-  name, surname, doctor, train, kpp, ground1, ground2, osrg1, osrg2, under1, under2, change }) => {
-  return (
-    <tr>
-      <th scope='row'>#</th>
-      <td><input type="text" value={name} name="name" onChange={change} placeholder='imię' /></td>
-      <td><input value={surname} name="surname" onChange={change} type="text" placeholder='Nazwisko' /></td>
-      <td><input value={doctor} name="doctor" onChange={change} type="date" /></td>
-      <td><input value={train} name="train" onChange={change} type="date" /></td>
-      <td><input value={kpp} name="kpp" onChange={change} type="date" /></td>
-      <td><input value={ground1} name="ground1" onChange={change} type="date" /></td>
-      <td><input value={ground2} name="ground2" onChange={change} type="date" /></td>
-      <td><input value={osrg1} name="osrg1" onChange={change} type="date" /></td>
-      <td><input value={osrg2} name="osrg2" onChange={change} type="date" /></td>
-      <td><input value={under1} name="under1" onChange={change} type="date" /></td>
-      <td><input value={under2} name="under2" onChange={change} type="date" /></td>
-    </tr>
-  );
-};
+export default class AddUser extends Component {
+  state = {
+    name: '',
+    surname: '',
+    doctor: '',
+    trainGroup: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+    checkedGroup: ''
+  }
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
 
-export default AddUser;
+  handleSubmit = (e) => {
+    e.preventDefault()
+    const { name, surname, doctor, checkedGroup } = this.state
+
+    if (name && surname && doctor && checkedGroup) {
+      const newRescuer = {
+        id: 108842,
+        name,
+        surname,
+        doctor: new Date(doctor).getTime(),
+        train: checkedGroup,
+      }
+      this.props.addRescuer(newRescuer)
+    }
+    else {
+      alert('nie wszystkie pola zostały wypełnione prawidłowo')
+    }
+  }
+
+  render() {
+    let trainGroup = this.state.trainGroup.map((index, i) => (<option value={`grupa ${i + 1}`} key={`grupa ${i + 1}`}>{`Grupa ${(i + 1)}`}</option>))
+
+    return (
+      <div className="addUser">
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor='name'>
+            <p> Imię:</p>
+            <input type="text" placeholder='wpisz imię...' id='name' name={'name'} value={this.state.name} onChange={this.handleChange} />
+          </label>
+          <label htmlFor='surname'><p>Nazwisko:</p>
+            <input type="text" placeholder='wpisz nazwisko...' id='surname' name={'surname'} value={this.state.surname} onChange={this.handleChange} />
+          </label>
+          <label htmlFor='doctor'><p>Badania:</p>
+            <input type="date" id='doctor' name={'doctor'} value={this.state.doctor} onChange={this.handleChange} />
+          </label>
+          <label htmlFor='train'><p>Wybierz grupę ćwiczeń:</p>
+            <select value={this.state.checkedGroup} name={'checkedGroup'} onChange={this.handleChange}>
+              {trainGroup}
+            </select>
+          </label>
+          <button>Zapisz</button>
+        </form>
+      </div>
+    );
+  }
+};
