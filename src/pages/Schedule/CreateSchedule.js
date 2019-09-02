@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import actions from './duck/actions'
 
-export default class CreateSchedule extends Component {
+
+class CreateSchedule extends Component {
 
   state = {
     schedule: [],
@@ -15,6 +19,7 @@ export default class CreateSchedule extends Component {
     outsideCourseArr: [],
     outsideLeaveArr: [],
     allWeek: false,
+    redirect: false,
   }
   handleChange = (e) => {
     this.setState({
@@ -178,10 +183,16 @@ export default class CreateSchedule extends Component {
         leave: this.state.outsideLeaveArr
       }
     }
+    this.props.dispatch(actions.add(newSchedule));
     this.setState({
-      schedule: [newSchedule],
-    })
-    this.props.addNewSchedule(newSchedule);
+      redirect: true
+    });
+  }
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/harmonogram' />
+    }
   }
 
   multitude = (classNameMultitude, day, shift) => {
@@ -266,13 +277,12 @@ export default class CreateSchedule extends Component {
 
         <ul>{people.length ? people.map((person, i) => <li key={`${className}${i}`}>{`${person}`} < i className="fas fa-user-minus" onClick={() => this.removePerson(className, i)} ></i>, </li>) : null} </ul>
       </div>)
-
   }
-
   render() {
     const { outsideMultitudeArr, outsideTrainArr, outsideSickArr, outsideCourseArr, outsideLeaveArr } = this.state
     return (
-      <>
+      <div className='schedule'>
+        {this.renderRedirect()}
         <h1>
           Harmonogram od:
           <input name="dateFrom" onChange={this.handleChange} type="date" />
@@ -296,8 +306,12 @@ export default class CreateSchedule extends Component {
           </div>
         </div>
         <button onClick={this.handleSubmit}>Zapisz</button>
-      </>
+      </div>
     )
   }
 
 }
+
+
+
+export default connect()(CreateSchedule);

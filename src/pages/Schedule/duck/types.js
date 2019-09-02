@@ -1,0 +1,7 @@
+const ADD_SCHEDULE = 'ADD_SCHEDULE';
+const EDIT_SCHEDULE = 'EDIT_SCHEDULE';
+
+export default {
+  ADD_SCHEDULE,
+  EDIT_SCHEDULE,
+};

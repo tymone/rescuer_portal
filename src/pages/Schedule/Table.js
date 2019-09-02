@@ -1,22 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import '../../styles/style.css';
 
 import Week from './Week';
 
-const Table = ({ schedule, getEdit }) => {
+const Table = ({ schedule }) => {
 
-  const week = schedule.map((week, i) => (
-    <li key={week.id}>
+  const scheduleTable = schedule.map((week, i) => (
+    <li key={i}>
       <h1>
-        Harmonogram na okres: {week.dateFrom} - {week.dateTo}<i className="fas fa-edit" onClick={() => getEdit(i)}></i>
+        Harmonogram na okres: {week.dateFrom} - {week.dateTo}<Link to={`/harmonogram/edytuj/${i}`} ><i className="fas fa-edit"></i></Link>
       </h1>
       <Week week={week} />
-    </li>
+    </li >
   ));
-
   return (
-    <ul>{week}</ul>
+    <ul>{scheduleTable}</ul>
   )
 };
 

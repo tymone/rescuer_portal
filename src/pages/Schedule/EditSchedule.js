@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import actions from './duck/actions'
+import { Redirect } from 'react-router-dom';
 
-export default class EditSchedule extends Component {
+class EditSchedule extends Component {
 
   state = {
-    schedule: this.props.schedule,
+    schedule: this.props.schedule.list,
     newEditSchedule: [],
-    outsideMultitudeArr: this.props.schedule.outside.multitude,
-    outsideTrainArr: this.props.schedule.outside.train,
-    outsideSickArr: this.props.schedule.outside.sick,
-    outsideCourseArr: this.props.schedule.outside.course,
-    outsideLeaveArr: this.props.schedule.outside.leave,
-    editId: this.props.editId
+    outsideMultitudeArr: this.props.schedule.list[this.props.match.params.id].outside.multitude,
+    outsideTrainArr: this.props.schedule.list[this.props.match.params.id].outside.train,
+    outsideSickArr: this.props.schedule.list[this.props.match.params.id].outside.sick,
+    outsideCourseArr: this.props.schedule.list[this.props.match.params.id].outside.course,
+    outsideLeaveArr: this.props.schedule.list[this.props.match.params.id].outside.leave,
+    editId: this.props.match.params.id,
+    redirect: false
   }
 
   handleChange = (e) => {
@@ -21,7 +25,7 @@ export default class EditSchedule extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let week = this.state.schedule
+    let week = this.state.schedule[this.props.match.params.id]
 
     const newEditSchedule = {
       id: week.id,
@@ -343,10 +347,13 @@ export default class EditSchedule extends Component {
         leave: [...this.state.outsideLeaveArr]
       }
     }
-
-    this.props.submitEditSchedule(newEditSchedule)
-
-
+    let schedule = this.props.schedule.list
+    let index = this.state.editId
+    schedule.splice(index, 1, newEditSchedule)
+    this.setState({
+      redirect: true
+    })
+    this.props.dispatch(actions.edit(schedule));
   }
 
   multitude = (multitude, className, day, classNameShift) => {
@@ -517,10 +524,17 @@ export default class EditSchedule extends Component {
     console.log('change date')
   }
 
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/harmonogram' />
+    }
+  }
+
   render() {
-    let week = this.state.schedule
+    let week = this.state.schedule[this.props.match.params.id]
     return (
-      <>
+      <div className='schedule'>
+        {this.renderRedirect()}
         <h1>
           <u>Tryb </u> <u>edycji</u>
           {` `}harmonogramu na okres
@@ -580,7 +594,14 @@ export default class EditSchedule extends Component {
           </div>
         </div>
         <button onClick={this.handleSubmit}> Zapisz</button>
-      </>
+      </div>
     )
   }
 }
+
+const mapStateToProps = state => ({
+  schedule: state.schedule
+})
+
+
+export default connect(mapStateToProps)(EditSchedule);

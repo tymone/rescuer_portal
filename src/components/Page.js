@@ -9,6 +9,7 @@ import LoginPage from '../pages/LoginPage';
 import Tasks from '../pages/Tasks/Tasks.js';
 import Schedule from '../pages/Schedule/Schedule';
 import CreateSchedule from '../pages/Schedule/CreateSchedule';
+import EditSchedule from '../pages/Schedule/EditSchedule';
 import PageNotFound from '../pages/PageNotFound';
 
 const Page = () => {
@@ -22,6 +23,7 @@ const Page = () => {
         <Route path='/zadania' component={Tasks} />
         <Route path='/harmonogram' exact component={Schedule} />
         <Route path='/harmonogram/stworz' component={CreateSchedule} />
+        <Route path='/harmonogram/edytuj/:id' component={EditSchedule} />
         <Route path='/cwiczenia' component={Train} />
         <Route component={PageNotFound} />
       </Switch>

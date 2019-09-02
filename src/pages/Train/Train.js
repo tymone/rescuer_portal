@@ -53,6 +53,12 @@ export default class Train extends Component {
     }
   }
 
+  resetTable = () => {
+    this.setState({
+      groups: []
+    })
+  }
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
@@ -90,6 +96,7 @@ export default class Train extends Component {
           </div>
         </div>
         <button onClick={addGroup ? this.addGroup : this.addGroupToggle}>{addGroup ? 'Zapisz' : 'Dodaj grupę'}</button>
+        <button onClick={this.resetTable}>Wyczyść listę</button>
       </div>
     )
   }
