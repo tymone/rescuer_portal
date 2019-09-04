@@ -8,7 +8,7 @@ const Navigation = () => {
     { name: 'Harmonogram', path: '/harmonogram' },
     { name: 'Drużyna', path: '/druzyna' },
     { name: 'Ćwiczenia', path: '/cwiczenia' },
-    { name: 'Lista zadań', path: '/zadania' },
+    // { name: 'Lista zadań', path: '/zadania' },
     { name: 'Kontakt', path: '/kontakt' },
   ];
 

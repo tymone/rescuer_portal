@@ -8,10 +8,10 @@ const Schedule = ({ schedule }) => {
 
   return (
     <div className='schedule'>
-      <button><Link to='/harmonogram/stworz'>Dodaj</Link></button>
-      <Table
-        schedule={schedule.list}
-      />
+      <button>
+        <Link to='/harmonogram/stworz'>Dodaj</Link>
+      </button>
+      <Table schedule={schedule.list} />
     </div>
   );
 }
