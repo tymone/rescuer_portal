@@ -1,4 +1,4 @@
-import types from './types'
+import types from './types';
 
 const INITIAL_STATE = {
   list: [
@@ -358,11 +358,21 @@ const INITIAL_STATE = {
       },
       outside: {
         multitude: ['poza zastępem1', 'poza zastępem2'],
-        train: ['Ćwiczenia1', 'Ćwiczenia2', 'Ćwiczenia3', 'Ćwiczenia4', 'Ćwiczenia5', 'Ćwiczenia6', 'Ćwiczenia7', 'Ćwiczenia8', 'Ćwiczenia9'],
+        train: [
+          'Ćwiczenia1',
+          'Ćwiczenia2',
+          'Ćwiczenia3',
+          'Ćwiczenia4',
+          'Ćwiczenia5',
+          'Ćwiczenia6',
+          'Ćwiczenia7',
+          'Ćwiczenia8',
+          'Ćwiczenia9'
+        ],
         sick: ['chory1', 'chory2', 'chory3', 'chory4', 'chory5', 'chory6'],
-        course: ['kursant1', 'kursant2', 'kursant3',],
+        course: ['kursant1', 'kursant2', 'kursant3'],
         leave: ['urlop1', 'urlop2', 'urlop3', 'urlop4']
-      },
+      }
     },
     {
       id: 1,
@@ -720,14 +730,24 @@ const INITIAL_STATE = {
       },
       outside: {
         multitude: ['poza zastępem1', 'poza zastępem2'],
-        train: ['Ćwiczenia1', 'Ćwiczenia2', 'Ćwiczenia3', 'Ćwiczenia4', 'Ćwiczenia5', 'Ćwiczenia6', 'Ćwiczenia7', 'Ćwiczenia8', 'Ćwiczenia9'],
+        train: [
+          'Ćwiczenia1',
+          'Ćwiczenia2',
+          'Ćwiczenia3',
+          'Ćwiczenia4',
+          'Ćwiczenia5',
+          'Ćwiczenia6',
+          'Ćwiczenia7',
+          'Ćwiczenia8',
+          'Ćwiczenia9'
+        ],
         sick: ['chory1', 'chory2', 'chory3', 'chory4', 'chory5', 'chory6'],
-        course: ['kursant1', 'kursant2', 'kursant3',],
+        course: ['kursant1', 'kursant2', 'kursant3'],
         leave: ['urlop1', 'urlop2', 'urlop3', 'urlop4']
-      },
+      }
     }
   ]
-}
+};
 
 const scheduleReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -735,15 +755,15 @@ const scheduleReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         list: [action.item, ...state.list]
-      }
+      };
     case types.EDIT_SCHEDULE:
       return {
         ...state,
         list: action.item
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default scheduleReducer
+export default scheduleReducer;

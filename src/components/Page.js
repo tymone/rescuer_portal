@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import HomePage from '../pages/HomePage';
 import Team from '../pages/Team/Team';
+import AddUser from '../pages/Team/AddUser';
 import Train from '../pages/Train/Train';
 import Contact from './Contact';
 import LoginPage from '../pages/LoginPage';
@@ -18,7 +19,8 @@ const Page = () => {
       <Switch>
         <Route path='/' exact component={HomePage} />
         <Route path='/login' component={LoginPage} />
-        <Route path='/druzyna' component={Team} />
+        <Route path='/druzyna' exact component={Team} />
+        <Route path='/druzyna/dodaj' component={AddUser} />
         <Route path='/kontakt' component={Contact} />
         <Route path='/zadania' component={Tasks} />
         <Route path='/harmonogram' exact component={Schedule} />
