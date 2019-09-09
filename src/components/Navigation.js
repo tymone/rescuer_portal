@@ -8,7 +8,7 @@ const Navigation = () => {
     { name: 'Harmonogram', path: '/harmonogram' },
     { name: 'Drużyna', path: '/druzyna' },
     { name: 'Ćwiczenia', path: '/cwiczenia' },
-    // { name: 'Lista zadań', path: '/zadania' },
+    { name: 'Lista zadań', path: '/zadania' },
     { name: 'Kontakt', path: '/kontakt' },
   ];
 
@@ -19,11 +19,20 @@ const Navigation = () => {
       </NavLink>
     </li>
   ));
+
+  const handleClick = () => {
+    let sidebar = document.querySelector('aside')
+    sidebar.classList.toggle('hide')
+    let font = document.querySelector('aside div i')
+    font.classList.toggle('fa-angle-double-right')
+  }
+
   return (
     <aside>
       <nav>
         <ul>{menu}</ul>
       </nav>
+      <div className="navigation" onClick={handleClick}><i className="fas fa-angle-double-left"></i></div>
     </aside>
   );
 };

@@ -2,11 +2,18 @@ import React from 'react';
 
 const User = ({ user }) => {
 
+  let date = (date) => {
+    let day = new Date(date).getDate()
+    let month = new Date(date).getMonth() + 1
+
+    return `${day < 10 ? `0${day}` : day}.${month < 10 ? `0${month}` : month}`
+  }
+
   return (
     <div className="user">
       <span>{user.name}</span>
       <span>{user.surname}</span>
-      <span>{new Date(user.doctor).toLocaleString().slice(0, 10)}</span>
+      <span>{date(user.doctor)}</span>
       <span>{user.train}</span>
     </div>
   )
