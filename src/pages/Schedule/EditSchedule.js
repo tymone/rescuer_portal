@@ -5,17 +5,17 @@ import { Redirect } from 'react-router-dom';
 
 class EditSchedule extends Component {
 
-  state = {
-    schedule: this.props.schedule.list,
-    newEditSchedule: [],
-    outsideMultitudeArr: this.props.schedule.list[this.props.match.params.id].outside.multitude,
-    outsideTrainArr: this.props.schedule.list[this.props.match.params.id].outside.train,
-    outsideSickArr: this.props.schedule.list[this.props.match.params.id].outside.sick,
-    outsideCourseArr: this.props.schedule.list[this.props.match.params.id].outside.course,
-    outsideLeaveArr: this.props.schedule.list[this.props.match.params.id].outside.leave,
-    editId: this.props.match.params.id,
-    redirect: false
-  }
+  // state = {
+  //   schedule: this.props.schedule.list,
+  //   newEditSchedule: [],
+  //   outsideMultitudeArr: this.props.schedule.list[this.props.match.params.id].outside.multitude,
+  //   outsideTrainArr: this.props.schedule.list[this.props.match.params.id].outside.train,
+  //   outsideSickArr: this.props.schedule.list[this.props.match.params.id].outside.sick,
+  //   outsideCourseArr: this.props.schedule.list[this.props.match.params.id].outside.course,
+  //   outsideLeaveArr: this.props.schedule.list[this.props.match.params.id].outside.leave,
+  //   editId: this.props.match.params.id,
+  //   redirect: false
+  // }
 
   handleChange = (e) => {
     this.setState({
@@ -531,6 +531,7 @@ class EditSchedule extends Component {
   }
 
   render() {
+    console.log(this.props)
     let week = this.state.schedule[this.props.match.params.id]
     return (
       <div className='schedule'>

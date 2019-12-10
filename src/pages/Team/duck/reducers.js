@@ -89,16 +89,6 @@ const INITIAL_STATE = {
   ]
 };
 
-// componentDidMount = () => {
-//   axios.get('http://localhost:5000/druzyna')
-//     .then(response => {
-//       this.setState({ team: response.data });
-//     })
-//     .catch((err) => {
-//       console.log(err)
-//     })
-// }
-
 const teamReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case types.ADD_RESCUER:

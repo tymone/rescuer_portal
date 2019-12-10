@@ -3,22 +3,6 @@ import { NavLink } from 'react-router-dom';
 import '../styles/style.css';
 
 const Navigation = () => {
-  const list = [
-    { name: 'Start', path: '/', exact: true },
-    { name: 'Harmonogram', path: '/harmonogram' },
-    { name: 'Drużyna', path: '/druzyna' },
-    { name: 'Ćwiczenia', path: '/cwiczenia' },
-    { name: 'Lista zadań', path: '/zadania' },
-    { name: 'Kontakt', path: '/kontakt' },
-  ];
-
-  const menu = list.map(item => (
-    <li key={item.name}>
-      <NavLink to={item.path} exact={item.exact ? item.exact : false}>
-        {item.name}
-      </NavLink>
-    </li>
-  ));
 
   const handleClick = () => {
     let sidebar = document.querySelector('aside')
@@ -30,7 +14,39 @@ const Navigation = () => {
   return (
     <aside>
       <nav>
-        <ul>{menu}</ul>
+        <ul>
+          <li>
+            <NavLink to={'/'} exact>Strona Główna</NavLink>
+          </li>
+          <li>
+            <NavLink to={'/harmonogram'} exact>Harmonogram</NavLink>
+          </li>
+          <ul>
+            <li><NavLink to={'/harmonogram/stworz'}>utwórz</NavLink></li>
+            <li><NavLink to={'/harmonogram/edytuj'}>edytuj</NavLink></li>
+          </ul>
+          <li>
+            <NavLink to={'/druzyna'} exact>Drużyna</NavLink>
+          </li>
+          <ul>
+            <li><NavLink to={'/druzyna/dodaj'}>dodaj</NavLink></li>
+            <li><NavLink to={'/druzyna/edytuj'}>edytuj</NavLink></li>
+          </ul>
+          <li>
+            <NavLink to={'/cwiczenia'} exact>Ćwiczenia</NavLink>
+          </li>
+          <ul>
+            <li><NavLink to={'/cwiczenia/edytuj'}>edytuj</NavLink></li>
+          </ul>
+          <li>
+            <NavLink to={'/zadania'} exact>Zadania</NavLink>
+          </li>
+          <ul>
+            <li><NavLink to={'/zadania/dodaj'}>dodaj</NavLink></li>
+            <li><NavLink to={'/zadania/edytuj'}>edytuj</NavLink></li>
+          </ul>
+          <li><NavLink to={'/kontakt'}>Kontakt</NavLink></li>
+        </ul>
       </nav>
       <div className="navigation" onClick={handleClick}><i className="fas fa-angle-double-left"></i></div>
     </aside>

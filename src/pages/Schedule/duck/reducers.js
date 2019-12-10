@@ -8,6 +8,7 @@ const INITIAL_STATE = {
       dateTo: '2019-09-16',
       Monday: {
         shift1: {
+          time: '6:30',
           multitude1: [
             'Pn. rano1 1',
             'Pn. rano1 2',
@@ -24,6 +25,7 @@ const INITIAL_STATE = {
           ]
         },
         shift2: {
+          time: '14:00',
           multitude1: [
             'Pn. poł1 1',
             'Pn. poł1 2',
@@ -40,6 +42,7 @@ const INITIAL_STATE = {
           ]
         },
         shift3: {
+          time: '21:30',
           multitude1: [
             'Pn noc 1 1',
             'Pn noc 1 2',
@@ -58,6 +61,7 @@ const INITIAL_STATE = {
       },
       Tuesday: {
         shift1: {
+          time: '6:30',
           multitude1: [
             'Wt ran1 1',
             'Wt ran1 2',
@@ -73,7 +77,8 @@ const INITIAL_STATE = {
             'Wt rano2 5'
           ]
         },
-        shift2: {
+        shift2:{
+          time: '14:00',
           multitude1: [
             'Wt poł1 1',
             'Wt poł1 2',
@@ -90,6 +95,7 @@ const INITIAL_STATE = {
           ]
         },
         shift3: {
+          time: '21:30',
           multitude1: [
             'Wt noc1 1',
             'Wt noc1 2',
@@ -108,6 +114,7 @@ const INITIAL_STATE = {
       },
       Wednesday: {
         shift1: {
+          time: '6:30',
           multitude1: [
             'Śr ran1 1',
             'Śr ran1 2',
@@ -124,6 +131,7 @@ const INITIAL_STATE = {
           ]
         },
         shift2: {
+          time: '14:00',
           multitude1: [
             'Śr poł1 1',
             'Śr poł1 2',
@@ -140,6 +148,7 @@ const INITIAL_STATE = {
           ]
         },
         shift3: {
+          time: '21:30',
           multitude1: [
             'Śr noc1 1',
             'Śr noc1 2',
@@ -158,6 +167,7 @@ const INITIAL_STATE = {
       },
       Thursday: {
         shift1: {
+          time: '6:30',
           multitude1: [
             'Czw ran1 1',
             'Czw ran1 2',
@@ -174,6 +184,7 @@ const INITIAL_STATE = {
           ]
         },
         shift2: {
+          time: '14:00',
           multitude1: [
             'Czw poł1 1',
             'Czw poł1 2',
@@ -190,6 +201,7 @@ const INITIAL_STATE = {
           ]
         },
         shift3: {
+          time: '21:30',
           multitude1: [
             'Czw noc1 1',
             'Czw noc1 2',
@@ -207,7 +219,8 @@ const INITIAL_STATE = {
         }
       },
       Friday: {
-        shift1: {
+        shift1:{ 
+          time:'6:30',
           multitude1: [
             'Pt ran1 1',
             'Pt ran1 2',
@@ -223,7 +236,8 @@ const INITIAL_STATE = {
             'Pt ran2 5'
           ]
         },
-        shift2: {
+        shift2:{
+          time: '14:00',
           multitude1: [
             'Pt poł1 1',
             'Pt poł1 2',
@@ -240,6 +254,7 @@ const INITIAL_STATE = {
           ]
         },
         shift3: {
+          time: '21:30',
           multitude1: [
             'Pt noc1 1',
             'Pt noc1 2',
@@ -257,7 +272,8 @@ const INITIAL_STATE = {
         }
       },
       Saturday: {
-        shift1: {
+        shift1:{ 
+          time:'6:30',
           multitude1: [
             'Sb ran1 1',
             'Sb ran1 2',
@@ -273,7 +289,8 @@ const INITIAL_STATE = {
             'Sb ran2 5'
           ]
         },
-        shift2: {
+        shift2:{
+          time: '14:00',
           multitude1: [
             'Sb poł1 1',
             'Sb poł1 2',
@@ -290,6 +307,7 @@ const INITIAL_STATE = {
           ]
         },
         shift3: {
+          time: '21:30',
           multitude1: [
             'Sb noc1 1',
             'Sb noc1 2',
@@ -307,7 +325,8 @@ const INITIAL_STATE = {
         }
       },
       Sunday: {
-        shift1: {
+        shift1:{
+          time: '6:30',
           multitude1: [
             'Nd ran1 1',
             'Nd ran1 2',
@@ -323,7 +342,8 @@ const INITIAL_STATE = {
             'Nd ran2 5'
           ]
         },
-        shift2: {
+        shift2:{
+          time: '14:00',
           multitude1: [
             'Nd poł1 1',
             'Nd poł1 2',
@@ -339,7 +359,8 @@ const INITIAL_STATE = {
             'Nd poł2 5'
           ]
         },
-        shift3: {
+        shift3:{
+          time: '21:30',
           multitude1: [
             'Nd noc1 1',
             'Nd noc1 2',
@@ -379,7 +400,8 @@ const INITIAL_STATE = {
       dateFrom: '2019-09-17',
       dateTo: '2019-09-24',
       Monday: {
-        shift1: {
+        shift1:{
+          time: '6:30',
           multitude1: [
             'Pn. rano1 1',
             'Pn. rano1 2',
@@ -395,7 +417,8 @@ const INITIAL_STATE = {
             'Pn. rano2 5'
           ]
         },
-        shift2: {
+        shift2:{
+          time: '14:00',
           multitude1: [
             'Pn. poł1 1',
             'Pn. poł1 2',
@@ -411,7 +434,8 @@ const INITIAL_STATE = {
             'Pn poł2 5'
           ]
         },
-        shift3: {
+        shift3:{
+          time: '21:30',
           multitude1: [
             'Pn noc 1 1',
             'Pn noc 1 2',
@@ -429,7 +453,8 @@ const INITIAL_STATE = {
         }
       },
       Tuesday: {
-        shift1: {
+        shift1:{
+          time: '6:30',
           multitude1: [
             'Wt ran1 1',
             'Wt ran1 2',
@@ -445,7 +470,8 @@ const INITIAL_STATE = {
             'Wt rano2 5'
           ]
         },
-        shift2: {
+        shift2:{
+          time: '14:00',
           multitude1: [
             'Wt poł1 1',
             'Wt poł1 2',
@@ -461,7 +487,8 @@ const INITIAL_STATE = {
             'Wt poł2 5'
           ]
         },
-        shift3: {
+        shift3:{
+          time: '21:30',
           multitude1: [
             'Wt noc1 1',
             'Wt noc1 2',
@@ -479,7 +506,8 @@ const INITIAL_STATE = {
         }
       },
       Wednesday: {
-        shift1: {
+        shift1:{
+          time: '6:30',
           multitude1: [
             'Śr ran1 1',
             'Śr ran1 2',
@@ -495,7 +523,8 @@ const INITIAL_STATE = {
             'Śr ran2 5'
           ]
         },
-        shift2: {
+        shift2:{
+          time: '14:00',
           multitude1: [
             'Śr poł1 1',
             'Śr poł1 2',
@@ -511,7 +540,8 @@ const INITIAL_STATE = {
             'Śr poł2 5'
           ]
         },
-        shift3: {
+        shift3:{
+          time: '21:30',
           multitude1: [
             'Śr noc1 1',
             'Śr noc1 2',
@@ -529,7 +559,8 @@ const INITIAL_STATE = {
         }
       },
       Thursday: {
-        shift1: {
+        shift1:{
+          time: '6:30',
           multitude1: [
             'Czw ran1 1',
             'Czw ran1 2',
@@ -545,7 +576,8 @@ const INITIAL_STATE = {
             'Czw ran2 5'
           ]
         },
-        shift2: {
+        shift2:{
+          time: '14:00',
           multitude1: [
             'Czw poł1 1',
             'Czw poł1 2',
@@ -561,7 +593,8 @@ const INITIAL_STATE = {
             'Czw poł2 5'
           ]
         },
-        shift3: {
+        shift3:{
+          time: '21:30',
           multitude1: [
             'Czw noc1 1',
             'Czw noc1 2',
@@ -579,7 +612,8 @@ const INITIAL_STATE = {
         }
       },
       Friday: {
-        shift1: {
+        shift1:{
+          time: '6:30',
           multitude1: [
             'Pt ran1 1',
             'Pt ran1 2',
@@ -595,7 +629,8 @@ const INITIAL_STATE = {
             'Pt ran2 5'
           ]
         },
-        shift2: {
+        shift2:{
+          time: '14:00',
           multitude1: [
             'Pt poł1 1',
             'Pt poł1 2',
@@ -611,7 +646,8 @@ const INITIAL_STATE = {
             'Pt poł2 5'
           ]
         },
-        shift3: {
+        shift3:{
+          time: '21:30',
           multitude1: [
             'Pt noc1 1',
             'Pt noc1 2',
@@ -629,7 +665,8 @@ const INITIAL_STATE = {
         }
       },
       Saturday: {
-        shift1: {
+        shift1:{
+          time: '6:30',
           multitude1: [
             'Sb ran1 1',
             'Sb ran1 2',
@@ -645,7 +682,8 @@ const INITIAL_STATE = {
             'Sb ran2 5'
           ]
         },
-        shift2: {
+        shift2:{
+          time: '14:00',
           multitude1: [
             'Sb poł1 1',
             'Sb poł1 2',
@@ -661,7 +699,8 @@ const INITIAL_STATE = {
             'Sb poł2 5'
           ]
         },
-        shift3: {
+        shift3:{
+          time: '21:30',
           multitude1: [
             'Sb noc1 1',
             'Sb noc1 2',
@@ -679,7 +718,8 @@ const INITIAL_STATE = {
         }
       },
       Sunday: {
-        shift1: {
+        shift1:{
+          time: '6:30',
           multitude1: [
             'Nd ran1 1',
             'Nd ran1 2',
@@ -695,7 +735,8 @@ const INITIAL_STATE = {
             'Nd ran2 5'
           ]
         },
-        shift2: {
+        shift2:{
+          time: '14:00',
           multitude1: [
             'Nd poł1 1',
             'Nd poł1 2',
@@ -711,7 +752,8 @@ const INITIAL_STATE = {
             'Nd poł2 5'
           ]
         },
-        shift3: {
+        shift3:{
+          time: '21:30',
           multitude1: [
             'Nd noc1 1',
             'Nd noc1 2',

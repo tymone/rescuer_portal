@@ -1,22 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom';
 
-import Table from './Table.js';
+import Table from './ReadingSchedule/Table'
 
-const Schedule = ({ schedule }) => {
-
+const Schedule = () => {
   return (
     <div className='schedule'>
-      <button>
-        <Link to='/harmonogram/stworz'>Dodaj</Link>
-      </button>
-      <Table schedule={schedule.list} />
+      <Table />
     </div>
   );
 }
 
-const mapStateToProps = state => ({
-  schedule: state.schedule
-})
-export default connect(mapStateToProps, {})(Schedule);
+export default Schedule;

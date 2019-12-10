@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../../styles/style.css';
 
-const Group = ({ group, index }) => {
+const Group = ({ value, index }) => {
 
   let date = (date) => {
     let day = new Date(date).getDate()
@@ -11,16 +11,19 @@ const Group = ({ group, index }) => {
     return `${day < 10 ? `0${day}` : day}.${month < 10 ? `0${month}` : month}`
   }
 
+  const getGroup = (value) => (
+    value.map((getDate, i) =>(
+      <div key={getDate} className='item'>
+        {date(getDate)}
+      </div>
+    ))
+  )
+
   return (
-    <>
-      <li>{(index + 1)}</li>
-      <li style={{ color: 'red' }}>{date(group[0])}</li>
-      <li><b>{date(group[1])}</b></li>
-      <li style={{ color: 'green' }}>{date(group[2])}</li>
-      <li style={{ color: 'red' }}>{date(group[3])}</li>
-      <li><b>{date(group[4])}</b></li>
-      <li style={{ color: 'green' }}>{date(group[5])}</li>
-    </>
+    <li>
+      <div className="item">{index + 1}</div>
+      {getGroup(value)}
+    </li>
   )
 }
 

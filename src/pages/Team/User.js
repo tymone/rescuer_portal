@@ -18,6 +18,7 @@ const User = ({ user }) => {
     </div>
   )
 }
+
 export default User;
 // const User = ({ team, edit, deleteUser }) => {
 //   const user = team.map((user, i) => (

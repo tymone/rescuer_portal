@@ -304,6 +304,7 @@ class CreateSchedule extends Component {
             {this.outsidePeople('Kurs', outsideCourseArr, 'outsideCourse')}
             {this.outsidePeople('Urlop', outsideLeaveArr, 'outsideLeave')}
           </div>
+          
         </div>
         <button onClick={this.handleSubmit}>Zapisz</button>
       </div>

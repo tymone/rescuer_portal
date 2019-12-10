@@ -4,17 +4,19 @@ import "../styles/style.css";
 
 class Navbar extends Component {
   state = {
-    date: new Date().toLocaleDateString()
+    date: new Date().getTime()
   };
 
-  date = (date) => {
-    let day = new Date(date).getDate()
-    let month = new Date(date).getMonth() + 1
+  date = (currentDate) => {
+    let day = new Date(currentDate).getDate()
+    let month = new Date(currentDate).getMonth() + 1
+   
 
     return `${day < 10 ? `0${day}` : day}.${month < 10 ? `0${month}` : month}`
   }
 
   render() {
+    
     return (
       <header>
         <nav>
