@@ -1,31 +1,27 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-import User from './User';
+import User from "./User";
 
 const Table = ({ team }) => {
-
-  const users = (team) => (
-    team.map((user) =>( 
+  const users = team =>
+    team.map(user => (
       <Link key={user.id} to={`/druzyna/${user.id}`}>
         <User user={user} />
-      </Link> 
-    ))
-  )
+      </Link>
+    ));
 
   return (
-    <div className='team'>
-      <div className='table'>
-        <div className='head'>
+    <div className="team">
+      <div className="table">
+        <div className="head">
           <span>Imię</span>
           <span>Nazwisko</span>
           <span>Badania</span>
           <span>Ćwiczenia</span>
         </div>
-        <div className="users">
-          {users(team)}
-        </div>
+        <div className="users">{users(team)}</div>
       </div>
     </div>
   );
@@ -33,10 +29,9 @@ const Table = ({ team }) => {
 
 const mapStateToProps = state => ({
   team: state.team.list
-})
+});
 
 export default connect(mapStateToProps)(Table);
-
 
 // delete = i => {
 //   const team = [...this.state.team];
@@ -102,4 +97,3 @@ export default connect(mapStateToProps)(Table);
 //     team
 //   });
 // };
-

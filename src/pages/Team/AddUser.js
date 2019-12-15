@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
-import actions from './duck/actions';
+import actions from "./duck/actions";
 
 class AddUser extends Component {
-  state = { 
-    name: '',
-    surname: '',
-    doctor: '',
-    checkedGroup: '',
+  state = {
+    name: "",
+    surname: "",
+    doctor: "",
+    checkedGroup: "",
     redirect: false
-   }
+  };
 
   handleSubmit = e => {
     e.preventDefault();
@@ -29,9 +29,8 @@ class AddUser extends Component {
     });
   };
 
-  renderRedirect = () =>(
-    this.state.redirect ? <Redirect to='/druzyna' /> : null
-  )
+  renderRedirect = () =>
+    this.state.redirect ? <Redirect to="/druzyna" /> : null;
 
   handleChange = e => {
     this.setState({
@@ -40,56 +39,56 @@ class AddUser extends Component {
   };
 
   render() {
-    const trainGroups = this.props.group
-    const getArrayTrainGroups = Object.keys(trainGroups)
+    const trainGroups = this.props.group;
+    const getArrayTrainGroups = Object.keys(trainGroups);
     const getTrainGroup = getArrayTrainGroups.map((index, i) => (
       <option value={`grupa ${i + 1}`} key={index}>
-        {`Grupa ${i +1}`}
+        {`Grupa ${i + 1}`}
       </option>
     ));
 
     return (
       <div className="team">
-        <div className='addUser'>
+        <div className="addUser">
           {this.renderRedirect()}
           <form onSubmit={this.handleSubmit}>
-            <label htmlFor='name'>
+            <label htmlFor="name">
               <p> Imię:</p>
               <input
-                type='text'
-                placeholder='wpisz imię...'
-                name='name'
+                type="text"
+                placeholder="wpisz imię..."
+                name="name"
                 value={this.state.name}
                 onChange={this.handleChange}
                 required
               />
             </label>
-            <label htmlFor='surname'>
+            <label htmlFor="surname">
               <p>Nazwisko:</p>
               <input
-                type='text'
-                placeholder='wpisz nazwisko...'
-                name='surname'
+                type="text"
+                placeholder="wpisz nazwisko..."
+                name="surname"
                 value={this.state.surname}
                 onChange={this.handleChange}
                 required
               />
             </label>
-            <label htmlFor='doctor'>
+            <label htmlFor="doctor">
               <p>Badania:</p>
               <input
-                type='date'
-                name='doctor'
+                type="date"
+                name="doctor"
                 value={this.state.doctor}
                 onChange={this.handleChange}
                 required
               />
             </label>
-            <label htmlFor='train'>
+            <label htmlFor="train">
               <p>Wybierz grupę ćwiczeń:</p>
               <select
                 value={this.state.checkedGroup}
-                name='checkedGroup'
+                name="checkedGroup"
                 onChange={this.handleChange}
               >
                 {getTrainGroup}
@@ -99,7 +98,7 @@ class AddUser extends Component {
           </form>
         </div>
       </div>
-     );
+    );
   }
 }
 
@@ -109,7 +108,6 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   group: state.group.list
-})
- 
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddUser);

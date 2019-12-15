@@ -1,22 +1,17 @@
-import React from 'react';
-import { connect } from 'react-redux'
+import React from "react";
+import { connect } from "react-redux";
 
-import Week from './Week';
+import Week from "./Week";
 
 const Table = ({ schedules }) => {
+  const scheduleWeek = schedules.map(week => (
+    <Week key={week.id} week={week} />
+  ));
 
-  const scheduleWeek = schedules.map( week => ( 
-      <Week key={week.id} week={week} />
-  ))
-  
-  return(
-    <div className='scheduleContainer'>
-      {scheduleWeek}
-    </div>
-  )
-}
+  return <div className="scheduleContainer">{scheduleWeek}</div>;
+};
 
 const mapStateToProps = state => ({
   schedules: state.schedules.list
-})
+});
 export default connect(mapStateToProps, {})(Table);

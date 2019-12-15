@@ -1,25 +1,46 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import UnderTableForm from './UnderTableForm.js';
+import UnderTableForm from "./UnderTableForm.js";
 
 class UnderTable extends Component {
-
-  render(){
-    return(
+  render() {
+    const employees = this.props.getUnderTableEmployee;
+    console.log(this.props.getUnderTableEmployee);
+    return (
       <div className="underTable">
-        <UnderTableForm title={'Poza zastępem'} name={'outsideMultitude'}/>
-        <UnderTableForm title={'Ćwiczenia'} name={'outsideTrain'}/>
-        <UnderTableForm title={'L4'} name={'outsideSick'}/>
-        <UnderTableForm title={'Kurs'} name={'outsideCourse'}/>
-        <UnderTableForm title={'Urlop'} name={'outsideLeave'}/>
+        <UnderTableForm
+          employees={employees.multitude}
+          title={"Poza zastępem"}
+          name={"outsideMultitude"}
+        />
+        <UnderTableForm
+          employees={employees.train}
+          title={"Ćwiczenia"}
+          name={"outsideTrain"}
+        />
+        <UnderTableForm
+          employees={employees.sick}
+          title={"L4"}
+          name={"outsideSick"}
+        />
+        <UnderTableForm
+          employees={employees.course}
+          title={"Kurs"}
+          name={"outsideCourse"}
+        />
+        <UnderTableForm
+          employees={employees.leave}
+          title={"Urlop"}
+          name={"outsideLeave"}
+        />
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
   schedules: state.schedules
-})
+});
 
 export default connect(mapStateToProps)(UnderTable);
