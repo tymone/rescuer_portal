@@ -16,7 +16,8 @@
 /build
 
 # helper
-/src/helper.js
+/src/pages/Schedule/CreateSchedule.js
+/src/pages/Schedule/EditSchedule.js
 
 # misc
 .DS_Store
@@ -29,7 +30,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# helpers
-/src/pages/Schedule/CreateSchedule.js
-/src/pages/Schedule/EditSchedule.js
