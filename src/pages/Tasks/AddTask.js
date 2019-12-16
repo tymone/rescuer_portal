@@ -37,6 +37,7 @@ class AddTask extends Component {
   };
 
   render() {
+    const { title, value } = this.state;
     return (
       <div className="TasksMain">
         <div className="addTask">
@@ -48,7 +49,7 @@ class AddTask extends Component {
                 placeholder="Wpisz tytuł"
                 onChange={this.handleChange}
                 name="title"
-                value={this.state.title}
+                value={title}
                 required
               />
             </label>
@@ -59,7 +60,7 @@ class AddTask extends Component {
                 placeholder="Wpisz treść"
                 onChange={this.handleChange}
                 name="value"
-                value={this.state.value}
+                value={value}
                 required
               />
             </label>

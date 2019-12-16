@@ -4,16 +4,24 @@ import Day from "./Day";
 
 class Week extends Component {
   render() {
-    const { week } = this.props;
+    const {
+      Monday,
+      Tuesday,
+      Wednesday,
+      Thursday,
+      Friday,
+      Saturday,
+      Sunday
+    } = this.props.week;
     return (
       <div className="table">
-        <Day getDay={week.Monday} day={"Poniedziałek"} />
-        <Day getDay={week.Tuesday} day={"Wtorek"} />
-        <Day getDay={week.Wednesday} day={"Środa"} />
-        <Day getDay={week.Thursday} day={"Czwartek"} />
-        <Day getDay={week.Friday} day={"Piątek"} />
-        <Day getDay={week.Saturday} day={"Sobota"} />
-        <Day getDay={week.Sunday} day={"Niedziela"} />
+        <Day getDay={Monday} day={"Poniedziałek"} />
+        <Day getDay={Tuesday} day={"Wtorek"} />
+        <Day getDay={Wednesday} day={"Środa"} />
+        <Day getDay={Thursday} day={"Czwartek"} />
+        <Day getDay={Friday} day={"Piątek"} />
+        <Day getDay={Saturday} day={"Sobota"} />
+        <Day getDay={Sunday} day={"Niedziela"} />
       </div>
     );
   }

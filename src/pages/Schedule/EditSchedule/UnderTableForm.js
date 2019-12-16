@@ -17,7 +17,11 @@ class UnderTableForm extends Component {
         <b>
           <u>{title}</u>
         </b>
-        <i className={"fas fa-user-plus"} onClick={this.setNewEmployee()}></i>:
+        <i
+          className={"fas fa-user-plus"}
+          onClick={() => this.setNewEmployee()}
+        ></i>
+        :
         <div className={name}>
           <input type="text" />
           <i className={"fas fa-user-check"}></i>

@@ -16,6 +16,7 @@ class AddUser extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { name, surname, doctor, checkedGroup } = this.state;
+    const { add } = this.props;
     const newRescuer = {
       id: 108842,
       name,
@@ -23,7 +24,7 @@ class AddUser extends Component {
       doctor: new Date(doctor).getTime(),
       train: checkedGroup
     };
-    this.props.add(newRescuer);
+    add(newRescuer);
     this.setState({
       redirect: true
     });
@@ -39,6 +40,7 @@ class AddUser extends Component {
   };
 
   render() {
+    const { name, surname, doctor, checkedGroup } = this.state;
     const trainGroups = this.props.group;
     const getArrayTrainGroups = Object.keys(trainGroups);
     const getTrainGroup = getArrayTrainGroups.map((index, i) => (
@@ -58,7 +60,7 @@ class AddUser extends Component {
                 type="text"
                 placeholder="wpisz imię..."
                 name="name"
-                value={this.state.name}
+                value={name}
                 onChange={this.handleChange}
                 required
               />
@@ -69,7 +71,7 @@ class AddUser extends Component {
                 type="text"
                 placeholder="wpisz nazwisko..."
                 name="surname"
-                value={this.state.surname}
+                value={surname}
                 onChange={this.handleChange}
                 required
               />
@@ -79,7 +81,7 @@ class AddUser extends Component {
               <input
                 type="date"
                 name="doctor"
-                value={this.state.doctor}
+                value={doctor}
                 onChange={this.handleChange}
                 required
               />
@@ -87,7 +89,7 @@ class AddUser extends Component {
             <label htmlFor="train">
               <p>Wybierz grupę ćwiczeń:</p>
               <select
-                value={this.state.checkedGroup}
+                value={checkedGroup}
                 name="checkedGroup"
                 onChange={this.handleChange}
               >

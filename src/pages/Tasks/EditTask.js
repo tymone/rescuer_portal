@@ -59,6 +59,7 @@ class EditTask extends Component {
   };
 
   render() {
+    const { title, content, active } = this.state;
     return (
       <div className="editTask">
         <form>
@@ -67,7 +68,7 @@ class EditTask extends Component {
             <input
               type="text"
               name="title"
-              value={this.state.title}
+              value={title}
               onChange={this.handleChange}
             />
           </label>
@@ -76,13 +77,13 @@ class EditTask extends Component {
             <input
               type="text"
               name="content"
-              value={this.state.content}
+              value={content}
               onChange={this.handleChange}
             />
           </label>
           <label>
             status:
-            <select value={this.state.active} onChange={this.handleChange}>
+            <select value={active} onChange={this.handleChange}>
               <option value="true">do zrobienia</option>
               <option value="false">zrobione</option>
             </select>

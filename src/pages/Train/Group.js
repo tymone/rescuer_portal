@@ -1,15 +1,8 @@
 import React from "react";
 
-import "../../styles/style.css";
+import date from "../../helpers/setDate";
 
 const Group = ({ value, index }) => {
-  let date = date => {
-    let day = new Date(date).getDate();
-    let month = new Date(date).getMonth() + 1;
-
-    return `${day < 10 ? `0${day}` : day}.${month < 10 ? `0${month}` : month}`;
-  };
-
   const getGroup = value =>
     value.map(getDate => (
       <div key={getDate} className="item">

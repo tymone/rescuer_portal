@@ -5,32 +5,33 @@ import UnderTableForm from "./UnderTableForm.js";
 
 class UnderTable extends Component {
   render() {
-    const employees = this.props.getUnderTableEmployee;
-    console.log(this.props.getUnderTableEmployee);
+    const {
+      multitude,
+      train,
+      sick,
+      course,
+      leave
+    } = this.props.getUnderTableEmployee;
     return (
       <div className="underTable">
         <UnderTableForm
-          employees={employees.multitude}
+          employees={multitude}
           title={"Poza zastępem"}
           name={"outsideMultitude"}
         />
         <UnderTableForm
-          employees={employees.train}
+          employees={train}
           title={"Ćwiczenia"}
           name={"outsideTrain"}
         />
+        <UnderTableForm employees={sick} title={"L4"} name={"outsideSick"} />
         <UnderTableForm
-          employees={employees.sick}
-          title={"L4"}
-          name={"outsideSick"}
-        />
-        <UnderTableForm
-          employees={employees.course}
+          employees={course}
           title={"Kurs"}
           name={"outsideCourse"}
         />
         <UnderTableForm
-          employees={employees.leave}
+          employees={leave}
           title={"Urlop"}
           name={"outsideLeave"}
         />

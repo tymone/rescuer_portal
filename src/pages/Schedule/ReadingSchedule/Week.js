@@ -2,18 +2,9 @@ import React from "react";
 
 import Day from "./Day";
 import Outside from "./Outside";
+import date from "../../../helpers/setDate";
 
 const Week = ({ week }) => {
-  const date = weekDate => {
-    const day = new Date(weekDate).getDate();
-    const month = new Date(weekDate).getMonth() + 1;
-    const currentWeekDate = `${day < 10 ? `0${day}` : day}.${
-      month < 10 ? `0${month}` : month
-    }`;
-
-    return currentWeekDate;
-  };
-
   const {
     Monday,
     Tuesday,
@@ -22,13 +13,15 @@ const Week = ({ week }) => {
     Friday,
     Saturday,
     Sunday,
-    outside
+    outside,
+    dateFrom,
+    dateTo
   } = week;
 
   return (
     <div className="scheduleItem">
       <h1>
-        Harmonogram na okres: {date(week.dateFrom)} - {date(week.dateTo)}
+        Harmonogram na okres: {date(dateFrom)} - {date(dateTo)}
       </h1>
       <div className="table">
         <Day day={Monday} name="Poniedziałek" />

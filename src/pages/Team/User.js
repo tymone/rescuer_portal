@@ -1,23 +1,18 @@
-import React from 'react';
+import React from "react";
+
+import date from "../../helpers/setDate";
 
 const User = ({ user }) => {
-
-  let date = (date) => {
-    let day = new Date(date).getDate()
-    let month = new Date(date).getMonth() + 1
-
-    return `${day < 10 ? `0${day}` : day}.${month < 10 ? `0${month}` : month}`
-  }
-
+  const { name, surname, doctor, train } = user;
   return (
     <div className="user">
-      <span>{user.name}</span>
-      <span>{user.surname}</span>
-      <span>{date(user.doctor)}</span>
-      <span>{user.train}</span>
+      <span>{name}</span>
+      <span>{surname}</span>
+      <span>{date(doctor)}</span>
+      <span>{train}</span>
     </div>
-  )
-}
+  );
+};
 
 export default User;
 // const User = ({ team, edit, deleteUser }) => {
@@ -38,5 +33,3 @@ export default User;
 
 //   return <>{user}</>;
 // };
-
-
