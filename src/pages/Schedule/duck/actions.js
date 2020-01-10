@@ -1,4 +1,4 @@
-import types from './types';
+import types from "./types";
 
 const add = item => ({
   type: types.ADD_SCHEDULE,
@@ -8,9 +8,9 @@ const add = item => ({
 const edit = item => ({
   type: types.EDIT_SCHEDULE,
   item
-})
+});
 
 export default {
   add,
   edit
-}
+};

@@ -1,27 +1,30 @@
-import React, { Component } from "react";
+import React from "react";
 
-import Shift from "./Shift.js";
+import Multitude from "./Multitude";
 
-class Day extends Component {
-  state = {};
-  shifts = day => {
-    const getShifts = Object.keys(day);
+const Day = ({ dayPL, getDay, day, getMultitudes }) => {
+  const getMultitude = newMultitude => {
+    getMultitudes(newMultitude, day);
+  };
+  const multitudes = day => {
+    const getDayArr = Object.keys(day);
 
-    return getShifts.map(shift => (
-      <Shift key={shift} shift={day[shift]} hours={day[shift].time} />
+    return getDayArr.map(multitudeName => (
+      <Multitude
+        key={multitudeName}
+        multitude={getDay[multitudeName].multitude}
+        multitudeIndex={multitudeName}
+        time={getDay[multitudeName].time}
+        getMultitude={getMultitude}
+      />
     ));
   };
-
-  render() {
-    const { day, getDay } = this.props;
-
-    return (
-      <div className={`day ${day}`}>
-        <p>{day}</p>
-        {this.shifts(getDay)}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="day">
+      <p>{dayPL}</p>
+      {multitudes(getDay)}
+    </div>
+  );
+};
 
 export default Day;

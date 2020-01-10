@@ -1,20 +1,23 @@
 import React from "react";
 
-import Shift from "./Shift";
+import Multitude from "./Multitude";
 
 const Day = ({ day, name }) => {
-  const shifts = day => {
-    const getShifts = Object.keys(day);
+  const getMultitudes = day => {
+    const getMultitudesArray = Object.keys(day);
 
-    return getShifts.map(shift => (
-      <Shift key={shift} multitude={day[shift]} shift={day[shift].time} />
+    return getMultitudesArray.map(multitudeName => (
+      <Multitude
+        key={multitudeName}
+        multitude={day[multitudeName].multitude}
+        time={day[multitudeName].time}
+      />
     ));
   };
-
   return (
     <div className={`day ${name}`}>
       <p>{name}</p>
-      {shifts(day)}
+      {getMultitudes(day)}
     </div>
   );
 };

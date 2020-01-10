@@ -10,15 +10,41 @@ import UnderTable from "./UnderTable.js";
 class Table extends Component {
   state = {
     id: "",
-    schedule: []
+    schedule: {}
   };
 
-  render() {
+  componentWillMount() {
     const id = this.props.match.params.id;
     const [schedule] = this.props.schedule.filter(
       schedule => schedule.id == id
     );
+    this.setState({
+      id,
+      schedule
+    });
+  }
+  getScheduleWeek = (newMultitude, day) => {
+    this.setState(prevState => ({
+      schedule: {
+        ...prevState.schedule,
+        [day]: {
+          ...prevState.schedule[day],
+          [newMultitude.multitudeIndex]: {
+            time: newMultitude.time,
+            multitude: newMultitude.multitude
+          }
+        }
+      }
+    }));
+  };
 
+  getUnderTable = value => {
+    console.log(value);
+  };
+
+  render() {
+    console.log(this.state);
+    const { schedule } = this.state;
     return (
       <div className="schedule">
         <h1>
@@ -34,8 +60,11 @@ class Table extends Component {
           defaultValue={schedule.dateTo}
           onChange={this.handleChange}
         />
-        <Week week={schedule} />
-        <UnderTable getUnderTableEmployee={schedule.outside} />
+        <Week week={schedule} getWeek={this.getScheduleWeek} />
+        <UnderTable
+          getUnderTable={this.getUnderTable}
+          getUnderTableEmployee={schedule.outside}
+        />
       </div>
     );
   }

@@ -19,7 +19,7 @@ const Week = ({ week }) => {
   } = week;
 
   return (
-    <div className="scheduleItem">
+    <div className="scheduleWeek">
       <h1>
         Harmonogram na okres: {date(dateFrom)} - {date(dateTo)}
       </h1>

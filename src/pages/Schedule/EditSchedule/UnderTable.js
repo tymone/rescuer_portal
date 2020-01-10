@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import UnderTableForm from "./UnderTableForm.js";
+import UnderTableForm from "./UnderTableForm";
 
 class UnderTable extends Component {
   render() {

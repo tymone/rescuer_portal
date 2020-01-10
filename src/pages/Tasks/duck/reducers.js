@@ -76,7 +76,7 @@ const tasksReducer = (state = INITIAL_STATE, action) => {
     case types.ADD_TASK:
       return {
         ...state,
-        counter: action.item.id,
+        counter: action.id,
         list: [action.item, ...state.list]
       };
     case types.EDIT_TASK:
