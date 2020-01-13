@@ -6,7 +6,7 @@ const UnderTableUsers = ({ users, name }) => {
     if (usersList.length) {
       return usersList.map(user => <li key={user}>{user}</li>);
     } else {
-      return "---";
+      return;
     }
   };
   return (

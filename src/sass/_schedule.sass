@@ -6,19 +6,15 @@
     margin-bottom: 30px
     justify-content: space-around
     border: 1px solid black
-  
     .day
       width: 270px
       text-align: center
       margin-bottom: 20px
-      
       .multitude
         width: 50%
         display: inline-block
-
         &:nth-of-type(7)
           width: 100%
-        
         input
           width: 95%
           font-size: 16px
@@ -26,60 +22,47 @@
           background-color: transparent
           border: none
           border-bottom: 1px solid black
-      
+
       p
         border: 1px solid black
-    
+
   .underTable
     width: 100%
-
-    .underTableForm
-      margin: 10px 0
-      .title
+    .group
+      margin: 20px 0 
+      span
         font-weight: bold
         text-decoration: underline
-      input
-        background-color: transparent
-        border: none
-        border-bottom: 1px solid black
-        font-size: 14px
-        width: 120px
-      
+
       ul
+        display: inline-block
         li
           display: inline-block
-          padding: 3px
-          margin-bottom: 0px
-    div
-      padding: 2px
+          margin: 0 5px
 
-      // div
-      //   display: none
+      .overMultitude, .train, .sick, .course, .leave
+        display: none
         &.show
-          display: inline-block
-
-     
+          display: block
 
   button.hide
     display: none
-  
+
   .scheduleContainer
     list-style: none
-    
     .scheduleWeek
       margin-bottom: 30px
       max-width: 100%
-      
       a
         i
           width: 100%
           color: black
           text-align: center
+
   h1
     text-align: center
     width: 100%
     margin: 20px auto
-
     input
       background-color: #bbb
       border: none

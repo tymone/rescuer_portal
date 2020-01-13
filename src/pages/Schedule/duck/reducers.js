@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   counter: 2,
   list: [
     {
-      id: 1000,
+      id: 0,
       dateFrom: "2019-09-09",
       dateTo: "2019-09-16",
       Monday: {
@@ -442,7 +442,7 @@ const INITIAL_STATE = {
         }
       },
       outside: {
-        multitude: ["poza zastępem1", "poza zastępem2"],
+        overMultitude: ["poza zastępem1", "poza zastępem2"],
         train: [
           "Ćwiczenia1",
           "Ćwiczenia2",
@@ -898,7 +898,7 @@ const INITIAL_STATE = {
         }
       },
       outside: {
-        multitude: ["poza zastępem1", "poza zastępem2"],
+        overMultitude: ["poza zastępem1", "poza zastępem2"],
         train: [
           "Ćwiczenia1",
           "Ćwiczenia2",
@@ -927,9 +927,11 @@ const scheduleReducer = (state = INITIAL_STATE, action) => {
         list: [action.item, ...state.list]
       };
     case types.EDIT_SCHEDULE:
+      const id = state.list.findIndex(item => item.id === action.item.id);
+      state.list.splice(id, 1, action.item);
       return {
         ...state,
-        list: action.item
+        list: [...state.list]
       };
     default:
       return state;

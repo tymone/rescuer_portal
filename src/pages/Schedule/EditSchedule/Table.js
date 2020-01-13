@@ -1,14 +1,14 @@
-/* eslint-disable eqeqeq */
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import actions from '../duck/actions';
-// import { Redirect } from 'react-router-dom';
+import actions from "../duck/actions";
+import { Redirect } from "react-router-dom";
 
 import Week from "./Week.js";
 import UnderTable from "./UnderTable.js";
 
 class Table extends Component {
   state = {
+    redirect: false,
     id: "",
     schedule: {}
   };
@@ -16,7 +16,7 @@ class Table extends Component {
   componentWillMount() {
     const id = this.props.match.params.id;
     const [schedule] = this.props.schedule.filter(
-      schedule => schedule.id == id
+      schedule => schedule.id === Number(id)
     );
     this.setState({
       id,
@@ -38,13 +38,33 @@ class Table extends Component {
     }));
   };
 
-  getUnderTable = value => {
-    console.log(value);
+  getUnderTable = (employees, name) => {
+    this.setState(prevState => ({
+      schedule: {
+        ...prevState.schedule,
+        outside: {
+          ...prevState.schedule.outside,
+          [name]: employees
+        }
+      }
+    }));
+  };
+
+  updateSchedule = () => {
+    const { schedule, redirect } = this.state;
+    const { edit } = this.props;
+    const updateSchedule = schedule;
+    edit(updateSchedule);
+    this.setState({
+      redirect: !redirect
+    });
   };
 
   render() {
-    console.log(this.state);
-    const { schedule } = this.state;
+    const { schedule, redirect } = this.state;
+    if (redirect) {
+      return <Redirect to="/harmonogram" />;
+    }
     return (
       <div className="schedule">
         <h1>
@@ -63,8 +83,9 @@ class Table extends Component {
         <Week week={schedule} getWeek={this.getScheduleWeek} />
         <UnderTable
           getUnderTable={this.getUnderTable}
-          getUnderTableEmployee={schedule.outside}
+          UnderTableEmployee={schedule.outside}
         />
+        <button onClick={this.updateSchedule}>Zapisz zmiany</button>
       </div>
     );
   }
@@ -74,4 +95,8 @@ const mapStateToProps = state => ({
   schedule: state.schedules.list
 });
 
-export default connect(mapStateToProps)(Table);
+const mapDispatchToProps = dispatch => ({
+  edit: updateSchedule => dispatch(actions.edit(updateSchedule))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Table);

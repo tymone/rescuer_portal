@@ -4,7 +4,7 @@ import UnderTableForm from "./UnderTableForm";
 
 class UnderTable extends Component {
   state = {
-    multitude: [],
+    overMultitude: [],
     train: [],
     sick: [],
     course: [],
@@ -12,9 +12,9 @@ class UnderTable extends Component {
   };
   getUsers = () => {
     const { getUnderTable } = this.props;
-    const { multitude, train, sick, course, leave } = this.state;
+    const { overMultitude, train, sick, course, leave } = this.state;
     const outside = {
-      multitude,
+      overMultitude,
       train,
       sick,
       course,
@@ -41,7 +41,7 @@ class UnderTable extends Component {
           addUser={this.addUser}
           users={this.state}
           title={"Poza zastępem"}
-          name={"multitude"}
+          name={"overMultitude"}
         />
         <UnderTableForm
           addUser={this.addUser}

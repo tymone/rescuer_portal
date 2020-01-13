@@ -8,6 +8,7 @@ import UnderTable from "./UnderTable/UnderTable";
 
 class Form extends Component {
   state = {
+    redirect: false,
     id: "",
     dateFrom: "",
     dateTo: "",
@@ -194,15 +195,15 @@ class Form extends Component {
       }
     },
     outside: {
-      multitude: ["---"],
-      train: ["---"],
-      sick: ["---"],
-      course: ["---"],
-      leave: ["---"]
+      overMultitude: [],
+      train: [],
+      sick: [],
+      course: [],
+      leave: []
     }
   };
 
-  componentDidMount() {
+  componentWillMount() {
     let { id } = this.props;
     this.setState({
       id: ++id
