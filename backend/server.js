@@ -5,7 +5,7 @@ const cors = require("cors");
 const config = require("./config");
 const mongoose = require("mongoose");
 const teamRoutes = express.Router();
-const PORT = 5000; //process.env.PORT ||
+const PORT = 5000 || process.env.PORT;
 
 let Rescuer = require("./rescuer.model");
 

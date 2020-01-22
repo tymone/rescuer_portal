@@ -2,10 +2,10 @@ import React from 'react';
 
 import Task from './Task';
 
-const TaskDone = ({ tasks }) => {
+const TaskInProgress = ({ tasks }) => {
   const tasksList = tasks => {
     if (tasks.length) {
-      tasks.sort((a, b) => b.finishDate - a.finishDate);
+      tasks.sort((a, b) => b.addDate - a.addDate);
       return tasks.map((task, i) => <Task key={task.id} task={task} id={i + 1} />);
     } else {
       return 'Brak zadań.';
@@ -13,11 +13,11 @@ const TaskDone = ({ tasks }) => {
   };
 
   return (
-    <div className="done">
-      <h2>Wykonane</h2>
+    <div className="inProgress">
+      <h2>W trakcie</h2>
       <ul>{tasksList(tasks)}</ul>
     </div>
   );
 };
 
-export default TaskDone;
+export default TaskInProgress;

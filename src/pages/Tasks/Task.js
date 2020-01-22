@@ -1,20 +1,17 @@
-import React from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Task = ({ task, id, className }) => {
-  const showTaskContent = (id, className) => {
-    let task = document.querySelector(`.${className} li:nth-child(${id}) div`);
-    task.classList.toggle("on");
-  };
-
+const Task = ({ task }) => {
   return (
     <li>
-      <span onClick={() => showTaskContent(id, className)}>{task.title}</span>
-      <div className="toggle">
-        <div className="toggle-p">
-          <p>{task.content}</p>
-        </div>
-      </div>
+      <span>
+        {task.title}
+        <Link to={`/zadania/${task.id}`}>
+          <i className="fas fa-info"></i>
+        </Link>
+      </span>
     </li>
   );
 };
+
 export default Task;

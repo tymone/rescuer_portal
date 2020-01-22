@@ -1,12 +1,12 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
   const handleClick = () => {
-    let sidebar = document.querySelector("aside");
-    sidebar.classList.toggle("hide");
-    let font = document.querySelector("aside div i");
-    font.classList.toggle("fa-angle-double-right");
+    let sidebar = document.querySelector('aside');
+    sidebar.classList.toggle('hide');
+    let font = document.querySelector('aside div i');
+    font.classList.toggle('fa-angle-double-right');
   };
 
   return (
@@ -14,61 +14,58 @@ const Navigation = () => {
       <nav>
         <ul>
           <li>
-            <NavLink to={"/"} exact>
+            <NavLink to={'/'} exact>
               Strona Główna
             </NavLink>
           </li>
           <li>
-            <NavLink to={"/harmonogram"} exact>
+            <NavLink to={'/harmonogram'} exact>
               Harmonogram
             </NavLink>
           </li>
           <ul>
             <li>
-              <NavLink to={"/harmonogram/stworz"}>utwórz</NavLink>
+              <NavLink to={'/harmonogram/stworz'}>utwórz</NavLink>
             </li>
             <li>
-              <NavLink to={"/harmonogram/edytuj"}>edytuj</NavLink>
+              <NavLink to={'/harmonogram/edytuj'}>edytuj</NavLink>
             </li>
           </ul>
           <li>
-            <NavLink to={"/druzyna"} exact>
+            <NavLink to={'/druzyna'} exact>
               Drużyna
             </NavLink>
           </li>
           <ul>
             <li>
-              <NavLink to={"/druzyna/dodaj"}>dodaj</NavLink>
-            </li>
-            <li>
-              <NavLink to={"/druzyna/edytuj"}>edytuj</NavLink>
+              <NavLink to={'/druzyna/dodaj'}>dodaj</NavLink>
             </li>
           </ul>
           <li>
-            <NavLink to={"/cwiczenia"} exact>
+            <NavLink to={'/cwiczenia'} exact>
               Ćwiczenia
             </NavLink>
           </li>
           <ul>
             <li>
-              <NavLink to={"/cwiczenia/edytuj"}>edytuj</NavLink>
+              <NavLink to={'/cwiczenia/edytuj'}>edytuj</NavLink>
             </li>
           </ul>
           <li>
-            <NavLink to={"/zadania"} exact>
+            <NavLink to={'/zadania'} exact>
               Zadania
             </NavLink>
           </li>
           <ul>
             <li>
-              <NavLink to={"/zadania/dodaj"}>dodaj</NavLink>
+              <NavLink to={'/zadania/dodaj'}>dodaj</NavLink>
             </li>
             <li>
-              <NavLink to={"/zadania/edytuj"}>edytuj</NavLink>
+              <NavLink to={'/zadania/edytuj'}>edytuj</NavLink>
             </li>
           </ul>
           <li>
-            <NavLink to={"/kontakt"}>Kontakt</NavLink>
+            <NavLink to={'/kontakt'}>Kontakt</NavLink>
           </li>
         </ul>
       </nav>

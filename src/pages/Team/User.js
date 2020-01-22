@@ -1,35 +1,27 @@
-import React from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import date from "../../helpers/setDate";
+const User = ({ rescuer, deleteRescuer }) => {
+  const { name, surname, branch, minePosition, KSRGPosition } = rescuer;
 
-const User = ({ user }) => {
-  const { name, surname, doctor, train } = user;
   return (
     <div className="user">
       <span>{name}</span>
       <span>{surname}</span>
-      <span>{date(doctor)}</span>
-      <span>{train}</span>
+      <span>{branch}</span>
+      <span>{minePosition}</span>
+      <span>{KSRGPosition}</span>
+      <span>
+        <Link to={`/druzyna/${rescuer.id}`}>
+          <i className="fas fa-info"></i>
+        </Link>
+        <Link to={`/druzyna/edytuj/${rescuer.id}`}>
+          <i className="fas fa-user-edit"></i>
+        </Link>
+        <i className="fas fa-user-times" onClick={() => deleteRescuer(rescuer.id)}></i>
+      </span>
     </div>
   );
 };
 
 export default User;
-// const User = ({ team, edit, deleteUser }) => {
-//   const user = team.map((user, i) => (
-//     <tr key={user.id}>
-//       <th scope='row'>{i + 1}</th>
-//       <td>{user.name}</td>
-//       <td>{user.surname}</td>
-//       <td>{new Date(user.doctor).toLocaleString().slice(0, 5)}</td>
-//       <td>{}</td>
-
-//       <td>
-//         <i onClick={() => edit(user.id)} className='fas fa-edit' />{' '}
-//         <i onClick={() => deleteUser(user.id)} className='fas fa-trash' />
-//       </td>
-//     </tr>
-//   ));
-
-//   return <>{user}</>;
-// };

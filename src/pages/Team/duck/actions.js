@@ -10,7 +10,13 @@ const remove = item => ({
   item
 });
 
+const update = item => ({
+  type: types.UPDATE_RESCUER,
+  item
+});
+
 export default {
   add,
-  remove
+  remove,
+  update
 };

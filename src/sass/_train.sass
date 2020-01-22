@@ -1,61 +1,36 @@
 .train
-  
-  .table
-    width: 80%
-    margin: 10px auto
-    border: 1px solid black
+  h1
+    font-size: 40px
+    text-align: center
+    margin: 30px
 
+  .table
+    width: 90%
+    margin: 10vh auto
+    border: 1px solid grey
     .head
       display: flex
-      border-bottom: 1px solid black
-      
+      border-bottom: 1px solid grey
+      justify-content: space-around
       span
-        width: 14%
+        font-size: 20px
+        width: 100%
+        padding: 10px 0 
         text-align: center
-        padding: 5px
-      
-    .body
-      display: flex
-      flex-wrap: wrap
-      width: 100%
 
+    .body
       ul
         list-style: none
-
         li
-          width: 100%
-          text-align: center
-          display: flex;
+          display: flex
           justify-content: space-around
-          div
-            
-
-        &.groups
-          width: 100%
-
-          .show
-            display: flex
+          border-bottom: 1px solid grey
+          padding: 10px 0
+          .item
             width: 100%
-            justify-content: space-around
-
-            input
-              width: 100%
-              background-color: transparent
-              border: none
-              border-bottom: 1px solid black
-              text-align: center
-              line-height: 20px
-          
-          .hide
-            display: none
-              
-          .group
-            display: flex
-            width: 100%
-            padding: 5px
-            border-bottom: 1px solid black
-
-          
-          
-
-        
+            text-align: center
+            font-weight: bold
+            &:nth-of-type(2), &:nth-of-type(5)
+              color: red
+            &:nth-of-type(4), &:nth-of-type(7)
+              color: green

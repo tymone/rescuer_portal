@@ -1,37 +1,63 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import actions from './duck/actions';
 
-import User from "./User";
+import User from './User';
 
-const Table = ({ team }) => {
-  const users = team =>
-    team.map(user => (
-      <Link key={user.id} to={`/druzyna/${user.id}`}>
-        <User user={user} />
-      </Link>
-    ));
+class Table extends Component {
+  state = {
+    team: []
+  };
 
-  return (
-    <div className="team">
-      <div className="table">
-        <div className="head">
-          <span>Imię</span>
-          <span>Nazwisko</span>
-          <span>Badania</span>
-          <span>Ćwiczenia</span>
+  componentWillMount() {
+    const team = this.props.team;
+    this.setState({
+      team
+    });
+  }
+
+  deleteRescuer = id => {
+    const { team } = this.state;
+    const { remove } = this.props;
+    const newTeam = team.filter(rescuer => rescuer.id !== id);
+    this.setState({
+      team: newTeam
+    });
+    remove(id);
+  };
+
+  team = team => team.map(rescuer => <User deleteRescuer={this.deleteRescuer} key={rescuer.id} rescuer={rescuer} />);
+
+  render() {
+    const { team } = this.state;
+    return (
+      <div className="team">
+        <h1>Drużyna KSRG</h1>
+        <div className="table">
+          <div className="head">
+            <span>Imię</span>
+            <span>Nazwisko</span>
+            <span>Oddział</span>
+            <span>Stanowisko</span>
+            <span>Funkcja KSRG</span>
+            <span>Szczegóły</span>
+          </div>
+          <div className="body">{this.team(team)}</div>
         </div>
-        <div className="users">{users(team)}</div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 const mapStateToProps = state => ({
   team: state.team.list
 });
 
-export default connect(mapStateToProps)(Table);
+const mapDispatchToProps = dispatch => ({
+  remove: id => dispatch(actions.remove(id))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Table);
 
 // delete = i => {
 //   const team = [...this.state.team];

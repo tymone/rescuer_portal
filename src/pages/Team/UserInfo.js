@@ -1,29 +1,64 @@
-/* eslint-disable eqeqeq */
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import date from "../../helpers/setDate";
+import date from '../../helpers/setDate';
 
 class UserInfo extends Component {
-  state = {};
+  state = {
+    id: '',
+    name: '',
+    surname: '',
+    branch: '',
+    minePosition: '',
+    KSRGPosition: '',
+    doctor: '',
+    train: '',
+    duty: '',
+    inaccessible: ''
+  };
+
+  componentWillMount() {
+    const id = this.props.match.params.id;
+    const [rescuer] = this.props.team.filter(rescuer => rescuer.id === Number(id));
+    const { name, surname, branch, minePosition, KSRGPosition, doctor, train, duty, inaccessible } = rescuer;
+    this.setState({
+      id,
+      name,
+      surname,
+      branch,
+      minePosition,
+      KSRGPosition,
+      doctor,
+      train,
+      duty,
+      inaccessible
+    });
+  }
 
   render() {
-    const id = this.props.match.params.id;
-    const [user] = this.props.user.filter(user => user.id == id);
-    const { name, surname, doctor, train, info } = user;
+    const { name, surname, branch, minePosition, KSRGPosition, doctor, train, duty, inaccessible } = this.state;
     return (
       <div className="userInfo">
-        <span>{name} </span>
-        <span>{surname}</span>
-        <span>{date(doctor)}</span>
-        <span>{train}</span>
-        <span>{info}</span>
+        <h2>
+          {name} {surname}
+        </h2>
+        <div className="details">
+          <span>oddział: {branch} </span>
+          <span>stanowisko: {minePosition}</span>
+          <span>funkcja KSRG: {KSRGPosition}</span>
+          <span>termin ważności badań: {date(doctor)}</span>
+          <span>grupa ćwiczeń: {train}</span>
+          <span>dyżur KSRG: {duty ? duty : '-'}</span>
+          <span>niedostępny: {inaccessible ? inaccessible : '-'}</span>
+          <span></span>
+        </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  user: state.team.list
+  team: state.team.list
 });
+
 export default connect(mapStateToProps)(UserInfo);

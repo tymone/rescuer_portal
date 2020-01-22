@@ -1,16 +1,14 @@
-import React from "react";
-import { connect } from "react-redux";
-import Group from "./Group";
+import React from 'react';
+import { connect } from 'react-redux';
+import Group from './Group';
 
 const Train = ({ groups }) => {
-  const getGroupsFromState = groups;
-  const getGroupsToArray = Object.keys(getGroupsFromState);
-  const getGroups = getGroupsToArray.map((group, i) => (
-    <Group key={group} value={getGroupsFromState[group]} index={i} />
-  ));
+  const getGroupsToArray = Object.keys(groups);
+  const getGroups = getGroupsToArray.map((group, i) => <Group key={group} value={groups[group]} index={i} />);
 
   return (
     <div className="train">
+      <h1>Terminy ćwiczeń ratowniczych dla poszczególnych grup</h1>
       <div className="table">
         <div className="head">
           <span>Grupa</span>
