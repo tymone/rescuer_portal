@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import TaskToDo from './TaskToDo';
-import TaskInProgress from './TaskInProgress';
-import TaskDone from './TaskDone';
+import TaskList from './TaskList';
 
 class Tasks extends Component {
   state = {
@@ -20,11 +18,13 @@ class Tasks extends Component {
   render() {
     const { tasks } = this.state;
     return (
-      <div className="TasksMain">
+      <div className="Tasks">
         <h1>Lista zadań</h1>
-        <TaskToDo tasks={tasks.filter(task => task.status === 'to do')} />
-        <TaskInProgress tasks={tasks.filter(task => task.status === 'in progress')} />
-        <TaskDone tasks={tasks.filter(task => task.status === 'done')} />
+        <div className="listContainer">
+          <TaskList tasks={tasks.filter(task => task.status === 'to do')} title="do wykonania" />
+          <TaskList tasks={tasks.filter(task => task.status === 'in progress')} title="w trakcie wykonywania" />
+          <TaskList tasks={tasks.filter(task => task.status === 'done')} title="wykonane" />
+        </div>
       </div>
     );
   }

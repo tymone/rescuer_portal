@@ -24,7 +24,7 @@ class EditUser extends Component {
   componentWillMount() {
     const id = this.props.match.params.id;
     const { rescuer } = this.props;
-    const [editRescuer] = rescuer.filter(rescuer => rescuer.id === Number(id));
+    const editRescuer = rescuer.find(rescuer => rescuer.id === Number(id));
     const { name, surname, branch, minePosition, KSRGPosition, doctor, train, duty, inaccessible, suspend } = editRescuer;
     this.setState({
       id,

@@ -1,23 +1,21 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import actions from "../duck/actions";
-import { Redirect } from "react-router-dom";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import actions from '../duck/actions';
+import { Redirect } from 'react-router-dom';
 
-import Week from "./Week.js";
-import UnderTable from "./UnderTable.js";
+import Week from './Week.js';
+import UnderTable from './UnderTable.js';
 
 class Table extends Component {
   state = {
     redirect: false,
-    id: "",
+    id: '',
     schedule: {}
   };
 
   componentWillMount() {
     const id = this.props.match.params.id;
-    const [schedule] = this.props.schedule.filter(
-      schedule => schedule.id === Number(id)
-    );
+    const schedule = this.props.schedule.find(schedule => schedule.id === Number(id));
     this.setState({
       id,
       schedule
@@ -70,21 +68,10 @@ class Table extends Component {
         <h1>
           <u>Tryb</u> <u>edycji</u> harmonogramu na okres:
         </h1>
-        <input
-          type="date"
-          defaultValue={schedule.dateFrom}
-          onChange={this.handleChange}
-        />
-        <input
-          type="date"
-          defaultValue={schedule.dateTo}
-          onChange={this.handleChange}
-        />
+        <input type="date" defaultValue={schedule.dateFrom} onChange={this.handleChange} />
+        <input type="date" defaultValue={schedule.dateTo} onChange={this.handleChange} />
         <Week week={schedule} getWeek={this.getScheduleWeek} />
-        <UnderTable
-          getUnderTable={this.getUnderTable}
-          UnderTableEmployee={schedule.outside}
-        />
+        <UnderTable getUnderTable={this.getUnderTable} UnderTableEmployee={schedule.outside} />
         <button onClick={this.updateSchedule}>Zapisz zmiany</button>
       </div>
     );

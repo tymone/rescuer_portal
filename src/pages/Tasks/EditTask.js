@@ -1,26 +1,24 @@
 /* eslint-disable eqeqeq */
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import actions from "./duck/actions";
+import actions from './duck/actions';
 
 class EditTask extends Component {
   state = {
-    id: "",
-    title: "",
-    content: "",
-    active: ""
+    id: '',
+    title: '',
+    content: '',
+    active: ''
   };
   componentDidMount() {
-    const [getTask] = this.props.tasks.filter(
-      task => task.id == this.props.match.params.id
-    );
+    const getTask = this.props.tasks.find(task => task.id == this.props.match.params.id);
     const { id, title, content, active } = getTask;
     this.setState({
       id,
       title,
       content,
-      active: active ? "true" : "false"
+      active: active ? 'true' : 'false'
     });
   }
 
@@ -34,19 +32,17 @@ class EditTask extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { title, content, active } = this.state;
-    const [getTask] = this.props.tasks.filter(
-      task => task.id == this.props.match.params.id
-    );
+    const getTask = this.props.tasks.find(task => task.id == this.props.match.params.id);
     const { id } = getTask;
     const { edit } = this.props;
     const editTask = {
       id,
       title,
       content,
-      active: active === "true" ? true : false,
+      active: active === 'true' ? true : false,
       finishDate: new Date().getTime(),
       updateDate: new Date().getTime(),
-      updateBy: ""
+      updateBy: ''
     };
     edit(editTask, id);
   };
@@ -62,24 +58,15 @@ class EditTask extends Component {
     const { title, content, active } = this.state;
     return (
       <div className="editTask">
+        <h1>Tryb edycji</h1>
         <form>
           <label>
             tytuł:
-            <input
-              type="text"
-              name="title"
-              value={title}
-              onChange={this.handleChange}
-            />
+            <input type="text" name="title" value={title} onChange={this.handleChange} />
           </label>
           <label>
             treść:
-            <input
-              type="text"
-              name="content"
-              value={content}
-              onChange={this.handleChange}
-            />
+            <input type="text" name="content" value={content} onChange={this.handleChange} />
           </label>
           <label>
             status:

@@ -1,11 +1,39 @@
-.TasksMain
-  display: flex
-  flex-wrap: wrap
+.Tasks
   text-align: center
-  padding: 50px 20px
+
   h1
+    font-size: 40px
+    padding: 40px 0
+
+  .listContainer
+    display: flex
     width: 100%
-    margin-bottom: 20px
+    .taskList
+      flex: 1
+      background-color: #eee
+      margin: 0 10px
+      h2
+        padding: 10px 0
+      ul
+        list-style: none
+        li
+          background-color: #fff
+          border-radius: 20px
+          width: 90%
+          margin: 20px auto
+          padding: 5px
+          span
+            font-weight: bold
+            font-size: 20px
+          p
+            padding: 15px
+          .options
+            text-align: right
+            i
+              padding: 10px 20px
+              color: black
+
+
   .addTask
     width: 100%
     label
@@ -22,43 +50,33 @@
       button
         display: block
         margin: 0 10px
-  div
-    width: 33%
-    div
-      width: 100%
-      font-size: 20px
-    h2
-      border: 1px solid black
-    ul
-      li
-        list-style: none
-        font-size: 24px
-        div.toggle
-          display: none
-          &.on
-            display: block
-            div.toggle-p.off
-              display: none
-            div.toggle-textarea.show
-              display: block
-            .toggle-textarea
-              display: none
-              textarea
-                width: 80%
-                max-width: 90%
-                font-size: 24px
-                background-color: #eee
-                border-radius: 15px
-                padding: 5px
-              .fa-check
-                color: green
-          p
-            display: inline-block
-            background-color: #eee
-            border-radius: 15px
-            margin-right: 10px
-            width: 90%
-            font-size: 20px
-        i
-          padding-left: 15px
-          color: black
+  // div
+  //   width: 33%
+  //   div
+  //     width: 100%
+  //     font-size: 20px
+  //   h2
+  //     border: 1px solid black
+  //   ul
+  //     li
+  //       list-style: none
+  //       font-size: 24px
+  //       div.toggle
+  //         display: none
+  //         &.on
+  //           display: block
+  //           div.toggle-p.off
+  //             display: none
+  //           div.toggle-textarea.show
+  //             display: block
+  //           .toggle-textarea
+  //             display: none
+  //             textarea
+  //               width: 80%
+  //               max-width: 90%
+  //               font-size: 24px
+  //               background-color: #eee
+  //               border-radius: 15px
+  //               padding: 5px
+  //             .fa-check
+  //               color: green

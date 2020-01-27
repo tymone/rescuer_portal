@@ -19,7 +19,7 @@ class UserInfo extends Component {
 
   componentWillMount() {
     const id = this.props.match.params.id;
-    const [rescuer] = this.props.team.filter(rescuer => rescuer.id === Number(id));
+    const rescuer = this.props.team.find(rescuer => rescuer.id === Number(id));
     const { name, surname, branch, minePosition, KSRGPosition, doctor, train, duty, inaccessible } = rescuer;
     this.setState({
       id,
