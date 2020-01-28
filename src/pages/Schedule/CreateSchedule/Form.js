@@ -1,197 +1,197 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import actions from "../duck/actions";
-import { Redirect } from "react-router";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import actions from '../duck/actions';
+import { Redirect } from 'react-router';
 
-import Table from "./Week/Table";
-import UnderTable from "./UnderTable/UnderTable";
+import Table from './Week/Table';
+import UnderTable from './UnderTable/UnderTable';
 
 class Form extends Component {
   state = {
     redirect: false,
-    id: "",
-    dateFrom: "",
-    dateTo: "",
+    id: '',
+    dateFrom: '',
+    dateTo: '',
     Monday: {
       multitude1: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude2: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude3: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude4: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude5: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude6: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       }
     },
     Tuesday: {
       multitude1: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude2: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude3: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude4: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude5: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude6: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       }
     },
     Wednesday: {
       multitude1: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude2: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude3: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude4: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude5: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude6: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       }
     },
     Thursday: {
       multitude1: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude2: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude3: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude4: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude5: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude6: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       }
     },
     Friday: {
       multitude1: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude2: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude3: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude4: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude5: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude6: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       }
     },
     Saturday: {
       multitude1: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude2: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude3: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude4: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude5: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude6: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       }
     },
     Sunday: {
       multitude1: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude2: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude3: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude4: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude5: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       },
       multitude6: {
-        time: "",
-        multitude: ["---", "---", "---", "---", "---"]
+        time: '',
+        multitude: ['---', '---', '---', '---', '---']
       }
     },
     outside: {
@@ -217,15 +217,7 @@ class Form extends Component {
   };
 
   getSchedule = newSchedule => {
-    const {
-      Monday,
-      Tuesday,
-      Wednesday,
-      Thursday,
-      Friday,
-      Saturday,
-      Sunday
-    } = newSchedule;
+    const { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday } = newSchedule;
     this.setState({
       Monday,
       Tuesday,
@@ -262,19 +254,9 @@ class Form extends Component {
     return (
       <div className="schedule">
         <span>Harmonogram od:</span>
-        <input
-          name="dateFrom"
-          onChange={this.handleChange}
-          type="date"
-          required
-        />
+        <input name="dateFrom" onChange={this.handleChange} type="date" required />
         <span>do:</span>
-        <input
-          name="dateTo"
-          onChange={this.handleChange}
-          type="date"
-          required
-        />
+        <input name="dateTo" onChange={this.handleChange} type="date" required />
         <Table getSchedule={this.getSchedule} />
         <UnderTable getUnderTable={this.getUnderTable} />
         <button onClick={this.handleSubmit}>Zapisz</button>

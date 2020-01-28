@@ -1,12 +1,21 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-import actions from "./duck/actions";
+import actions from './duck/actions';
 
 class AddTask extends Component {
   state = {
-    title: "",
-    value: ""
+    title: '',
+    content: '',
+    status: '',
+    addDate: '',
+    finishDate: '',
+    createdBy: '',
+    workingBy: '',
+    finishedBy: '',
+    updatedBy: '',
+    redirect: false
   };
 
   handleChange = e => {
@@ -18,54 +27,92 @@ class AddTask extends Component {
   addTask = e => {
     e.preventDefault();
 
-    const { title, value } = this.state;
+    const { title, content, status, addDate, finishDate, createdBy, workingBy, finishedBy, redirect } = this.state;
     const { counter, add } = this.props;
     const id = counter + 1;
     const newTask = {
       id,
       title,
-      value,
-      active: true,
-      addDate: new Date().getTime(),
-      finishDate: ""
+      content,
+      status,
+      addDate: new Date(addDate).getTime(),
+      finishDate: new Date(finishDate).getTime(),
+      createdBy,
+      workingBy,
+      finishedBy
     };
     add(newTask);
     this.setState({
-      title: "",
-      value: ""
+      title: '',
+      content: '',
+      status: '',
+      addDate: '',
+      finishDate: '',
+      createdBy: '',
+      workingBy: '',
+      finishedBy: '',
+      redirect: !redirect
     });
   };
 
   render() {
-    const { title, value } = this.state;
+    const { title, content, status, addDate, finishDate, createdBy, workingBy, redirect } = this.state;
+    const { history } = this.props;
+    if (redirect) {
+      return <Redirect to="/zadania" />;
+    }
     return (
-      <div className="TasksMain">
-        <div className="addTask">
-          <form onSubmit={this.addTask}>
-            <label>
-              Tytuł zadania:
-              <input
-                type="text"
-                placeholder="Wpisz tytuł"
-                onChange={this.handleChange}
-                name="title"
-                value={title}
-                required
-              />
-            </label>
-            <label>
-              Treść zadania:
-              <textarea
-                type="text"
-                placeholder="Wpisz treść"
-                onChange={this.handleChange}
-                name="value"
-                value={value}
-                required
-              />
-            </label>
-
-            <button>Zapisz</button>
+      <div className="addTask">
+        <h1>Utwórz zadanie</h1>
+        <div className="details">
+          <form>
+            <div className="textDetails">
+              <label>
+                <span>tytuł:</span>
+                <input type="text" name="title" value={title} onChange={this.handleChange} />
+              </label>
+              <label>
+                <span>treść:</span>
+                <textarea type="text" name="content" value={content} onChange={this.handleChange} />
+              </label>
+            </div>
+            <div className="infoDetails">
+              <label>
+                <span>status:</span>
+                <select value={status} name="status" onChange={this.handleChange}>
+                  <option value=""></option>
+                  <option value="to do">do zrobienia</option>
+                  <option value="in progress">w trakcie wykonywania/nie ukończone</option>
+                  <option value="done">wykonane</option>
+                </select>
+              </label>
+              <label>
+                <span>data dodania:</span>
+                <input type="text" onFocus={e => (e.target.type = 'date')} value={addDate} name="addDate" onChange={this.handleChange} />
+              </label>
+              <label>
+                <span>dodał:</span>
+                <input type="text" value={createdBy} name="createdBy" onChange={this.handleChange} />
+              </label>
+              <label>
+                <span>rozpoczęte przez:</span>
+                <input type="text" value={workingBy} name="workingBy" onChange={this.handleChange} />
+              </label>
+              <label>
+                <span>data zakończenia:</span>
+                <input
+                  type="text"
+                  onFocus={e => (e.target.type = 'date')}
+                  value={finishDate}
+                  name="finishDate"
+                  onChange={this.handleChange}
+                />
+              </label>
+            </div>
+            <div className="options">
+              <i className="fas fa-chevron-left" onClick={() => history.goBack()}></i>
+              <i className="fas fa-check" onClick={this.addTask}></i>
+            </div>
           </form>
         </div>
       </div>

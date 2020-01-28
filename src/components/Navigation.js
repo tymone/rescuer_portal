@@ -60,9 +60,6 @@ const Navigation = () => {
             <li>
               <NavLink to={'/zadania/dodaj'}>dodaj</NavLink>
             </li>
-            <li>
-              <NavLink to={'/zadania/edytuj'}>edytuj</NavLink>
-            </li>
           </ul>
           <li>
             <NavLink to={'/kontakt'}>Kontakt</NavLink>

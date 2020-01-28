@@ -1,7 +1,7 @@
 import types from './types';
 
 const INITIAL_STATE = {
-  counter: 8,
+  counter: 13,
   list: [
     {
       id: 0,
@@ -11,8 +11,7 @@ const INITIAL_STATE = {
       addDate: 1564048205997,
       finishDate: '',
       createdBy: 'Kowalski',
-      workingBy: '',
-      finishedBy: ''
+      workingBy: ''
     },
     {
       id: 12,
@@ -22,8 +21,7 @@ const INITIAL_STATE = {
       addDate: 1564048305997,
       finishDate: '',
       createdBy: 'Kowalski',
-      workingBy: '',
-      finishedBy: ''
+      workingBy: ''
     },
     {
       id: 2,
@@ -34,8 +32,7 @@ const INITIAL_STATE = {
       addDate: 1564048405997,
       finishDate: '',
       createdBy: 'Kowalski',
-      workingBy: '',
-      finishedBy: ''
+      workingBy: ''
     },
     {
       id: 3,
@@ -45,8 +42,7 @@ const INITIAL_STATE = {
       addDate: 1564047505997,
       finishDate: '',
       createdBy: 'Kowalski',
-      workingBy: '',
-      finishedBy: ''
+      workingBy: ''
     },
     {
       id: 4,
@@ -56,8 +52,7 @@ const INITIAL_STATE = {
       addDate: 1564047705997,
       finishDate: '',
       createdBy: 'Kowalski',
-      workingBy: 'Nowak',
-      finishedBy: ''
+      workingBy: 'Nowak'
     },
     {
       id: 5,
@@ -67,8 +62,7 @@ const INITIAL_STATE = {
       addDate: 1564047805997,
       finishDate: '',
       createdBy: 'Kowalski',
-      workingBy: 'Nowak',
-      finishedBy: ''
+      workingBy: 'Nowak'
     },
     {
       id: 6,
@@ -78,8 +72,7 @@ const INITIAL_STATE = {
       addDate: 1564047905997,
       finishDate: '',
       createdBy: 'Kowalski',
-      workingBy: 'Nowak',
-      finishedBy: ''
+      workingBy: 'Nowak'
     },
     {
       id: 7,
@@ -89,8 +82,7 @@ const INITIAL_STATE = {
       addDate: 1564048005997,
       finishDate: '',
       createdBy: 'Kowalski',
-      workingBy: 'Nowak',
-      finishedBy: ''
+      workingBy: 'Nowak'
     },
     {
       id: 8,
@@ -100,8 +92,7 @@ const INITIAL_STATE = {
       addDate: 1546815600000,
       finishDate: 1563048505997,
       createdBy: 'Kowalski',
-      workingBy: 'Nowak',
-      finishedBy: 'Bareja'
+      workingBy: 'Nowak'
     },
     {
       id: 9,
@@ -111,8 +102,7 @@ const INITIAL_STATE = {
       addDate: 1546729200000,
       finishDate: 1562048505997,
       createdBy: 'Kowalski',
-      workingBy: 'Nowak',
-      finishedBy: 'Bareja'
+      workingBy: 'Nowak'
     },
     {
       id: 10,
@@ -122,8 +112,7 @@ const INITIAL_STATE = {
       addDate: 1575586800000,
       finishDate: 1561048505997,
       createdBy: 'Kowalski',
-      workingBy: 'Nowak',
-      finishedBy: 'Bareja'
+      workingBy: 'Nowak'
     },
     {
       id: 11,
@@ -133,8 +122,7 @@ const INITIAL_STATE = {
       addDate: 1562364000000,
       finishDate: 1264048505997,
       createdBy: 'Kowalski',
-      workingBy: 'Nowak',
-      finishedBy: 'Bareja'
+      workingBy: 'Nowak'
     }
   ]
 };
