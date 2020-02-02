@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import date from '../../helpers/setDate';
 
@@ -36,12 +37,13 @@ class UserInfo extends Component {
   }
 
   render() {
-    const { name, surname, branch, minePosition, KSRGPosition, doctor, train, duty, inaccessible } = this.state;
+    const { id, name, surname, branch, minePosition, KSRGPosition, doctor, train, duty, inaccessible } = this.state;
+    const { history } = this.props;
     return (
       <div className="userInfo">
-        <h2>
+        <h1>
           {name} {surname}
-        </h2>
+        </h1>
         <div className="details">
           <span>oddział: {branch} </span>
           <span>stanowisko: {minePosition}</span>
@@ -51,6 +53,12 @@ class UserInfo extends Component {
           <span>dyżur KSRG: {duty ? duty : '-'}</span>
           <span>niedostępny: {inaccessible ? inaccessible : '-'}</span>
           <span></span>
+        </div>
+        <div className="options">
+          <i className="fas fa-chevron-left" onClick={() => history.goBack()}></i>
+          <Link to={`/druzyna/edytuj/${id}`}>
+            <i className="fas fa-user-edit"></i>
+          </Link>
         </div>
       </div>
     );

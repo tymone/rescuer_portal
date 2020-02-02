@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import Multitude from "./Multitude";
+import Multitude from './Multitude';
 
 const Day = ({ dayPL, getDay, day, getMultitudes }) => {
   const getMultitude = newMultitude => {

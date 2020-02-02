@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from './duck/actions';
+import { Link } from 'react-router-dom';
 
 import User from './User';
 
@@ -33,6 +34,11 @@ class Table extends Component {
     return (
       <div className="team">
         <h1>Drużyna KSRG</h1>
+        <div className="options">
+          <Link to={'/druzyna/dodaj'}>
+            <i className="fas fa-user-plus"></i>
+          </Link>
+        </div>
         <div className="table">
           <div className="head">
             <span>Imię</span>

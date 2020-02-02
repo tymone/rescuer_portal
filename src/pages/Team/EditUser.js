@@ -89,7 +89,7 @@ class EditUser extends Component {
 
   render() {
     const { name, surname, branch, minePosition, KSRGPosition, doctor, train, duty, inaccessible } = this.state;
-    const { group } = this.props;
+    const { group, history } = this.props;
     const getArrayTrainGroups = Object.keys(group);
     const getTrainGroup = getArrayTrainGroups.map((group, i) => (
       <option value={`grupa ${i + 1}`} key={group}>
@@ -99,12 +99,9 @@ class EditUser extends Component {
     return (
       <div className="editUser">
         {this.renderRedirect()}
-        <h1>Tryb Edycji</h1>
+        <h1>{`${name} ${surname}`}</h1>
         <div className="userInfo">
-          <h2>
-            {name} {surname}
-          </h2>
-          <form onSubmit={this.handleSubmit}>
+          <form>
             <div className="details">
               {this.label('branch', 'oddział', 'text', branch)}
               {this.label('minePosition', 'stanowisko', 'text', minePosition)}
@@ -120,8 +117,11 @@ class EditUser extends Component {
               {this.label('inaccessible', 'niedostępny', 'date', inaccessible ? inaccessible : '-')}
               <span></span>
             </div>
-            <button>Zapisz zmiany</button>
           </form>
+        </div>
+        <div className="options">
+          <i className="fas fa-chevron-left" onClick={() => history.goBack()}></i>
+          <i class="fas fa-user-check" onClick={this.handleSubmit}></i>
         </div>
       </div>
     );

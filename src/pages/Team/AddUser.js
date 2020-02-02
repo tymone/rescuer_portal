@@ -65,7 +65,7 @@ class AddUser extends Component {
   render() {
     console.log(this.state.duty);
     const { name, surname, branch, minePosition, KSRGPosition, doctor, checkedGroup, duty } = this.state;
-    const { group } = this.props;
+    const { group, history } = this.props;
     const getArrayTrainGroups = Object.keys(group);
     const getTrainGroup = getArrayTrainGroups.map((group, i) => (
       <option value={`grupa ${i + 1}`} key={group}>
@@ -77,7 +77,7 @@ class AddUser extends Component {
       <div className="addUser">
         <h1>Dodaj ratownika do drużyny</h1>
         {this.renderRedirect()}
-        <form onSubmit={this.handleSubmit}>
+        <form>
           {this.setLabel('name', 'Imię', 'text', name, 'wpisz imię...')}
           {this.setLabel('surname', 'Nazwisko', 'text', surname, 'wpisz nazwisko...')}
           {this.setLabel('branch', 'Oddział', 'text', branch, 'wpisz oddział...')}
@@ -91,8 +91,11 @@ class AddUser extends Component {
               {getTrainGroup}
             </select>
           </label>
-          <button>Zapisz</button>
         </form>
+        <div className="options">
+          <i className="fas fa-chevron-left" onClick={() => history.goBack()}></i>
+          <i class="fas fa-user-check" onClick={this.handleSubmit}></i>
+        </div>
       </div>
     );
   }

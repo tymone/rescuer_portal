@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 
 class Navbar extends Component {
   state = {
@@ -18,9 +18,45 @@ class Navbar extends Component {
     return (
       <header>
         <nav>
-          <div>{`${this.date(date)}.${new Date(date).getFullYear()}r`}</div>
-          <div>
-            <Link to="login" style={{ textDecoration: "none", color: "white" }}>
+          <div className="date">
+            <i className="far fa-clock"></i>
+            {`${this.date(date)}.${new Date(date).getFullYear()}r`}
+          </div>
+          <ul>
+            <li>
+              <NavLink to="/" exact>
+                <i className="fas fa-home"></i>
+                Strona główna
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/harmonogram">
+                <i className="far fa-calendar-alt"></i>
+                <span>Harmonogram</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/druzyna">
+                <i className="fas fa-users"></i>
+                <span>Drużyna</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/cwiczenia">
+                <i className="fas fa-graduation-cap"></i>
+                <span>Ćwiczenia</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/zadania">
+                <i className="fas fa-tasks"></i>
+                <span>Zadania</span>
+              </NavLink>
+            </li>
+          </ul>
+          <div className="login">
+            <Link to="login">
+              <i className="fas fa-sign-in-alt"></i>
               Logowanie
             </Link>
           </div>

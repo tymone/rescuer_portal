@@ -40,13 +40,13 @@ const TaskDetails = ({ tasks, match, remove, history }) => {
           <span>rozpoczęte przez: {workingBy ? workingBy : '-'}</span>
           <span>data zakończenia: {finishDate ? `${date(finishDate)}` : '-'}</span>
         </div>
-        <div className="options">
-          <i className="fas fa-chevron-left" onClick={() => history.goBack()}></i>
-          <Link to={`/zadania/edytuj/${id}`}>
-            <i className="fas fa-edit"></i>
-          </Link>
-          <i className="fas fa-trash-alt" onClick={() => removeTask(id)}></i>
-        </div>
+      </div>
+      <div className="options">
+        <i className="fas fa-chevron-left" onClick={() => history.goBack()}></i>
+        <Link to={`/zadania/edytuj/${id}`}>
+          <i className="fas fa-edit"></i>
+        </Link>
+        <i className="fas fa-trash-alt" onClick={() => removeTask(id)}></i>
       </div>
     </div>
   );

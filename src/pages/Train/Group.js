@@ -15,6 +15,7 @@ const Group = ({ value, index }) => {
     <li>
       <div className="item">{index + 1}</div>
       {getGroup(value)}
+      <i class="fas fa-info item"></i>
     </li>
   );
 };

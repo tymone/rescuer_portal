@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import UnderTableForm from "./UnderTableForm";
+import UnderTableForm from './UnderTableForm';
 
 class UnderTable extends Component {
   state = {
@@ -37,36 +37,11 @@ class UnderTable extends Component {
   render() {
     return (
       <div className="underTable">
-        <UnderTableForm
-          addUser={this.addUser}
-          users={this.state}
-          title={"Poza zastępem"}
-          name={"overMultitude"}
-        />
-        <UnderTableForm
-          addUser={this.addUser}
-          users={this.state}
-          title={"Ćwiczenia"}
-          name={"train"}
-        />
-        <UnderTableForm
-          addUser={this.addUser}
-          users={this.state}
-          title={"L4"}
-          name={"sick"}
-        />
-        <UnderTableForm
-          addUser={this.addUser}
-          users={this.state}
-          title={"Kurs"}
-          name={"course"}
-        />
-        <UnderTableForm
-          addUser={this.addUser}
-          users={this.state}
-          title={"Urlop"}
-          name={"leave"}
-        />
+        <UnderTableForm addUser={this.addUser} users={this.state} title={'Poza zastępem'} name={'overMultitude'} />
+        <UnderTableForm addUser={this.addUser} users={this.state} title={'Ćwiczenia'} name={'train'} />
+        <UnderTableForm addUser={this.addUser} users={this.state} title={'L4'} name={'sick'} />
+        <UnderTableForm addUser={this.addUser} users={this.state} title={'Kurs'} name={'course'} />
+        <UnderTableForm addUser={this.addUser} users={this.state} title={'Urlop'} name={'leave'} />
       </div>
     );
   }

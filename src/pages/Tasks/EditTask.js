@@ -134,12 +134,12 @@ class EditTask extends Component {
                 />
               </label>
             </div>
-            <div className="options">
-              <i className="fas fa-chevron-left" onClick={() => history.goBack()}></i>
-              <i className="fas fa-check" onClick={this.handleSubmit}></i>
-              <i className="fas fa-trash-alt" onClick={this.handleDelete}></i>
-            </div>
           </form>
+        </div>
+        <div className="options">
+          <i className="fas fa-chevron-left" onClick={() => history.goBack()}></i>
+          <i className="fas fa-check" onClick={this.handleSubmit}></i>
+          <i className="fas fa-trash-alt" onClick={this.handleDelete}></i>
         </div>
       </div>
     );

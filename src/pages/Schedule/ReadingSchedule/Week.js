@@ -1,27 +1,20 @@
-import React from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import Day from "./Day";
-import Outside from "./Outside";
-import date from "../../../helpers/setDate";
+import Day from './Day';
+import Outside from './Outside';
+import date from '../../../helpers/setDate';
 
 const Week = ({ week }) => {
-  const {
-    Monday,
-    Tuesday,
-    Wednesday,
-    Thursday,
-    Friday,
-    Saturday,
-    Sunday,
-    outside,
-    dateFrom,
-    dateTo
-  } = week;
+  const { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, outside, dateFrom, dateTo } = week;
 
   return (
     <div className="scheduleWeek">
       <h1>
         Harmonogram na okres: {date(dateFrom)} - {date(dateTo)}
+        <Link key={week.id} to={`/harmonogram/edytuj/${week.id}`}>
+          <i title="edytuj harmonogram" className="fas fa-edit"></i>
+        </Link>
       </h1>
       <div className="table">
         <Day day={Monday} name="Poniedziałek" />

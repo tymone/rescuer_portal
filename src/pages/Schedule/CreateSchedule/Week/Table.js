@@ -1,37 +1,44 @@
-import React from "react";
-import newWeek from "../../../../helpers/TemplateCreateScheduleWeek";
+import React from 'react';
+import shifts3 from '../TemplateShifts/shifts3';
+import shifts4 from '../TemplateShifts/shifts4';
+import shifts7 from '../TemplateShifts/shifts7';
 
-import Day from "./Day";
+import Day from './Day';
 
-const Table = ({ getSchedule }) => {
+const Table = ({ getSchedule, shifts }) => {
+  let shiftsTemplate;
+  let multitudeNumber;
+  switch (Number(shifts)) {
+    case 3:
+      shiftsTemplate = shifts3;
+      multitudeNumber = 6;
+      break;
+    case 4:
+      shiftsTemplate = shifts4;
+      multitudeNumber = 8;
+      break;
+    case 7:
+      shiftsTemplate = shifts7;
+      multitudeNumber = 7;
+      break;
+    default:
+      return;
+  }
   const getWeek = newSchedule => {
-    const {
-      day,
-      multitudeName,
-      time,
-      user1,
-      user2,
-      user3,
-      user4,
-      user5
-    } = newSchedule;
-
-    const multitude = [user1, user2, user3, user4, user5];
-
-    newWeek[day][multitudeName] = { time, multitude };
-
-    getSchedule(newWeek);
+    const { day, multitudeName, time, multitude } = newSchedule;
+    shiftsTemplate[day][multitudeName] = { time, multitude };
+    getSchedule(shiftsTemplate);
   };
 
   return (
     <div className="table">
-      <Day getWeek={getWeek} day={"Monday"} dayPl={"Poniedziałek"} />
-      <Day getWeek={getWeek} day={"Tuesday"} dayPl={"Wtorek"} />
-      <Day getWeek={getWeek} day={"Wednesday"} dayPl={"Środa"} />
-      <Day getWeek={getWeek} day={"Thursday"} dayPl={"Czwartek"} />
-      <Day getWeek={getWeek} day={"Friday"} dayPl={"Piątek"} />
-      <Day getWeek={getWeek} day={"Saturday"} dayPl={"Sobota"} />
-      <Day getWeek={getWeek} day={"Sunday"} dayPl={"Niedziela"} />
+      <Day day={'Monday'} getWeek={getWeek} multitudeNumber={multitudeNumber} dayPl={'Poniedziałek'} />
+      <Day day={'Tuesday'} getWeek={getWeek} multitudeNumber={multitudeNumber} dayPl={'Wtorek'} />
+      <Day day={'Wednesday'} getWeek={getWeek} multitudeNumber={multitudeNumber} dayPl={'Środa'} />
+      <Day day={'Thursday'} getWeek={getWeek} multitudeNumber={multitudeNumber} dayPl={'Czwartek'} />
+      <Day day={'Friday'} getWeek={getWeek} multitudeNumber={multitudeNumber} dayPl={'Piątek'} />
+      <Day day={'Saturday'} getWeek={getWeek} multitudeNumber={multitudeNumber} dayPl={'Sobota'} />
+      <Day day={'Sunday'} getWeek={getWeek} multitudeNumber={multitudeNumber} dayPl={'Niedziela'} />
     </div>
   );
 };

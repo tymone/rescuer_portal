@@ -1,11 +1,38 @@
-header 
-  height: 7vh
+header
+  height: 80px
   color: white
   background-color: #000
-  nav 
+  nav
     display: flex
     height: 100%
     margin: 0 20px
     justify-content: space-between
     align-items: center
+    ul
+      list-style: none
+      display: flex
+      li
+        padding: 0 20px
+        a
+          color: white
+          font-size: 18px
+          text-decoration: none
+          cursor: pointer
+          transition: .2s
+          &.active
+            border-bottom: 2px solid white
+          i
+            color: white
+            padding-right: 5px
+    .login
+      a
+        color: white
+        text-decoration: none
+        i
+          color: white
+          padding-right: 5px
+    .date
+      i
+        color: white
+        padding-right: 5px
 

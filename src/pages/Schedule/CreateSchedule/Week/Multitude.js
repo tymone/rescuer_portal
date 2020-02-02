@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class Multitude extends Component {
   state = {
-    time: "",
-    user1: "",
-    user2: "",
-    user3: "",
-    user4: "",
-    user5: ""
+    time: '',
+    rescuer1: '',
+    rescuer2: '',
+    rescuer3: '',
+    rescuer4: '',
+    rescuer5: ''
   };
 
   handleChange = e => {
@@ -21,64 +21,31 @@ export default class Multitude extends Component {
 
   handleSubmit = multitude => {
     const { multitudeName, getMultitude } = this.props;
-    const { user1, user2, user3, user4, user5, time } = multitude;
-    const newSchedule = {
+    const { rescuer1, rescuer2, rescuer3, rescuer4, rescuer5, time } = multitude;
+    const setMultitude = {
       multitudeName,
       time,
-      user1: user1 ? user1 : "---",
-      user2: user2 ? user2 : "---",
-      user3: user3 ? user3 : "---",
-      user4: user4 ? user4 : "---",
-      user5: user5 ? user5 : "---"
+      multitude: [
+        `${rescuer1 ? rescuer1 : '---'}`,
+        `${rescuer2 ? rescuer2 : '---'}`,
+        `${rescuer3 ? rescuer3 : '---'}`,
+        `${rescuer4 ? rescuer4 : '---'}`,
+        `${rescuer5 ? rescuer5 : '---'}`
+      ]
     };
-    getMultitude(newSchedule);
+    getMultitude(setMultitude);
   };
 
   render() {
-    const { user1, user2, user3, user4, user5, time } = this.state;
+    const { rescuer1, rescuer2, rescuer3, rescuer4, rescuer5, time } = this.state;
     return (
       <div className="multitude">
-        <input
-          type="time"
-          name="time"
-          value={time}
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          placeholder="nazwisko"
-          name="user1"
-          value={user1}
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          placeholder="nazwisko"
-          name="user2"
-          value={user2}
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          placeholder="nazwisko"
-          name="user3"
-          value={user3}
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          placeholder="nazwisko"
-          name="user4"
-          value={user4}
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          placeholder="nazwisko"
-          name="user5"
-          value={user5}
-          onChange={this.handleChange}
-        />
+        <input type="time" name="time" value={time} onChange={this.handleChange} />
+        <input type="text" placeholder="nazwisko" name="rescuer1" value={rescuer1} onChange={this.handleChange} />
+        <input type="text" placeholder="nazwisko" name="rescuer2" value={rescuer2} onChange={this.handleChange} />
+        <input type="text" placeholder="nazwisko" name="rescuer3" value={rescuer3} onChange={this.handleChange} />
+        <input type="text" placeholder="nazwisko" name="rescuer4" value={rescuer4} onChange={this.handleChange} />
+        <input type="text" placeholder="nazwisko" name="rescuer5" value={rescuer5} onChange={this.handleChange} />
       </div>
     );
   }

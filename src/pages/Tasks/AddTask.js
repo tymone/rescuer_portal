@@ -8,7 +8,7 @@ class AddTask extends Component {
   state = {
     title: '',
     content: '',
-    status: '',
+    status: 'to do',
     addDate: '',
     finishDate: '',
     createdBy: '',
@@ -80,7 +80,6 @@ class AddTask extends Component {
               <label>
                 <span>status:</span>
                 <select value={status} name="status" onChange={this.handleChange}>
-                  <option value=""></option>
                   <option value="to do">do zrobienia</option>
                   <option value="in progress">w trakcie wykonywania/nie ukończone</option>
                   <option value="done">wykonane</option>
@@ -109,11 +108,11 @@ class AddTask extends Component {
                 />
               </label>
             </div>
-            <div className="options">
-              <i className="fas fa-chevron-left" onClick={() => history.goBack()}></i>
-              <i className="fas fa-check" onClick={this.addTask}></i>
-            </div>
           </form>
+        </div>
+        <div className="options">
+          <i className="fas fa-chevron-left" onClick={() => history.goBack()}></i>
+          <i className="fas fa-check" onClick={this.addTask}></i>
         </div>
       </div>
     );

@@ -60,6 +60,7 @@ class Table extends Component {
 
   render() {
     const { schedule, redirect } = this.state;
+    const { history } = this.props;
     if (redirect) {
       return <Redirect to="/harmonogram" />;
     }
@@ -72,7 +73,10 @@ class Table extends Component {
         <input type="date" defaultValue={schedule.dateTo} onChange={this.handleChange} />
         <Week week={schedule} getWeek={this.getScheduleWeek} />
         <UnderTable getUnderTable={this.getUnderTable} UnderTableEmployee={schedule.outside} />
-        <button onClick={this.updateSchedule}>Zapisz zmiany</button>
+        <div className="options">
+          <i className="fas fa-chevron-left" onClick={() => history.goBack()}></i>
+          <i class="far fa-calendar-check" onClick={this.updateSchedule}></i>
+        </div>
       </div>
     );
   }

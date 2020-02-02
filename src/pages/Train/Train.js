@@ -18,6 +18,7 @@ const Train = ({ groups }) => {
           <span>OSRG 2</span>
           <span>Dołowe 2</span>
           <span>Powierzchnia 2</span>
+          <span>szczegóły</span>
         </div>
         <div className="body">
           <ul className="groups">{getGroups}</ul>

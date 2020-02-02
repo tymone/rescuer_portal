@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const Multitude = ({ multitude, time }) => {
-  const getUsers = multitude.map(user => <p key={user}>{user}</p>);
+  const getUsers = multitude.map((user, i) => <p key={`${user}${i}`}>{user}</p>);
 
   return (
     <div className="multitude">

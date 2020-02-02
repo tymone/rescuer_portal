@@ -1,21 +1,31 @@
-import React from "react";
+import React from 'react';
 
-import Multitude from "./Multitude";
+import Multitude from './Multitude';
 
-const Day = ({ day, dayPl, getWeek }) => {
-  const getDay = newSchedule => {
-    newSchedule.day = day;
-    newSchedule.multitude = getWeek(newSchedule);
+const Day = ({ day, dayPl, getWeek, multitudeNumber }) => {
+  const getDay = newMultitude => {
+    const { multitudeName, time, multitude } = newMultitude;
+    const setDay = {
+      day,
+      multitudeName,
+      time,
+      multitude
+    };
+    getWeek(setDay);
   };
+
+  const setMultitudes = (multitudeNumbers = 6) => {
+    const arr = [];
+    for (let i = 0; i < multitudeNumbers; i++) {
+      arr.push(`multitude${i + 1}`);
+    }
+    return arr.map(multitude => <Multitude key={multitude} getMultitude={getDay} multitudeName={multitude} />);
+  };
+
   return (
-    <div className={`day ${day}`}>
-      <p>{`${dayPl}`}</p>
-      <Multitude getMultitude={getDay} multitudeName={"multitude1"} />
-      <Multitude getMultitude={getDay} multitudeName={"multitude2"} />
-      <Multitude getMultitude={getDay} multitudeName={"multitude3"} />
-      <Multitude getMultitude={getDay} multitudeName={"multitude4"} />
-      <Multitude getMultitude={getDay} multitudeName={"multitude5"} />
-      <Multitude getMultitude={getDay} multitudeName={"multitude6"} />
+    <div className="day">
+      <p>{dayPl}</p>
+      {setMultitudes(multitudeNumber)}
     </div>
   );
 };

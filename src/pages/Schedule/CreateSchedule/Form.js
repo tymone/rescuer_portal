@@ -8,192 +8,19 @@ import UnderTable from './UnderTable/UnderTable';
 
 class Form extends Component {
   state = {
+    activeSubmitButton: false,
     redirect: false,
+    shifts: '',
     id: '',
     dateFrom: '',
     dateTo: '',
-    Monday: {
-      multitude1: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude2: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude3: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude4: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude5: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude6: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      }
-    },
-    Tuesday: {
-      multitude1: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude2: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude3: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude4: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude5: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude6: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      }
-    },
-    Wednesday: {
-      multitude1: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude2: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude3: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude4: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude5: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude6: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      }
-    },
-    Thursday: {
-      multitude1: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude2: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude3: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude4: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude5: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude6: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      }
-    },
-    Friday: {
-      multitude1: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude2: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude3: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude4: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude5: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude6: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      }
-    },
-    Saturday: {
-      multitude1: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude2: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude3: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude4: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude5: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude6: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      }
-    },
-    Sunday: {
-      multitude1: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude2: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude3: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude4: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude5: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      },
-      multitude6: {
-        time: '',
-        multitude: ['---', '---', '---', '---', '---']
-      }
-    },
+    Monday: {},
+    Tuesday: {},
+    Wednesday: {},
+    Thursday: {},
+    Friday: {},
+    Saturday: {},
+    Sunday: {},
     outside: {
       overMultitude: [],
       train: [],
@@ -205,8 +32,10 @@ class Form extends Component {
 
   componentWillMount() {
     let { id } = this.props;
+    const { shifts } = this.props;
     this.setState({
-      id: ++id
+      id: ++id,
+      shifts
     });
   }
 
@@ -225,11 +54,13 @@ class Form extends Component {
       Thursday,
       Friday,
       Saturday,
-      Sunday
+      Sunday,
+      activeSubmitButton: true
     });
   };
 
   getUnderTable = outside => {
+    console.log(outside);
     this.setState({
       outside
     });
@@ -238,28 +69,47 @@ class Form extends Component {
   handleSubmit = e => {
     e.preventDefault();
     let { add } = this.props;
-    const { redirect } = this.state;
+    const { id, dateFrom, dateTo, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, outside, redirect } = this.state;
+    const newSchedule = {
+      id,
+      dateFrom,
+      dateTo,
+      Monday,
+      Tuesday,
+      Wednesday,
+      Thursday,
+      Friday,
+      Saturday,
+      Sunday,
+      outside
+    };
 
-    add(this.state);
+    add(newSchedule);
     this.setState({
       redirect: !redirect
     });
   };
 
   render() {
-    const { redirect } = this.state;
+    const { redirect, activeSubmitButton } = this.state;
+    const { history, shifts } = this.props;
     if (redirect) {
       return <Redirect to="/harmonogram" />;
     }
     return (
       <div className="schedule">
-        <span>Harmonogram od:</span>
-        <input name="dateFrom" onChange={this.handleChange} type="date" required />
-        <span>do:</span>
-        <input name="dateTo" onChange={this.handleChange} type="date" required />
-        <Table getSchedule={this.getSchedule} />
+        <div className="dateTitle">
+          <span>Harmonogram od:</span>
+          <input name="dateFrom" onChange={this.handleChange} type="date" required />
+          <span>do:</span>
+          <input name="dateTo" onChange={this.handleChange} type="date" required />
+        </div>
+        <Table shifts={shifts} getSchedule={this.getSchedule} />
         <UnderTable getUnderTable={this.getUnderTable} />
-        <button onClick={this.handleSubmit}>Zapisz</button>
+        <div className="options">
+          <i className="fas fa-chevron-left" onClick={() => history.goBack()}></i>
+          {activeSubmitButton ? <i className="fas fa-calendar-check" onClick={this.handleSubmit}></i> : null}
+        </div>
       </div>
     );
   }

@@ -4,10 +4,9 @@ import { Route, Switch } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
 import Schedule from '../pages/Schedule/Schedule';
-import CreateSchedule from '../pages/Schedule/CreateSchedule/Form';
+import CreateSchedule from '../pages/Schedule/CreateSchedule/CreateSchedule';
 import Table from '../pages/Schedule/EditSchedule/Table';
-import EditScheduleList from '../pages/Schedule/EditSchedule/EditScheduleList';
-import Team from '../pages/Team/Table';
+import Team from '../pages/Team/Team';
 import AddUser from '../pages/Team/AddUser';
 import EditUser from '../pages/Team/EditUser';
 import UserInfo from '../pages/Team/UserInfo';
@@ -26,9 +25,8 @@ const Page = () => (
       <Route path="/" exact component={HomePage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/harmonogram" exact component={Schedule} />
-      <Route path="/harmonogram/stworz" component={CreateSchedule} />
+      <Route path="/harmonogram/dodaj" exact component={CreateSchedule} />
       <Route path="/harmonogram/edytuj/:id" component={Table} />
-      <Route path="/harmonogram/edytuj" exact component={EditScheduleList} />
       <Route path="/druzyna" exact component={Team} />
       <Route path="/druzyna/dodaj" component={AddUser} />
       <Route path="/druzyna/edytuj/:id" component={EditUser} />
