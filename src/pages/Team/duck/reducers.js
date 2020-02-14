@@ -12,6 +12,14 @@ const INITIAL_STATE = {
       KSRGPosition: 'ratownik',
       doctor: 1546297200000,
       train: 'grupa1',
+      included: {
+        osrg1: true,
+        under1: true,
+        ground1: true,
+        osrg2: true,
+        under2: true,
+        ground2: true
+      },
       duty: '',
       inaccessible: '',
       suspend: false
@@ -25,6 +33,14 @@ const INITIAL_STATE = {
       KSRGPosition: 'ratownik',
       doctor: 1546383600000,
       train: 'grupa2',
+      included: {
+        osrg1: false,
+        under1: false,
+        ground1: false,
+        osrg2: false,
+        under2: false,
+        ground2: false
+      },
       duty: '',
       inaccessible: '',
       suspend: false
@@ -38,6 +54,14 @@ const INITIAL_STATE = {
       KSRGPosition: 'ratownik',
       doctor: 1546470000000,
       train: 'grupa3',
+      included: {
+        osrg1: false,
+        under1: false,
+        ground1: false,
+        osrg2: false,
+        under2: false,
+        ground2: false
+      },
       duty: '',
       inaccessible: '',
       suspend: false
@@ -51,6 +75,14 @@ const INITIAL_STATE = {
       KSRGPosition: 'ratownik',
       doctor: 1546556400000,
       train: 'grupa4',
+      included: {
+        osrg1: false,
+        under1: false,
+        ground1: false,
+        osrg2: false,
+        under2: false,
+        ground2: false
+      },
       duty: '',
       inaccessible: '',
       suspend: false
@@ -64,6 +96,14 @@ const INITIAL_STATE = {
       KSRGPosition: 'ratownik',
       doctor: 1549321200000,
       train: 'grupa4',
+      included: {
+        osrg1: false,
+        under1: false,
+        ground1: false,
+        osrg2: false,
+        under2: false,
+        ground2: false
+      },
       duty: '',
       inaccessible: '',
       suspend: false
@@ -77,6 +117,14 @@ const INITIAL_STATE = {
       KSRGPosition: 'zastępowy',
       doctor: 1549407600000,
       train: 'grupa5',
+      included: {
+        osrg1: false,
+        under1: false,
+        ground1: false,
+        osrg2: false,
+        under2: false,
+        ground2: false
+      },
       duty: '',
       inaccessible: '',
       suspend: false
@@ -90,6 +138,14 @@ const INITIAL_STATE = {
       KSRGPosition: 'ratownik',
       doctor: 1549494000000,
       train: 'grupa6',
+      included: {
+        osrg1: false,
+        under1: false,
+        ground1: false,
+        osrg2: false,
+        under2: false,
+        ground2: false
+      },
       duty: '',
       inaccessible: '',
       suspend: false
@@ -103,6 +159,14 @@ const INITIAL_STATE = {
       KSRGPosition: 'ratownik',
       doctor: 1549580400000,
       train: 'grupa7',
+      included: {
+        osrg1: false,
+        under1: false,
+        ground1: false,
+        osrg2: false,
+        under2: false,
+        ground2: false
+      },
       duty: '',
       inaccessible: '',
       suspend: false
@@ -116,6 +180,14 @@ const INITIAL_STATE = {
       KSRGPosition: 'ratownik',
       doctor: 1549666800000,
       train: 'grupa8',
+      included: {
+        osrg1: false,
+        under1: false,
+        ground1: false,
+        osrg2: false,
+        under2: false,
+        ground2: false
+      },
       duty: '',
       inaccessible: '',
       suspend: false
@@ -129,6 +201,14 @@ const INITIAL_STATE = {
       KSRGPosition: 'ratownik',
       doctor: 1549753200000,
       train: 'grupa1',
+      included: {
+        osrg1: false,
+        under1: false,
+        ground1: false,
+        osrg2: false,
+        under2: false,
+        ground2: false
+      },
       duty: '',
       inaccessible: '',
       suspend: false
@@ -142,6 +222,14 @@ const INITIAL_STATE = {
       KSRGPosition: 'ratownik',
       doctor: 1562796000000,
       train: 'grupa2',
+      included: {
+        osrg1: false,
+        under1: false,
+        ground1: false,
+        osrg2: false,
+        under2: false,
+        ground2: false
+      },
       duty: '',
       inaccessible: '',
       suspend: false
@@ -155,6 +243,14 @@ const INITIAL_STATE = {
       KSRGPosition: 'ratownik',
       doctor: 1568152800000,
       train: 'grupa3',
+      included: {
+        osrg1: false,
+        under1: false,
+        ground1: false,
+        osrg2: false,
+        under2: false,
+        ground2: false
+      },
       duty: '',
       inaccessible: '',
       suspend: false
@@ -168,6 +264,14 @@ const INITIAL_STATE = {
       KSRGPosition: 'mechanik',
       doctor: 1568162800000,
       train: 'grupa3',
+      included: {
+        osrg1: false,
+        under1: false,
+        ground1: false,
+        osrg2: false,
+        under2: false,
+        ground2: false
+      },
       duty: '',
       inaccessible: '',
       suspend: true
@@ -185,13 +289,13 @@ const teamReducer = (state = INITIAL_STATE, action) => {
       };
     case types.REMOVE_RESCUER:
       const deletedItem = action.item;
-      const newList = state.list.filter(item => item.id !== deletedItem);
+      const newList = state.list.filter((item) => item.id !== deletedItem);
       return {
         ...state,
         list: newList
       };
     case types.UPDATE_RESCUER:
-      let id = state.list.findIndex(rescuer => rescuer.id === Number(action.item.id));
+      let id = state.list.findIndex((rescuer) => rescuer.id === Number(action.item.id));
       state.list.splice(id, 1, action.item);
       return {
         ...state,

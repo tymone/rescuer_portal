@@ -1,10 +1,10 @@
 import types from './types';
 
-const add = item => ({
+const add = (item) => ({
   type: types.ADD_GROUP,
   item
 });
 
 export default {
   add
-}
+};

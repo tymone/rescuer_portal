@@ -65,15 +65,6 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);
 
-// delete = i => {
-//   const team = [...this.state.team];
-//   const index = team.findIndex(user => user.id === i);
-//   team.splice(index, 1);
-//   this.setState({
-//     team
-//   });
-// };
-
 // handleSort = i => {
 //   let sortMove = this.state.sortMove;
 //   let team = [...this.state.team];

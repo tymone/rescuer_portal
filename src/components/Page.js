@@ -11,7 +11,9 @@ import AddUser from '../pages/Team/AddUser';
 import EditUser from '../pages/Team/EditUser';
 import UserInfo from '../pages/Team/UserInfo';
 import Train from '../pages/Train/Train';
-import EditTrain from '../pages/Train/EditTrain';
+import Details from '../pages/Train/Details/Details';
+import AddTrain from '../pages/Train/AddTrain/AddTrain';
+import EditTrain from '../pages/Train/EditTrain/EditTrain';
 import Tasks from '../pages/Tasks/Tasks';
 import AddTask from '../pages/Tasks/AddTask';
 import TaskDetails from '../pages/Tasks/TaskDetails';
@@ -32,7 +34,9 @@ const Page = () => (
       <Route path="/druzyna/edytuj/:id" component={EditUser} />
       <Route path="/druzyna/:id" component={UserInfo} />
       <Route path="/cwiczenia" exact component={Train} />
-      <Route path="/cwiczenia/edytuj" component={EditTrain} />
+      <Route path="/cwiczenia/dodaj" component={AddTrain} />
+      <Route path="/cwiczenia/:id" exact component={Details} />
+      <Route path="/cwiczenia/edytuj/:id" component={EditTrain} />
       <Route path="/zadania" exact component={Tasks} />
       <Route path="/zadania/dodaj" component={AddTask} />
       <Route path="/zadania/:id" exact component={TaskDetails} />

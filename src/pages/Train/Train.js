@@ -1,35 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import Head from './Table/Head';
+import Body from './Table/Body';
 import Group from './Group';
 
-const Train = ({ groups }) => {
-  const getGroupsToArray = Object.keys(groups);
-  const getGroups = getGroupsToArray.map((group, i) => <Group key={group} value={groups[group]} index={i} />);
+const Train = ({ train: { groups, year } }) => {
+  const setArrayFromGroups = Object.keys(groups);
+  const listItemDetails = setArrayFromGroups.map((item) => <Group details={groups[item]} group={setArrayFromGroups.indexOf(item)} />);
 
   return (
     <div className="train">
-      <h1>Terminy ćwiczeń ratowniczych dla poszczególnych grup</h1>
+      <div className="options">
+        <Link to="/cwiczenia/dodaj">
+          <i className="far fa-calendar-plus"></i>
+        </Link>
+      </div>
+      <h1>Terminy ćwiczeń ratowniczych na rok {year}</h1>
       <div className="table">
-        <div className="head">
-          <span>Grupa</span>
-          <span>OSRG 1</span>
-          <span>Dołowe 1</span>
-          <span>Powierzchnia 1</span>
-          <span>OSRG 2</span>
-          <span>Dołowe 2</span>
-          <span>Powierzchnia 2</span>
-          <span>szczegóły</span>
-        </div>
-        <div className="body">
-          <ul className="groups">{getGroups}</ul>
-        </div>
+        <Head title={['Grupa', 'OSRG 1', 'Dołowe 1', 'Powierzchnia 1', 'OSRG 2', 'Dołowe 2', 'Powierzchnia 2', 'szczegóły']} />
+        <Body list={listItemDetails} />
       </div>
     </div>
   );
 };
 
-const mapStateToProps = state => ({
-  groups: state.group.list
+const mapStateToProps = (state) => ({
+  train: state.group.list[0]
 });
 
 export default connect(mapStateToProps)(Train);

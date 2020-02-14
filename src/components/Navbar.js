@@ -13,6 +13,25 @@ class Navbar extends Component {
     return `${day < 10 ? `0${day}` : day}.${month < 10 ? `0${month}` : month}`;
   };
 
+  setLink = () => {
+    const links = [
+      { href: '/', icon: 'fas fa-home', title: 'Strona główna', exact: true },
+      { href: '/harmonogram', icon: 'far fa-calendar-alt', title: 'Harmonogram' },
+      { href: '/druzyna', icon: 'fas fa-users', title: 'Drużyna KSRG' },
+      { href: '/cwiczenia', icon: 'fas fa-graduation-cap', title: 'Ćwiczenia' },
+      { href: '/zadania', icon: 'fas fa-tasks', title: 'Zadania' }
+    ];
+
+    return links.map(link => (
+      <li key={link.title}>
+        <NavLink to={link.href} exact={link.exact ? link.exact : false}>
+          <i className={link.icon}></i>
+          {link.title}
+        </NavLink>
+      </li>
+    ));
+  };
+
   render() {
     const { date } = this.state;
     return (
@@ -22,38 +41,7 @@ class Navbar extends Component {
             <i className="far fa-clock"></i>
             {`${this.date(date)}.${new Date(date).getFullYear()}r`}
           </div>
-          <ul>
-            <li>
-              <NavLink to="/" exact>
-                <i className="fas fa-home"></i>
-                Strona główna
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/harmonogram">
-                <i className="far fa-calendar-alt"></i>
-                <span>Harmonogram</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/druzyna">
-                <i className="fas fa-users"></i>
-                <span>Drużyna</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/cwiczenia">
-                <i className="fas fa-graduation-cap"></i>
-                <span>Ćwiczenia</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/zadania">
-                <i className="fas fa-tasks"></i>
-                <span>Zadania</span>
-              </NavLink>
-            </li>
-          </ul>
+          <ul>{this.setLink()}</ul>
           <div className="login">
             <Link to="login">
               <i className="fas fa-sign-in-alt"></i>

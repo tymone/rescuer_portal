@@ -1,22 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import date from '../../helpers/setDate';
 
-const Group = ({ value, index }) => {
-  const getGroup = value => {
-    return value.map(getDate => (
-      <div key={getDate} className="item">
-        {date(getDate)}
-      </div>
-    ));
-  };
+const Group = ({ details, group }) => {
+  const getGroups = details.map((item, i) => <li key={i}>{date(item)}</li>);
 
   return (
-    <li>
-      <div className="item">{index + 1}</div>
-      {getGroup(value)}
-      <i class="fas fa-info item"></i>
-    </li>
+    <ul>
+      <li>{group + 1}</li>
+      {getGroups}
+      <li>
+        <Link to={`/cwiczenia/${group}`}>
+          <i className="fas fa-info"></i>
+        </Link>
+        <Link to={`/cwiczenia/edytuj/${group}`}>
+          <i className="fas fa-edit" title="edytuj"></i>
+        </Link>
+      </li>
+    </ul>
   );
 };
 

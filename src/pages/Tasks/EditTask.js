@@ -21,7 +21,7 @@ class EditTask extends Component {
   };
   componentWillMount() {
     const { tasks, match } = this.props;
-    const getTask = tasks.find(task => task.id === Number(match.params.id));
+    const getTask = tasks.find((task) => task.id === Number(match.params.id));
     const { id, title, content, status, addDate, finishDate, createdBy, workingBy, finishedBy } = getTask;
     this.setState({
       id,
@@ -36,13 +36,13 @@ class EditTask extends Component {
     });
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     const { id, title, content, status, addDate, finishDate, createdBy, workingBy, finishedBy, redirect } = this.state;
     const { edit } = this.props;
@@ -65,7 +65,7 @@ class EditTask extends Component {
     });
   };
 
-  handleDelete = e => {
+  handleDelete = (e) => {
     e.preventDefault();
     const { id, redirect } = this.state;
     const { remove } = this.props;
@@ -109,7 +109,7 @@ class EditTask extends Component {
                 <span>data dodania:</span>
                 <input
                   type="text"
-                  onFocus={e => (e.target.type = 'date')}
+                  onFocus={(e) => (e.target.type = 'date')}
                   value={date(addDate)}
                   name="addDate"
                   onChange={this.handleChange}
@@ -127,7 +127,7 @@ class EditTask extends Component {
                 <span>data zakończenia:</span>
                 <input
                   type="text"
-                  onFocus={e => (e.target.type = 'date')}
+                  onFocus={(e) => (e.target.type = 'date')}
                   value={finishDate}
                   name="finishDate"
                   onChange={this.handleChange}
@@ -146,13 +146,13 @@ class EditTask extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   tasks: state.tasks.list
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   edit: (editTask, id) => dispatch(actions.edit(editTask, id)),
-  remove: id => dispatch(actions.remove(id))
+  remove: (id) => dispatch(actions.remove(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditTask);

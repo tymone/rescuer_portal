@@ -1,4 +1,15 @@
-.train
+.newTrainSchedule
+  label
+    display: block
+    text-align: center
+    font-size: 40px
+    font-weight: bold
+    input
+      border: none
+      border-bottom: 1px solid grey
+      font-size: 30px
+      width: 100px
+      margin-bottom: 40px
   .table
     width: 90%
     margin: 0 auto
@@ -12,38 +23,35 @@
         width: 100%
         padding: 10px 10px
         text-align: center
-
     .body
       ul
         list-style: none
         li
+          display: flex
+          justify-content: space-around
+          border-bottom: 1px solid grey
           ul
             display: flex
             justify-content: space-around
-            border-bottom: 1px solid grey
-            padding: 10px 0
+            width: 100%
             li
               width: 100%
+              padding: 10px 0
               text-align: center
               font-weight: bold
               &:nth-of-type(2), &:nth-of-type(5)
                 color: red
               &:nth-of-type(4), &:nth-of-type(7)
                 color: green
-              a
-                padding: 0 10px
-    .dateRow
+    .addRow
       ul
         list-style: none
         display: flex
         justify-content: space-around
-        border-bottom: 1px solid grey
         padding: 10px 0
         li
           width: 100%
           text-align: center
-          font-weight: bold
-          &:nth-of-type(4), &:nth-of-type(7)
-            color: red
-          &:nth-of-type(6), &:nth-of-type(9)
-            color: green
+          input
+            border: none
+            border-bottom: 1px solid grey
