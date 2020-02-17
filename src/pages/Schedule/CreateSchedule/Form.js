@@ -3,8 +3,12 @@ import { connect } from 'react-redux';
 import actions from '../duck/actions';
 import { Redirect } from 'react-router';
 
-import Table from './Week/Table';
+import Week from '../Table/Week';
 import UnderTable from './UnderTable/UnderTable';
+
+import shifts3 from './TemplateShifts/shifts3';
+import shifts4 from './TemplateShifts/shifts4';
+import shifts7 from './TemplateShifts/shifts7';
 
 class Form extends Component {
   state = {
@@ -22,7 +26,6 @@ class Form extends Component {
     Saturday: {},
     Sunday: {},
     outside: {
-      overMultitude: [],
       train: [],
       sick: [],
       course: [],
@@ -30,43 +33,54 @@ class Form extends Component {
     }
   };
 
-  componentWillMount() {
+  componentDidMount() {
     let { id } = this.props;
-    const { shifts } = this.props;
+    const { shiftsNumber } = this.props;
     this.setState({
       id: ++id,
-      shifts
+      shifts: shiftsNumber
     });
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
-  getSchedule = newSchedule => {
-    const { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday } = newSchedule;
-    this.setState({
-      Monday,
-      Tuesday,
-      Wednesday,
-      Thursday,
-      Friday,
-      Saturday,
-      Sunday,
-      activeSubmitButton: true
-    });
+  getSchedule = (newSchedule) => {
+    const { day, multitudeName, time, multitude } = newSchedule;
+
+    this.setState((prevState) => ({
+      [day]: {
+        ...prevState[day],
+        [multitudeName]: {
+          time,
+          multitude
+        }
+      }
+    }));
+    // const { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday } = newSchedule;
+    // this.setState({
+    //   Monday,
+    //   Tuesday,
+    //   Wednesday,
+    //   Thursday,
+    //   Friday,
+    //   Saturday,
+    //   Sunday,
+    //   activeSubmitButton: true
+    // });
   };
 
-  getUnderTable = outside => {
+  getUnderTable = (outside) => {
     console.log(outside);
     this.setState({
       outside
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     let { add } = this.props;
     const { id, dateFrom, dateTo, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, outside, redirect } = this.state;
@@ -90,22 +104,40 @@ class Form extends Component {
     });
   };
 
+  sendScheduleTemplate = (shifts) => {
+    let shiftsTemplate = shifts3;
+    switch (Number(shifts)) {
+      case 3:
+        shiftsTemplate = shifts3;
+        break;
+      case 4:
+        shiftsTemplate = shifts4;
+        break;
+      case 7:
+        shiftsTemplate = shifts7;
+        break;
+      default:
+        return;
+    }
+    return shiftsTemplate;
+  };
+
   render() {
     const { redirect, activeSubmitButton } = this.state;
-    const { history, shifts } = this.props;
+    const { history, shiftsNumber } = this.props;
     if (redirect) {
       return <Redirect to="/harmonogram" />;
     }
     return (
-      <div className="schedule">
+      <div>
         <div className="dateTitle">
           <span>Harmonogram od:</span>
           <input name="dateFrom" onChange={this.handleChange} type="date" required />
           <span>do:</span>
           <input name="dateTo" onChange={this.handleChange} type="date" required />
         </div>
-        <Table shifts={shifts} getSchedule={this.getSchedule} />
-        <UnderTable getUnderTable={this.getUnderTable} />
+        <Week type={'create'} getSchedule={this.getSchedule} schedule={this.sendScheduleTemplate(shiftsNumber)} />
+        {/* <UnderTable getUnderTable={this.getUnderTable} /> */}
         <div className="options">
           <i className="fas fa-chevron-left" onClick={() => history.goBack()}></i>
           {activeSubmitButton ? <i className="fas fa-calendar-check" onClick={this.handleSubmit}></i> : null}
@@ -115,12 +147,12 @@ class Form extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   id: state.schedules.counter
 });
 
-const mapDispatchToProps = dispatch => ({
-  add: newSchedule => dispatch(actions.add(newSchedule))
+const mapDispatchToProps = (dispatch) => ({
+  add: (newSchedule) => dispatch(actions.add(newSchedule))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);
