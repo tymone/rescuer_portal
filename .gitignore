@@ -16,8 +16,6 @@
 /build
 
 # helper
-/src/pages/Schedule/CreateSchedule.js
-/src/pages/Schedule/EditSchedule.js
 
 # misc
 .DS_Store
