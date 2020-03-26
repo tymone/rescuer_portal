@@ -18,13 +18,13 @@ class AddTask extends Component {
     redirect: false
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
-  addTask = e => {
+  addTask = (e) => {
     e.preventDefault();
 
     const { title, content, status, addDate, finishDate, createdBy, workingBy, finishedBy, redirect } = this.state;
@@ -87,7 +87,7 @@ class AddTask extends Component {
               </label>
               <label>
                 <span>data dodania:</span>
-                <input type="text" onFocus={e => (e.target.type = 'date')} value={addDate} name="addDate" onChange={this.handleChange} />
+                <input type="text" onFocus={(e) => (e.target.type = 'date')} value={addDate} name="addDate" onChange={this.handleChange} />
               </label>
               <label>
                 <span>dodał:</span>
@@ -101,7 +101,7 @@ class AddTask extends Component {
                 <span>data zakończenia:</span>
                 <input
                   type="text"
-                  onFocus={e => (e.target.type = 'date')}
+                  onFocus={(e) => (e.target.type = 'date')}
                   value={finishDate}
                   name="finishDate"
                   onChange={this.handleChange}
@@ -111,7 +111,7 @@ class AddTask extends Component {
           </form>
         </div>
         <div className="options">
-          <i className="fas fa-chevron-left" onClick={() => history.goBack()}></i>
+          <i className="fas fa-chevron-left" onClick={history.goBack}></i>
           <i className="fas fa-check" onClick={this.addTask}></i>
         </div>
       </div>
@@ -119,13 +119,13 @@ class AddTask extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   tasks: state.tasks.list,
   counter: state.tasks.counter
 });
 
-const mapDispatchToProps = dispatch => ({
-  add: newTask => dispatch(actions.add(newTask))
+const mapDispatchToProps = (dispatch) => ({
+  add: (newTask) => dispatch(actions.add(newTask))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddTask);

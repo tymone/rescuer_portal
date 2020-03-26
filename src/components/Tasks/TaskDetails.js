@@ -7,10 +7,10 @@ import date from './../../helpers/setDate';
 
 const TaskDetails = ({ tasks, match, remove, history }) => {
   const { id } = match.params;
-  const taskDetails = tasks.find(task => task.id === Number(id));
+  const taskDetails = tasks.find((task) => task.id === Number(id));
   const { title, content, status, addDate, finishDate, createdBy, workingBy } = taskDetails;
 
-  const setStatus = status => {
+  const setStatus = (status) => {
     switch (status) {
       case 'to do':
         return 'do zrobienia';
@@ -23,7 +23,7 @@ const TaskDetails = ({ tasks, match, remove, history }) => {
     }
   };
 
-  const removeTask = id => {
+  const removeTask = (id) => {
     remove(id);
     history.push('/zadania');
   };
@@ -42,7 +42,7 @@ const TaskDetails = ({ tasks, match, remove, history }) => {
         </div>
       </div>
       <div className="options">
-        <i className="fas fa-chevron-left" onClick={() => history.goBack()}></i>
+        <i className="fas fa-chevron-left" onClick={history.goBack}></i>
         <Link to={`/zadania/edytuj/${id}`}>
           <i className="fas fa-edit"></i>
         </Link>
@@ -52,12 +52,12 @@ const TaskDetails = ({ tasks, match, remove, history }) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   tasks: state.tasks.list
 });
 
-const mapDispatchToProps = dispatch => ({
-  remove: id => dispatch(actions.remove(id))
+const mapDispatchToProps = (dispatch) => ({
+  remove: (id) => dispatch(actions.remove(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskDetails);

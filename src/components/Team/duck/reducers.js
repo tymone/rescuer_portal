@@ -11,17 +11,20 @@ const INITIAL_STATE = {
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
       doctor: 1546297200000,
-      train: 'grupa1',
+      trainingGroup: '1',
       included: {
         osrg1: true,
-        under1: true,
+        under1: false,
         ground1: true,
-        osrg2: true,
+        osrg2: false,
         under2: true,
-        ground2: true
+        ground2: false
       },
       duty: '',
-      inaccessible: '',
+      inaccessible: {
+        from: '',
+        to: ''
+      },
       suspend: false
     },
     {
@@ -32,7 +35,7 @@ const INITIAL_STATE = {
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
       doctor: 1546383600000,
-      train: 'grupa2',
+      trainingGroup: '2',
       included: {
         osrg1: false,
         under1: false,
@@ -42,7 +45,10 @@ const INITIAL_STATE = {
         ground2: false
       },
       duty: '',
-      inaccessible: '',
+      inaccessible: {
+        from: '',
+        to: ''
+      },
       suspend: false
     },
     {
@@ -53,7 +59,7 @@ const INITIAL_STATE = {
       minePosition: 'ślusarz',
       KSRGPosition: 'ratownik',
       doctor: 1546470000000,
-      train: 'grupa3',
+      trainingGroup: '3',
       included: {
         osrg1: false,
         under1: false,
@@ -63,7 +69,10 @@ const INITIAL_STATE = {
         ground2: false
       },
       duty: '',
-      inaccessible: '',
+      inaccessible: {
+        from: '',
+        to: ''
+      },
       suspend: false
     },
     {
@@ -74,7 +83,7 @@ const INITIAL_STATE = {
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
       doctor: 1546556400000,
-      train: 'grupa4',
+      trainingGroup: '4',
       included: {
         osrg1: false,
         under1: false,
@@ -84,7 +93,10 @@ const INITIAL_STATE = {
         ground2: false
       },
       duty: '',
-      inaccessible: '',
+      inaccessible: {
+        from: '',
+        to: ''
+      },
       suspend: false
     },
     {
@@ -95,7 +107,7 @@ const INITIAL_STATE = {
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
       doctor: 1549321200000,
-      train: 'grupa4',
+      trainingGroup: '2',
       included: {
         osrg1: false,
         under1: false,
@@ -105,7 +117,10 @@ const INITIAL_STATE = {
         ground2: false
       },
       duty: '',
-      inaccessible: '',
+      inaccessible: {
+        from: '',
+        to: ''
+      },
       suspend: false
     },
     {
@@ -116,7 +131,7 @@ const INITIAL_STATE = {
       minePosition: 'górnik',
       KSRGPosition: 'zastępowy',
       doctor: 1549407600000,
-      train: 'grupa5',
+      trainingGroup: '5',
       included: {
         osrg1: false,
         under1: false,
@@ -126,7 +141,10 @@ const INITIAL_STATE = {
         ground2: false
       },
       duty: '',
-      inaccessible: '',
+      inaccessible: {
+        from: '',
+        to: ''
+      },
       suspend: false
     },
     {
@@ -137,7 +155,7 @@ const INITIAL_STATE = {
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
       doctor: 1549494000000,
-      train: 'grupa6',
+      trainingGroup: '5',
       included: {
         osrg1: false,
         under1: false,
@@ -147,7 +165,10 @@ const INITIAL_STATE = {
         ground2: false
       },
       duty: '',
-      inaccessible: '',
+      inaccessible: {
+        from: '',
+        to: ''
+      },
       suspend: false
     },
     {
@@ -158,7 +179,7 @@ const INITIAL_STATE = {
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
       doctor: 1549580400000,
-      train: 'grupa7',
+      trainingGroup: '4',
       included: {
         osrg1: false,
         under1: false,
@@ -168,7 +189,10 @@ const INITIAL_STATE = {
         ground2: false
       },
       duty: '',
-      inaccessible: '',
+      inaccessible: {
+        from: '',
+        to: ''
+      },
       suspend: false
     },
     {
@@ -179,7 +203,7 @@ const INITIAL_STATE = {
       minePosition: 'sztygar zmianowy',
       KSRGPosition: 'ratownik',
       doctor: 1549666800000,
-      train: 'grupa8',
+      trainingGroup: '5',
       included: {
         osrg1: false,
         under1: false,
@@ -189,7 +213,10 @@ const INITIAL_STATE = {
         ground2: false
       },
       duty: '',
-      inaccessible: '',
+      inaccessible: {
+        from: '',
+        to: ''
+      },
       suspend: false
     },
     {
@@ -200,7 +227,7 @@ const INITIAL_STATE = {
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
       doctor: 1549753200000,
-      train: 'grupa1',
+      trainingGroup: '1',
       included: {
         osrg1: false,
         under1: false,
@@ -210,7 +237,10 @@ const INITIAL_STATE = {
         ground2: false
       },
       duty: '',
-      inaccessible: '',
+      inaccessible: {
+        from: '',
+        to: ''
+      },
       suspend: false
     },
     {
@@ -221,7 +251,7 @@ const INITIAL_STATE = {
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
       doctor: 1562796000000,
-      train: 'grupa2',
+      trainingGroup: '2',
       included: {
         osrg1: false,
         under1: false,
@@ -231,7 +261,10 @@ const INITIAL_STATE = {
         ground2: false
       },
       duty: '',
-      inaccessible: '',
+      inaccessible: {
+        from: '',
+        to: ''
+      },
       suspend: false
     },
     {
@@ -242,7 +275,7 @@ const INITIAL_STATE = {
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
       doctor: 1568152800000,
-      train: 'grupa3',
+      trainingGroup: '3',
       included: {
         osrg1: false,
         under1: false,
@@ -252,7 +285,10 @@ const INITIAL_STATE = {
         ground2: false
       },
       duty: '',
-      inaccessible: '',
+      inaccessible: {
+        from: '',
+        to: ''
+      },
       suspend: false
     },
     {
@@ -263,7 +299,7 @@ const INITIAL_STATE = {
       minePosition: 'górnik',
       KSRGPosition: 'mechanik',
       doctor: 1568162800000,
-      train: 'grupa3',
+      trainingGroup: '3',
       included: {
         osrg1: false,
         under1: false,
@@ -273,7 +309,10 @@ const INITIAL_STATE = {
         ground2: false
       },
       duty: '',
-      inaccessible: '',
+      inaccessible: {
+        from: '',
+        to: ''
+      },
       suspend: true
     }
   ]
@@ -288,8 +327,7 @@ const teamReducer = (state = INITIAL_STATE, action) => {
         list: [...state.list, action.item]
       };
     case types.REMOVE_RESCUER:
-      const deletedItem = action.item;
-      const newList = state.list.filter((item) => item.id !== deletedItem);
+      const newList = state.list.filter((item) => item.id !== action.id);
       return {
         ...state,
         list: newList

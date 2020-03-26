@@ -1,16 +1,16 @@
 import types from './types';
 
-const add = item => ({
+const add = (item) => ({
   type: types.ADD_RESCUER,
   item
 });
 
-const remove = item => ({
+const remove = (id) => ({
   type: types.REMOVE_RESCUER,
-  item
+  id
 });
 
-const update = item => ({
+const update = (item) => ({
   type: types.UPDATE_RESCUER,
   item
 });

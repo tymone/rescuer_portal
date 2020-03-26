@@ -24,7 +24,7 @@ const EditTrain = ({ list, match, team, history }) => {
         <Body list={getRescuer(team, id)} />
       </div>
       <div className="options">
-        <i className="fas fa-chevron-left" onClick={() => history.goBack()}></i>
+        <i className="fas fa-chevron-left" onClick={history.goBack}></i>
       </div>
     </div>
   );

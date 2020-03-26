@@ -105,7 +105,7 @@ class UpdateForm extends Component {
           schedule={schedule}
         />
         <div className="options">
-          <i className="fas fa-chevron-left" onClick={() => history.goBack()}></i>
+          <i className="fas fa-chevron-left" onClick={history.goBack}></i>
           {activeSubmitButton ? <i className="fas fa-calendar-check" onClick={this.handleSubmit}></i> : null}
         </div>
       </div>

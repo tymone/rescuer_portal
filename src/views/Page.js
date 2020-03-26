@@ -7,9 +7,8 @@ import Schedule from '../components/Schedule/Schedule';
 import CreateSchedule from '../components/Schedule/CreateSchedule/CreateSchedule';
 import EditSchedule from '../components/Schedule/EditSchedule/EditSchedule';
 import Team from '../components/Team/Team';
-import AddUser from '../components/Team/AddUser';
-import EditUser from '../components/Team/EditUser';
-import UserInfo from '../components/Team/UserInfo';
+import AddUser from '../components/Team//Create/AddUser';
+import RescuerDetails from '../components/Team/Read/RescuerDetails';
 import Train from '../components/Train/Train';
 import Details from '../components/Train/Details/Details';
 import AddTrain from '../components/Train/AddTrain/AddTrain';
@@ -31,8 +30,7 @@ const Page = () => (
       <Route path="/harmonogram/edytuj/:id" component={EditSchedule} />
       <Route path="/druzyna" exact component={Team} />
       <Route path="/druzyna/dodaj" component={AddUser} />
-      <Route path="/druzyna/edytuj/:id" component={EditUser} />
-      <Route path="/druzyna/:id" component={UserInfo} />
+      <Route path="/druzyna/:id" component={RescuerDetails} />
       <Route path="/cwiczenia" exact component={Train} />
       <Route path="/cwiczenia/dodaj" component={AddTrain} />
       <Route path="/cwiczenia/:id" exact component={Details} />
