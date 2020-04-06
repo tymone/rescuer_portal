@@ -1,49 +1,33 @@
 .train
+  position: relative
+  .edit
+    position: absolute
+    right: 5%
+    font-size: 24px
+
   .table
     width: 90%
     margin: 0 auto
     border: 1px solid grey
     .head
-      display: flex
       border-bottom: 1px solid grey
-      justify-content: space-around
-      span
+      li
         font-size: 20px
-        width: 100%
-        padding: 10px 10px
-        text-align: center
 
+    ul
+      list-style: none
+      display: flex
+      justify-content: space-around
+      li
+        width: 100%
+        text-align: center
+        padding: 10px
     .body
-      ul
-        list-style: none
-        li
-          ul
-            display: flex
-            justify-content: space-around
-            border-bottom: 1px solid grey
-            padding: 10px 0
-            li
-              width: 100%
-              text-align: center
-              font-weight: bold
-              &:nth-of-type(2), &:nth-of-type(5)
-                color: red
-              &:nth-of-type(4), &:nth-of-type(7)
-                color: green
-              a
-                padding: 0 10px
-    .dateRow
-      ul
-        list-style: none
-        display: flex
-        justify-content: space-around
+      .groupRow
         border-bottom: 1px solid grey
-        padding: 10px 0
         li
-          width: 100%
-          text-align: center
           font-weight: bold
-          &:nth-of-type(4), &:nth-of-type(7)
+          &:nth-of-type(2), &:nth-of-type(5)
             color: red
-          &:nth-of-type(6), &:nth-of-type(9)
+          &:nth-of-type(4), &:nth-of-type(7)
             color: green

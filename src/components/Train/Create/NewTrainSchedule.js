@@ -1,35 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../duck/actions';
-import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router';
 
 import Head from '../Template/Table/Head';
 import Body from '../Template/Table/Body';
 
-class EditTrain extends Component {
+class NewTrainSchedule extends Component {
   state = {
-    redirect: false,
     year: '',
-    id: '',
-    group: '',
+    id: 1,
     osrg1: '',
     under1: '',
     ground1: '',
     osrg2: '',
     under2: '',
     ground2: '',
-    groups: {}
+    groups: {},
+    redirect: false
   };
-  componentDidMount() {
-    const { match, list } = this.props;
-    const id = match.params.id;
-    const editList = list.filter((item) => item.year === Number(id))[0];
-    const { groups, year } = editList;
-    this.setState({
-      year,
-      groups
-    });
-  }
 
   handleChange = (e) => {
     this.setState({
@@ -37,40 +26,63 @@ class EditTrain extends Component {
     });
   };
 
-  handleSubmitGroupDate = (editedValue) => {
-    const { id, osrg1, under1, ground1, osrg2, under2, ground2 } = editedValue;
+  addGroup = () => {
+    let { id, osrg1, under1, ground1, osrg2, under2, ground2 } = this.state;
+
     this.setState((prevState) => ({
       groups: {
         ...prevState.groups,
         [`group${id}`]: { id, osrg1, under1, ground1, osrg2, under2, ground2 }
-      }
+      },
+      id: ++id
     }));
   };
 
+  removeGroup = (groupId) => {
+    let { groups, id } = this.state;
+    delete groups[`group${groupId}`];
+    this.setState({
+      groups,
+      id: --id
+    });
+  };
+
   handleSubmit = () => {
-    const { year, groups, redirect } = this.state;
-    const { update } = this.props;
-    const newList = { year, groups };
-    update(newList);
+    const { year, groups } = this.state;
+    const { add } = this.props;
+    const newTrainSchedule = {
+      year,
+      groups
+    };
+
+    add(newTrainSchedule);
+    const { redirect } = this.state;
     this.setState({
       redirect: !redirect
     });
   };
 
   render() {
-    const { groups, year, redirect } = this.state;
+    const { redirect, year, groups } = this.state;
     const { history } = this.props;
-
     if (redirect) {
       return <Redirect to="/cwiczenia" />;
     }
-
     return (
       <div className="train">
-        <h1>Edycja harmonogramu ćwiczeń na rok {year}</h1>
+        <div className="title">
+          <h1>Nowy harmonogram ćwiczeń na rok:</h1>
+          <input type="text" name="year" value={year} onChange={this.handleChange} />
+        </div>
         <div className="table">
           <Head type="create" />
-          <Body list={groups} submitGroup={this.handleSubmitGroupDate} type="edit" />
+          <Body
+            handleChange={this.handleChange}
+            addGroup={this.addGroup}
+            list={groups}
+            removeGroup={this.removeGroup}
+            type="create"
+          />
         </div>
         <div className="options">
           <i className="fas fa-chevron-left" onClick={history.goBack}></i>
@@ -81,9 +93,8 @@ class EditTrain extends Component {
   }
 }
 
-const mapStateToProps = ({ trainingGroups: list }) => list;
 const mapDispatchToProps = (dispatch) => ({
-  update: (newList) => dispatch(actions.update(newList))
+  add: (newTrainSchedule) => dispatch(actions.add(newTrainSchedule))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditTrain);
+export default connect(null, mapDispatchToProps)(NewTrainSchedule);

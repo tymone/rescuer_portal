@@ -1,5 +1,5 @@
 {
-  "html.format.wrapLineLength": 180,
+  "html.format.wrapLineLength": 80,
   "editor.wordWrap": "on",
   "editor.formatOnSave": true,
   "eslint.format.enable": true,

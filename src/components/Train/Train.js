@@ -2,13 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Head from './Table/Head';
-import Body from './Table/Body';
-import Group from './Group';
+import Table from './Read/Table';
 
-const Train = ({ train: { groups, year } }) => {
-  const setArrayFromGroups = Object.keys(groups);
-  const listItemDetails = setArrayFromGroups.map((item) => <Group details={groups[item]} group={setArrayFromGroups.indexOf(item)} />);
+const Train = ({ list }) => {
+  const showTrainingGroupsSchedules = (list) => {
+    if (list.length !== 0) {
+      return list.map((listItem) => <Table key={listItem.year} list={listItem} />);
+    } else {
+      return <h1>Brak harmonogramu ćwiczeń lub wystąpił błąd.</h1>;
+    }
+  };
 
   return (
     <div className="train">
@@ -17,17 +20,11 @@ const Train = ({ train: { groups, year } }) => {
           <i className="far fa-calendar-plus"></i>
         </Link>
       </div>
-      <h1>Terminy ćwiczeń ratowniczych na rok {year}</h1>
-      <div className="table">
-        <Head title={['Grupa', 'OSRG 1', 'Dołowe 1', 'Powierzchnia 1', 'OSRG 2', 'Dołowe 2', 'Powierzchnia 2', 'szczegóły']} />
-        <Body list={listItemDetails} />
-      </div>
+      {showTrainingGroupsSchedules(list)}
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  train: state.group.list[0]
-});
+const mapStateToProps = ({ trainingGroups: { list } }) => ({ list });
 
 export default connect(mapStateToProps)(Train);

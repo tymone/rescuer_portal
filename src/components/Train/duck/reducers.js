@@ -5,26 +5,130 @@ const INITIAL_STATE = {
     {
       year: 2020,
       groups: {
-        1: [1577833200000, 1583017200000, 1588284000000, 1593554400000, 1598911200000, 1578697200000],
-        2: [1578438000000, 1583622000000, 1588888800000, 1594159200000, 1599516000000, 1604790000000],
-        3: [1579042800000, 1584226800000, 1589493600000, 1594764000000, 1600120800000, 1605394800000],
-        4: [1579647600000, 1584831600000, 1590098400000, 1595368800000, 1600725600000, 1605999600000],
-        5: [1580252400000, 1585436400000, 1590703200000, 1595973600000, 1601330400000, 1606604400000]
+        group1: {
+          id: 1,
+          osrg1: '2020-01-01',
+          under1: '2020-03-01',
+          ground1: '2020-05-01',
+          osrg2: '2020-07-01',
+          under2: '2020-09-01',
+          ground2: '2020-11-01'
+        },
+        group2: {
+          id: 2,
+          osrg1: '2020-01-08',
+          under1: '2020-03-08',
+          ground1: '2020-05-08',
+          osrg2: '2020-07-08',
+          under2: '2020-09-08',
+          ground2: '2020-11-08'
+        },
+        group3: {
+          id: 3,
+          osrg1: '2020-01-15',
+          under1: '2020-03-15',
+          ground1: '2020-05-15',
+          osrg2: '2020-07-15',
+          under2: '2020-09-15',
+          ground2: '2020-11-15'
+        },
+        group4: {
+          id: 4,
+          osrg1: '2020-01-22',
+          under1: '2020-03-22',
+          ground1: '2020-05-22',
+          osrg2: '2020-07-22',
+          under2: '2020-09-22',
+          ground2: '2020-11-22'
+        },
+        group5: {
+          id: 5,
+          osrg1: '2020-01-29',
+          under1: '2020-03-29',
+          ground1: '2020-05-29',
+          osrg2: '2020-07-29',
+          under2: '2020-09-29',
+          ground2: '2020-11-29'
+        }
+      }
+    },
+    {
+      year: 2021,
+      groups: {
+        group1: {
+          id: 1,
+          osrg1: '2021-01-01',
+          under1: '2021-03-01',
+          ground1: '2021-05-01',
+          osrg2: '2021-07-01',
+          under2: '2021-09-01',
+          ground2: '2021-11-01'
+        },
+        group2: {
+          id: 2,
+          osrg1: '2021-01-08',
+          under1: '2021-03-08',
+          ground1: '2021-05-08',
+          osrg2: '2021-07-08',
+          under2: '2021-09-08',
+          ground2: '2021-11-08'
+        },
+        group3: {
+          id: 3,
+          osrg1: '2021-01-15',
+          under1: '2021-03-15',
+          ground1: '2021-05-15',
+          osrg2: '2021-07-15',
+          under2: '2021-09-15',
+          ground2: '2021-11-15'
+        },
+        group4: {
+          id: 4,
+          osrg1: '2021-01-22',
+          under1: '2021-03-22',
+          ground1: '2021-05-22',
+          osrg2: '2021-07-22',
+          under2: '2021-09-22',
+          ground2: '2021-11-22'
+        },
+        group5: {
+          id: 5,
+          osrg1: '2021-01-29',
+          under1: '2021-03-29',
+          ground1: '2021-05-29',
+          osrg2: '2021-07-29',
+          under2: '2021-09-29',
+          ground2: '2021-11-29'
+        }
       }
     }
   ]
 };
 
-const groupReducer = (state = INITIAL_STATE, action) => {
+const trainingGroupsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case types.ADD_GROUP:
+    case types.ADD_TRAIN_SCHEDULE:
       return {
         ...state,
-        list: [action.item, ...state.list]
+        list: [...state.list, action.item]
+      };
+    case types.REMOVE_TRAIN_SCHEDULE:
+      const newList = state.list.filter((group) => group.year !== action.id);
+      return {
+        ...state,
+        list: newList
+      };
+    case types.UPDATE_TRAIN_SCHEDULE:
+      const getList = state.list;
+      const index = state.list.findIndex((item) => item.year === action.item.year);
+      getList.splice(index, 1, action.item);
+      return {
+        ...state,
+        list: [...getList]
       };
     default:
       return state;
   }
 };
 
-export default groupReducer;
+export default trainingGroupsReducer;
