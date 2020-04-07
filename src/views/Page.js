@@ -14,9 +14,9 @@ import Details from '../components/Train/Details/Details';
 import NewTrainSchedule from '../components/Train/Create/NewTrainSchedule';
 import EditTrain from '../components/Train/EditTrain/EditTrain';
 import Tasks from '../components/Tasks/Tasks';
-import AddTask from '../components/Tasks/AddTask';
-import TaskDetails from '../components/Tasks/TaskDetails';
-import EditTask from '../components/Tasks/EditTask';
+import AddTask from '../components/Tasks/Create/AddTask';
+import TaskDetails from '../components/Tasks/Read/TaskDetails';
+import EditTask from '../components/Tasks/Update/EditTask';
 import Contact from './Contact';
 import PageNotFound from '../components/PageNotFound';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import TaskList from './TaskList';
+import TaskList from './Read/TaskList';
 
 const Tasks = ({ tasks }) => {
   return (
@@ -14,15 +14,15 @@ const Tasks = ({ tasks }) => {
         </Link>
       </div>
       <div className="listContainer">
-        <TaskList tasks={tasks.filter(task => task.status === 'to do')} title="do wykonania" />
-        <TaskList tasks={tasks.filter(task => task.status === 'in progress')} title="w trakcie wykonywania" />
-        <TaskList tasks={tasks.filter(task => task.status === 'done')} title="wykonane" />
+        <TaskList tasks={tasks.filter((task) => task.status === 'to do')} title="do wykonania" />
+        <TaskList tasks={tasks.filter((task) => task.status === 'in progress')} title="w trakcie wykonywania" />
+        <TaskList tasks={tasks.filter((task) => task.status === 'done')} title="wykonane" />
       </div>
     </div>
   );
 };
 
-const mapStateToProps = state => ({
-  tasks: state.tasks.list
+const mapStateToProps = ({ tasks }) => ({
+  tasks: tasks.list
 });
 export default connect(mapStateToProps)(Tasks);

@@ -3,10 +3,10 @@ import React from 'react';
 import Task from './Task';
 
 const TaskList = ({ tasks, title }) => {
-  const tasksList = tasks => {
-    if (tasks.length) {
+  const tasksList = (tasks) => {
+    if (tasks.length !== 0) {
       tasks.sort((a, b) => a.addDate - b.addDate);
-      return tasks.map(task => <Task key={task.id} task={task} />);
+      return tasks.map((task) => <Task key={task.id} task={task} />);
     } else {
       return 'Brak zadań.';
     }

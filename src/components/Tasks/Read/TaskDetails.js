@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import actions from './duck/actions';
+import actions from '../duck/actions';
 import { Link } from 'react-router-dom';
 
-import date from './../../helpers/setDate';
+import date from './../../../helpers/setDate';
 
 const TaskDetails = ({ tasks, match, remove, history }) => {
   const { id } = match.params;
@@ -13,7 +13,7 @@ const TaskDetails = ({ tasks, match, remove, history }) => {
   const setStatus = (status) => {
     switch (status) {
       case 'to do':
-        return 'do zrobienia';
+        return 'do wykonania';
       case 'in progress':
         return 'w trakcie wykonywania/nie ukończone';
       case 'done':
@@ -52,8 +52,8 @@ const TaskDetails = ({ tasks, match, remove, history }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  tasks: state.tasks.list
+const mapStateToProps = ({ tasks }) => ({
+  tasks: tasks.list
 });
 
 const mapDispatchToProps = (dispatch) => ({
