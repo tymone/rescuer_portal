@@ -2,8 +2,9 @@
   "html.format.wrapLineLength": 80,
   "editor.wordWrap": "on",
   "editor.formatOnSave": true,
+  "prettier.arrowParens": "always",
   "eslint.format.enable": true,
-  "prettier.arrowParens": "always"
-} // {
-//   "html.format.wrapLineLength": 140
-// }
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "eslint.alwaysShowStatus": true,
+  "eslint.probe": ["javascript", "javascriptreact", "vue", "markdown"]
+}

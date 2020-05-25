@@ -1,28 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+
+import { StyledListWrapper } from './StyledTasks';
 
 import TaskList from './Read/TaskList';
 
 const Tasks = ({ tasks }) => {
   return (
-    <div className="Tasks">
+    <>
       <h1>Lista zadań</h1>
-      <div className="options">
-        <Link to="/zadania/dodaj">
-          <i className="far fa-plus-square"></i>
-        </Link>
-      </div>
-      <div className="listContainer">
+      <StyledListWrapper>
         <TaskList tasks={tasks.filter((task) => task.status === 'to do')} title="do wykonania" />
         <TaskList tasks={tasks.filter((task) => task.status === 'in progress')} title="w trakcie wykonywania" />
         <TaskList tasks={tasks.filter((task) => task.status === 'done')} title="wykonane" />
-      </div>
-    </div>
+      </StyledListWrapper>
+    </>
   );
 };
 
 const mapStateToProps = ({ tasks }) => ({
-  tasks: tasks.list
+  tasks: tasks.list,
 });
 export default connect(mapStateToProps)(Tasks);

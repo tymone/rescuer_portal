@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import { StyledOutOfWeek } from './StyledOutOfWeek';
 
 import OutOfWeekGroup from './OutOfWeekGroup';
 
@@ -10,9 +13,9 @@ class OutOfWeek extends Component {
     sick: [],
   };
 
-  componentDidMount() {
-    const { type, schedule } = this.props;
-    if (type !== 'create') {
+  componentDidUpdate(prevProps) {
+    const { schedule } = this.props;
+    if (this.props !== prevProps) {
       const { train, leave, course, sick } = schedule;
       this.setState({
         train,
@@ -23,26 +26,28 @@ class OutOfWeek extends Component {
     }
   }
 
-  getList = (group, rescuer) => {
-    const { getOutOfWeek } = this.props;
-    this.setState(
-      {
-        [group]: rescuer,
-      },
-      () => getOutOfWeek(this.state)
-    );
-  };
-
   setGroups = () => {
     const { type } = this.props;
     const getArrayGroups = Object.keys(this.state);
     return getArrayGroups.map((group) => (
-      <OutOfWeekGroup type={type} key={group} getList={this.getList} title={group} list={this.state[group]} />
+      <OutOfWeekGroup
+        type={type}
+        key={group}
+        // getList={this.getList}
+        title={group}
+        list={this.state[group]}
+      />
     ));
   };
+
   render() {
-    return <ul className="outOfSchedule">{this.setGroups()}</ul>;
+    return <StyledOutOfWeek>{this.setGroups()}</StyledOutOfWeek>;
   }
 }
+
+OutOfWeek.propTypes = {
+  type: PropTypes.string.isRequired,
+  schedule: PropTypes.object,
+};
 
 export default OutOfWeek;

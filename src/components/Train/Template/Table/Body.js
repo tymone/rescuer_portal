@@ -24,10 +24,10 @@ const Body = ({ list, year, type, handleChange, addGroup, removeGroup, submitGro
 
   return (
     <>
-      <div className="body">
+      <>
         {getGroupRows(list)}
         {type === 'create' ? <NewGroupRow handleChange={handleChange} addGroup={addGroup} list={list} /> : null}
-      </div>
+      </>
     </>
   );
 };

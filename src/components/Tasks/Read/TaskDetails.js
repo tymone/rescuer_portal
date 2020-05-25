@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import actions from '../duck/actions';
 import { Link } from 'react-router-dom';
 
+import { StyledTaskDetails } from '../StyledTasks';
+
 import date from './../../../helpers/setDate';
 
 const TaskDetails = ({ tasks, match, remove, history }) => {
@@ -29,9 +31,9 @@ const TaskDetails = ({ tasks, match, remove, history }) => {
   };
 
   return (
-    <div className="taskDetails">
+    <>
       <h1>{title}</h1>
-      <div className="details">
+      <StyledTaskDetails>
         <p>{content}</p>
         <div className="info">
           <span>status: {setStatus(status)}</span>
@@ -40,7 +42,7 @@ const TaskDetails = ({ tasks, match, remove, history }) => {
           <span>rozpoczęte przez: {workingBy ? workingBy : '-'}</span>
           <span>data zakończenia: {finishDate ? `${date(finishDate)}` : '-'}</span>
         </div>
-      </div>
+      </StyledTaskDetails>
       <div className="options">
         <i className="fas fa-chevron-left" onClick={history.goBack}></i>
         <Link to={`/zadania/edytuj/${id}`}>
@@ -48,16 +50,16 @@ const TaskDetails = ({ tasks, match, remove, history }) => {
         </Link>
         <i className="fas fa-trash-alt" onClick={() => removeTask(id)}></i>
       </div>
-    </div>
+    </>
   );
 };
 
 const mapStateToProps = ({ tasks }) => ({
-  tasks: tasks.list
+  tasks: tasks.list,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  remove: (id) => dispatch(actions.remove(id))
+  remove: (id) => dispatch(actions.remove(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskDetails);

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import setDate from '../../../../helpers/setDate';
 
+import { StyledBody } from '../../StyledTrain';
+
 class GroupRow extends Component {
   state = {
     edit: false,
@@ -11,7 +13,7 @@ class GroupRow extends Component {
     ground1: '',
     osrg2: '',
     under2: '',
-    ground2: ''
+    ground2: '',
   };
 
   componentDidMount() {
@@ -24,20 +26,20 @@ class GroupRow extends Component {
       ground1,
       osrg2,
       under2,
-      ground2
+      ground2,
     });
   }
 
   handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   handleToggleEdit = () => {
     const { edit } = this.state;
     this.setState({
-      edit: !edit
+      edit: !edit,
     });
   };
 
@@ -63,7 +65,7 @@ class GroupRow extends Component {
     const newEditedValue = { id, osrg1, under1, ground1, osrg2, under2, ground2 };
     submitGroup(newEditedValue);
     this.setState({
-      edit: !edit
+      edit: !edit,
     });
   };
 
@@ -95,11 +97,11 @@ class GroupRow extends Component {
     const { id } = this.state;
     const { group, type } = this.props;
     return (
-      <ul className="groupRow">
+      <StyledBody>
         <li>{id}</li>
         {this.groupRowItem(group)}
         <li>{this.getOptionIcon(type)}</li>
-      </ul>
+      </StyledBody>
     );
   }
 }

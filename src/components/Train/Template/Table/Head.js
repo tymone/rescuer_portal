@@ -1,7 +1,9 @@
 import React from 'react';
 
+import { StyledHead } from '../../StyledTrain';
+
 const Head = ({ type }) => (
-  <ul className="head">
+  <StyledHead>
     {type === 'details' ? (
       <>
         <li>Imię</li>
@@ -18,7 +20,7 @@ const Head = ({ type }) => (
     <li>Dołowe 2</li>
     <li>Powierzchnia 2</li>
     {type === 'details' ? null : <li>Opcje</li>}
-  </ul>
+  </StyledHead>
 );
 
 export default Head;

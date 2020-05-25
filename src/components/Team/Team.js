@@ -1,19 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-import Table from './Read/Table';
+import ReadTeam from './ReadTeam';
 
 const Team = () => {
   return (
-    <div className="team">
+    <>
       <h1>Drużyna KSRG</h1>
-      <div className="options">
-        <Link to={'/druzyna/dodaj'}>
-          <i className="fas fa-user-plus"></i>
-        </Link>
-      </div>
-      <Table />
-    </div>
+      <ReadTeam />
+    </>
   );
 };
 
