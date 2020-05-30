@@ -10,15 +10,20 @@ class Day extends Component {
     shifts: {},
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidMount() {
     const { day } = this.props;
-    if (this.props !== prevProps) {
-      this.setState({
-        shifts: day,
-      });
-    }
-    if (this.state !== prevState) {
-      this.sendDayToWeek();
+    this.setState({
+      shifts: day,
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { shifts } = this.state;
+    const { type, getDay, dayName } = this.props;
+    if (type === 'create') {
+      if (this.state !== prevState) {
+        getDay(dayName, shifts);
+      }
     }
   }
 
@@ -39,32 +44,41 @@ class Day extends Component {
         </StyledDayListItem>
       ));
     }
+    return type === 'read' ? <p>Brak zastępów w danym dniu lub wystąpił jakiś błąd.</p> : null;
   };
 
   saveShift = (shift) => {
+    const { multitudeNumber, time, multitude, overMultitude } = shift;
     this.setState((prevState) => ({
       shifts: {
         ...prevState.shifts,
-        [shift.multitudeNumber]: {
-          time: shift.time,
-          multitude: shift.multitude,
-          overMultitude: shift.overMultitude,
+        [multitudeNumber]: {
+          time,
+          multitude,
+          overMultitude,
         },
       },
     }));
   };
 
-  sendDayToWeek = () => {
+  addShift = () => {
     const { shifts } = this.state;
-    const { saveDay, dayName } = this.props;
-    const day = {
-      day: dayName,
-      shifts,
-    };
-    saveDay(day);
+    let multitudeNumber = Object.keys(shifts).length;
+
+    this.setState((prevState) => ({
+      shifts: {
+        ...prevState.shifts,
+        [`multitude${multitudeNumber}`]: {
+          time: '',
+          multitude: ['---', '---', '---', '---', '---'],
+          overMultitude: [],
+        },
+      },
+    }));
+    multitudeNumber += 1;
   };
 
-  getDayPL = (dayName = '---') => {
+  getDayPL = (dayName) => {
     switch (dayName) {
       case 'Monday':
         return 'Poniedziałek';
@@ -85,23 +99,6 @@ class Day extends Component {
     }
   };
 
-  addShift = () => {
-    const { shifts } = this.state;
-    let multitudeNumber = Object.keys(shifts).length;
-
-    this.setState((prevState) => ({
-      shifts: {
-        ...prevState.shifts,
-        [`multitude${multitudeNumber}`]: {
-          time: '',
-          multitude: ['---', '---', '---', '---', '---'],
-          overMultitude: [],
-        },
-      },
-    }));
-    multitudeNumber += 1;
-  };
-
   render() {
     const { dayName, type } = this.props;
     return (
@@ -118,6 +115,7 @@ Day.propTypes = {
   day: PropTypes.object,
   dayName: PropTypes.string,
   type: PropTypes.string.isRequired,
+  getDay: PropTypes.func,
 };
 
 Day.defaultProps = {

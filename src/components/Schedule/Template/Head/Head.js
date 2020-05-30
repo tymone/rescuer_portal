@@ -1,32 +1,64 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import date from 'helpers/setDate';
 import { StyledTitle, StyledInput } from './StyledHead';
 
-const Head = ({ type, from, to, handleChange }) => {
-  const handleView = (type) => (
-    <>
-      Harmonogram od
-      {type === 'read' ? (
-        ` ${date(from)} `
-      ) : (
-        <StyledInput name="dateFrom" value={from} onChange={handleChange} type="date" />
-      )}
-      do
-      {type === 'read' ? (
-        ` ${date(to)}`
-      ) : (
-        <StyledInput name="dateTo" value={to} onChange={handleChange} type="date" />
-      )}
-    </>
-  );
-  return <StyledTitle>{handleView(type)}</StyledTitle>;
-};
+class Head extends Component {
+  state = {
+    dateFrom: '',
+    dateTo: '',
+  };
+
+  componentDidMount() {
+    const { date } = this.props;
+    this.setState({
+      dateFrom: date.from,
+      dateTo: date.to,
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { dateFrom, dateTo } = this.state;
+    const { type, getDate } = this.props;
+    if (type === 'create') {
+      if (this.state !== prevState) {
+        getDate(dateFrom, dateTo);
+      }
+    }
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  render() {
+    const { dateFrom, dateTo } = this.state;
+    const { type } = this.props;
+    return (
+      <StyledTitle>
+        Harmonogram od
+        {type === 'read' ? (
+          ` ${date(dateFrom)} `
+        ) : (
+          <StyledInput type="date" name="dateFrom" value={dateFrom} onChange={this.handleChange} />
+        )}
+        do
+        {type === 'read' ? (
+          ` ${date(dateTo)}`
+        ) : (
+          <StyledInput type="date" name="dateTo" value={dateTo} onChange={this.handleChange} />
+        )}
+      </StyledTitle>
+    );
+  }
+}
 
 Head.propTypes = {
   type: PropTypes.string.isRequired,
-  from: PropTypes.string,
-  to: PropTypes.string,
-  handleChange: PropTypes.func,
+  date: PropTypes.object,
+  getDate: PropTypes.func,
 };
+
 export default Head;

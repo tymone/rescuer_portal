@@ -13,17 +13,16 @@ class OutOfWeek extends Component {
     sick: [],
   };
 
-  componentDidUpdate(prevProps) {
-    const { schedule } = this.props;
-    if (this.props !== prevProps) {
-      const { train, leave, course, sick } = schedule;
-      this.setState({
-        train,
-        leave,
-        course,
-        sick,
-      });
-    }
+  componentDidMount() {
+    const {
+      schedule: { train, leave, course, sick },
+    } = this.props;
+    this.setState({
+      train,
+      leave,
+      course,
+      sick,
+    });
   }
 
   setGroups = () => {
@@ -33,11 +32,22 @@ class OutOfWeek extends Component {
       <OutOfWeekGroup
         type={type}
         key={group}
-        // getList={this.getList}
         title={group}
+        getList={this.getList}
         list={this.state[group]}
       />
     ));
+  };
+
+  getList = (group, title) => {
+    const { getOutOfWeek } = this.props;
+    this.setState(
+      (prevState) => ({
+        ...prevState,
+        [title]: group,
+      }),
+      () => getOutOfWeek(this.state),
+    );
   };
 
   render() {
@@ -48,6 +58,7 @@ class OutOfWeek extends Component {
 OutOfWeek.propTypes = {
   type: PropTypes.string.isRequired,
   schedule: PropTypes.object,
+  getOutOfWeek: PropTypes.func,
 };
 
 export default OutOfWeek;

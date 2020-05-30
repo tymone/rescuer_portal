@@ -5,11 +5,11 @@ export const StyledOverMultitude = styled.li`
   ul {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
   }
 `;
 
-export const StyledCreateOverMultitude = styled.ul`
-  width: 80%;
-  margin: 25px 0;
-  text-align: center;
+export const StyledButton = styled.button`
+  color: ${({ theme }) => theme.color.softBlack};
+  background-color: ${({ theme }) => theme.color.softGray};
 `;

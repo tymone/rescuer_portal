@@ -23,8 +23,11 @@ class Shift extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state !== prevState) {
-      this.sendShiftToDay();
+    const { type } = this.props;
+    if (type !== 'read') {
+      if (this.state !== prevState) {
+        this.sendShiftToDay();
+      }
     }
   }
 
@@ -66,19 +69,11 @@ class Shift extends Component {
     return (
       <>
         <StyledTime>
-          {type === 'read' ? (
-            time
-          ) : (
-            <input type="time" value={time} name="time" onChange={this.handleChange} />
-          )}
+          {type === 'read' ? time : <input type="time" value={time} name="time" onChange={this.handleChange} />}
         </StyledTime>
         <StyledShift>
           <Multitude type={type} multitude={multitude} getMultitude={this.getMultitude} />
-          <OverMultitude
-            type={type}
-            overMultitude={overMultitude}
-            getOverMultitude={this.getOverMultitude}
-          />
+          <OverMultitude type={type} overMultitude={overMultitude} getOverMultitude={this.getOverMultitude} />
         </StyledShift>
       </>
     );

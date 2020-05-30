@@ -16,16 +16,15 @@ class Multitude extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    const { rescuer1, rescuer2, rescuer3, rescuer4, rescuer5 } = this.state;
     const { multitude } = this.props;
     if (this.props !== prevProps) {
       this.setState({
         loaded: true,
-        rescuer1: multitude[0] || rescuer1,
-        rescuer2: multitude[1] || rescuer2,
-        rescuer3: multitude[2] || rescuer3,
-        rescuer4: multitude[3] || rescuer4,
-        rescuer5: multitude[4] || rescuer5,
+        rescuer1: multitude[0],
+        rescuer2: multitude[1],
+        rescuer3: multitude[2],
+        rescuer4: multitude[3],
+        rescuer5: multitude[4],
       });
     }
   }
@@ -50,26 +49,14 @@ class Multitude extends Component {
       multitude = Object.keys(multitude);
     }
     return multitude.map((rescuer) => (
-      <Rescuer
-        key={rescuer}
-        type={type}
-        name={rescuer}
-        value={this.state[rescuer]}
-        handleChange={this.handleChange}
-      />
+      <Rescuer key={rescuer} type={type} name={rescuer} value={this.state[rescuer]} handleChange={this.handleChange} />
     ));
   };
 
   sendMultitudeToShift = () => {
     const { rescuer1, rescuer2, rescuer3, rescuer4, rescuer5 } = this.state;
     const { getMultitude } = this.props;
-    const multitude = [
-      rescuer1 || '---',
-      rescuer2 || '---',
-      rescuer3 || '---',
-      rescuer4 || '---',
-      rescuer5 || '---',
-    ];
+    const multitude = [rescuer1 || '---', rescuer2 || '---', rescuer3 || '---', rescuer4 || '---', rescuer5 || '---'];
     getMultitude(multitude);
   };
 

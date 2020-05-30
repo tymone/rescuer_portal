@@ -6,12 +6,15 @@ import {
   StyledTitle,
   StyledRescuers,
   StyledRescuer,
+  StyledButton,
+  StyledAddRescuerContainer,
+  StyledInput,
 } from './StyledOutOfWeek';
 
 class OutOfWeekGroup extends Component {
   state = {
     loaded: false,
-    activeInput: false,
+    addRescuer: false,
     group: [],
     rescuer: '',
   };
@@ -25,28 +28,30 @@ class OutOfWeekGroup extends Component {
       });
     }
   }
-  // handleChange = (e) => {
-  //   this.setState({
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
 
-  // addRescuer = () => {
-  //   const { rescuer, activeInput } = this.state;
-  //   const { getList, list, title } = this.props;
-  //   const newList = [...list, rescuer];
-  //   this.setState({
-  //     rescuer: '',
-  //     activeInput: !activeInput,
-  //   });
-  //   getList(title, newList);
-  // };
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
 
-  // removeRescuer = (removeRescuer) => {
-  //   const { list, getList, title } = this.props;
-  //   const newList = list.filter((rescuer) => rescuer !== removeRescuer);
-  //   getList(title, newList);
-  // };
+  addRescuer = () => {
+    const { rescuer, addRescuer, group } = this.state;
+    const { getList, title } = this.props;
+    const newList = [...group, rescuer];
+    getList(newList, title);
+    this.setState({
+      rescuer: '',
+      addRescuer: !addRescuer,
+    });
+  };
+
+  removeRescuer = (removeRescuer) => {
+    const { group } = this.state;
+    const { getList, title } = this.props;
+    const newList = group.filter((rescuer) => rescuer !== removeRescuer);
+    getList(newList, title);
+  };
 
   setRescuersList = (list) => {
     const { type } = this.props;
@@ -71,29 +76,38 @@ class OutOfWeekGroup extends Component {
       case 'leave':
         return 'urlop';
       default:
+        return ' --- ';
     }
   };
 
+  toggle = () => {
+    const { addRescuer } = this.state;
+    this.setState({
+      addRescuer: !addRescuer,
+    });
+  };
+
   render() {
-    const { activeInput, rescuer, loaded, group } = this.state;
-    const { title } = this.props;
+    const { addRescuer, rescuer, loaded, group } = this.state;
+    const { title, type } = this.props;
     return (
       <StyledOutOfWeekGroup>
-        <StyledTitle>
-          {`${this.titlePL(title)}:`}
-          {/* {type !== 'read' ? (
-            <i
-              className="fas fa-user-plus"
-              onClick={() => this.setState({ activeInput: !activeInput })}
-            />
-          ) : null} */}
-        </StyledTitle>
+        <StyledTitle>{`${this.titlePL(title)}:`}</StyledTitle>
         <StyledRescuers>{loaded ? this.setRescuersList(group) : null}</StyledRescuers>
-        {activeInput ? (
-          <>
-            <input type="text" value={rescuer} name="rescuer" onChange={this.handleChange} />
-            <i className="fas fa-user-check" onClick={this.addRescuer} />
-          </>
+        {type !== 'read' ? (
+          <StyledAddRescuerContainer>
+            <StyledButton onClick={rescuer ? this.addRescuer : this.toggle}>
+              {rescuer ? 'zapisz' : 'dodaj'}
+            </StyledButton>
+            {addRescuer ? (
+              <StyledInput
+                type="text"
+                name="rescuer"
+                value={rescuer}
+                onChange={this.handleChange}
+              />
+            ) : null}
+          </StyledAddRescuerContainer>
         ) : null}
       </StyledOutOfWeekGroup>
     );
@@ -104,6 +118,7 @@ OutOfWeekGroup.propTypes = {
   list: PropTypes.array,
   type: PropTypes.string.isRequired,
   title: PropTypes.string,
+  getList: PropTypes.func,
 };
 
 OutOfWeekGroup.defaultProps = {

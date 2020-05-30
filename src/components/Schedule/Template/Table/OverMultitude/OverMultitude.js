@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { StyledOverMultitude, StyledCreateOverMultitude } from './StyledOverMultitude';
+import { StyledOverMultitude, StyledButton } from './StyledOverMultitude';
 
 import Rescuer from '../Rescuer';
 
 class OverMultitude extends Component {
   state = {
     loaded: false,
+    addNewRescuer: false,
     Rescuers: [],
     newRescuer: '',
   };
@@ -28,6 +29,7 @@ class OverMultitude extends Component {
     getOverMultitude(newRescuer);
     this.setState({
       newRescuer: '',
+      addNewRescuer: false,
     });
   };
 
@@ -40,25 +42,25 @@ class OverMultitude extends Component {
   getOverMultitude = (Rescuers) =>
     Rescuers.map((rescuer) => <Rescuer type="read" key={rescuer} name={rescuer} value={rescuer} />);
 
+  toggleButton = () => {
+    this.setState({
+      addNewRescuer: true,
+    });
+  };
+
   render() {
-    const { Rescuers, loaded, newRescuer } = this.state;
+    const { Rescuers, loaded, newRescuer, addNewRescuer } = this.state;
     const { type } = this.props;
     return (
       <StyledOverMultitude>
         <ul>{loaded ? this.getOverMultitude(Rescuers) : null}</ul>
-        {type === 'create' ? (
-          <StyledCreateOverMultitude>
-            {'Dodaj ratownika poza zastępem -  '}
-            <Rescuer
-              type={type}
-              name="newRescuer"
-              value={newRescuer}
-              handleChange={this.handleChange}
-            />
-            {newRescuer ? (
-              <i className="fas fa-check" onClick={this.saveOverMultitudeRescuer} />
-            ) : null}
-          </StyledCreateOverMultitude>
+        {addNewRescuer ? (
+          <Rescuer type={type} name="newRescuer" value={newRescuer} handleChange={this.handleChange} />
+        ) : null}
+        {type !== 'read' ? (
+          <StyledButton onClick={addNewRescuer ? this.saveOverMultitudeRescuer : this.toggleButton}>
+            {addNewRescuer ? 'zapisz' : 'dodaj poza zastępem'}
+          </StyledButton>
         ) : null}
       </StyledOverMultitude>
     );
