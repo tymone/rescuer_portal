@@ -2,7 +2,12 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import HomePage from 'components/HomePage';
-import { ScheduleRead, ScheduleCreate, ScheduleUpdate } from 'components/Schedule';
+import {
+  ScheduleRead,
+  ScheduleCreate,
+  ScheduleUpdateList,
+  ScheduleUpdate,
+} from 'components/Schedule';
 import Team from 'components/Team';
 import AddUser from 'components/Team//Create/AddUser';
 import RescuerDetails from 'components/Team/ReadTeam/RescuerDetails';
@@ -22,8 +27,9 @@ const Section = () => (
     <Switch>
       <Route path="/" exact component={HomePage} />
       <Route path="/harmonogram" exact component={ScheduleRead} />
-      <Route path="/harmonogram/dodaj" exact component={ScheduleCreate} />
-      <Route path="/harmonogram/edytuj" exact component={ScheduleUpdate} />
+      <Route path="/harmonogram/dodaj" component={ScheduleCreate} />
+      <Route path="/harmonogram/edytuj" component={ScheduleUpdateList} />
+      <Route path="/harmonogram/:id" component={ScheduleUpdate} />
       <Route path="/druzyna" exact component={Team} />
       <Route path="/druzyna/dodaj" component={AddUser} />
       <Route path="/druzyna/:id" component={RescuerDetails} />

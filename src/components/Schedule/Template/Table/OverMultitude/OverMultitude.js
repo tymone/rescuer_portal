@@ -55,7 +55,12 @@ class OverMultitude extends Component {
       <StyledOverMultitude>
         <ul>{loaded ? this.getOverMultitude(Rescuers) : null}</ul>
         {addNewRescuer ? (
-          <Rescuer type={type} name="newRescuer" value={newRescuer} handleChange={this.handleChange} />
+          <Rescuer
+            type={type}
+            name="newRescuer"
+            value={newRescuer}
+            handleChange={this.handleChange}
+          />
         ) : null}
         {type !== 'read' ? (
           <StyledButton onClick={addNewRescuer ? this.saveOverMultitudeRescuer : this.toggleButton}>

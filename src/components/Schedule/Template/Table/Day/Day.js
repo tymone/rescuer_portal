@@ -20,7 +20,7 @@ class Day extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { shifts } = this.state;
     const { type, getDay, dayName } = this.props;
-    if (type === 'create') {
+    if (type !== 'read') {
       if (this.state !== prevState) {
         getDay(dayName, shifts);
       }

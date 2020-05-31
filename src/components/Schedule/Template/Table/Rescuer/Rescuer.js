@@ -8,7 +8,9 @@ const Rescuer = ({ name, value, handleChange, type }) => (
     {type === 'read' ? (
       name
     ) : (
-      <StyledInput type="text" value={value} name={name} onChange={handleChange} />
+      <>
+        <StyledInput type="text" value={value} name={name} onChange={handleChange} />
+      </>
     )}
   </StyledRescuer>
 );

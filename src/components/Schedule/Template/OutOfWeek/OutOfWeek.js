@@ -25,6 +25,21 @@ class OutOfWeek extends Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { train, leave, course, sick } = this.state;
+    const { type, getOutOfWeek } = this.props;
+    if (type !== 'read') {
+      if (
+        train.length !== prevState.train.length ||
+        leave.length !== prevState.leave.length ||
+        course.length !== prevState.course.length ||
+        sick.length !== prevState.sick.length
+      ) {
+        getOutOfWeek(this.state);
+      }
+    }
+  }
+
   setGroups = () => {
     const { type } = this.props;
     const getArrayGroups = Object.keys(this.state);

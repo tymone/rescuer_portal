@@ -5,24 +5,26 @@ import { StyledTitle, StyledInput } from './StyledHead';
 
 class Head extends Component {
   state = {
-    dateFrom: '',
-    dateTo: '',
+    from: '',
+    to: '',
   };
 
   componentDidMount() {
-    const { date } = this.props;
+    const {
+      date: { from, to },
+    } = this.props;
     this.setState({
-      dateFrom: date.from,
-      dateTo: date.to,
+      from,
+      to,
     });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { dateFrom, dateTo } = this.state;
+    const { from, to } = this.state;
     const { type, getDate } = this.props;
-    if (type === 'create') {
+    if (type !== 'read') {
       if (this.state !== prevState) {
-        getDate(dateFrom, dateTo);
+        getDate(from, to);
       }
     }
   }
@@ -34,21 +36,33 @@ class Head extends Component {
   };
 
   render() {
-    const { dateFrom, dateTo } = this.state;
+    const { from, to } = this.state;
     const { type } = this.props;
     return (
       <StyledTitle>
         Harmonogram od
         {type === 'read' ? (
-          ` ${date(dateFrom)} `
+          ` ${date(from)} `
         ) : (
-          <StyledInput type="date" name="dateFrom" value={dateFrom} onChange={this.handleChange} />
+          <StyledInput
+            type="text"
+            onFocus={(e) => (e.target.type = 'date')}
+            name="from"
+            value={from}
+            onChange={this.handleChange}
+          />
         )}
         do
         {type === 'read' ? (
-          ` ${date(dateTo)}`
+          ` ${date(to)}`
         ) : (
-          <StyledInput type="date" name="dateTo" value={dateTo} onChange={this.handleChange} />
+          <StyledInput
+            type="text"
+            onFocus={(e) => (e.target.type = 'date')}
+            name="to"
+            value={to}
+            onChange={this.handleChange}
+          />
         )}
       </StyledTitle>
     );
