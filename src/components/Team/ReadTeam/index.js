@@ -1,1 +1,1 @@
-export { default } from './ReadTeam.js'
+export { default } from './ReadTeam';

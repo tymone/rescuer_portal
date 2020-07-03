@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import { StyledHead } from '../../StyledTrain';
+import { StyledHead } from 'components/Train/StyledTrain';
 
 const Head = ({ type }) => (
   <StyledHead>
@@ -8,7 +9,6 @@ const Head = ({ type }) => (
       <>
         <li>Imię</li>
         <li>Nazwisko</li>
-        <li>Oddział</li>
       </>
     ) : (
       <li>Grupa</li>
@@ -19,8 +19,14 @@ const Head = ({ type }) => (
     <li>OSRG 2</li>
     <li>Dołowe 2</li>
     <li>Powierzchnia 2</li>
-    {type === 'details' ? null : <li>Opcje</li>}
+    {type === 'read' ? <li>Szczegóły</li> : null}
+    {type === 'create' ? <li>Opcje</li> : null}
+    {type === 'details' ? <li>Szczegóły</li> : null}
   </StyledHead>
 );
+
+Head.propTypes = {
+  type: PropTypes.string,
+};
 
 export default Head;

@@ -1,52 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import { StyledTable, StyledHead } from './StyledReadTeam';
+import Table from '../Template/TeamTable';
 
-import ListItemRescuer from './ListItemRescuer';
-
-class ReadTeam extends Component {
-  state = {
-    team: [],
-  };
-
-  componentDidMount() {
-    const { team } = this.props;
-    this.setState({
-      team,
-    });
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.team !== prevProps.team) {
-      this.setState({
-        team: this.props.team,
-      });
+const ReadTeam = ({ team }) => {
+  const getTeamTable = (team) => {
+    if (team.length !== 0) {
+      return <Table team={team} />;
     }
-  }
-
-  render() {
-    const { team } = this.state;
-
-    return (
-      <StyledTable>
-        <StyledHead>
-          <li>Imię</li>
-          <li>Nazwisko</li>
-          <li>Oddział</li>
-          <li>Stanowisko</li>
-          <li>Funkcja KSRG</li>
-          <li>Szczegóły</li>
-        </StyledHead>
-        <ul>
-          {team.map((rescuer) => (
-            <ListItemRescuer key={rescuer.id} rescuer={rescuer} />
-          ))}
-        </ul>
-      </StyledTable>
-    );
-  }
-}
+    return <p>Brak danych drużyny KSRG lub wystąpił jakiś błąd.</p>;
+  };
+  return (
+    <>
+      <h1>Drużyna KSRG</h1>
+      {getTeamTable(team)}
+    </>
+  );
+};
 
 const mapStateToProps = ({ team }) => ({ team: team.list });
+
+ReadTeam.propTypes = {
+  team: PropTypes.array,
+};
 export default connect(mapStateToProps)(ReadTeam);

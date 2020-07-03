@@ -1,10 +1,13 @@
 {
-  "html.format.wrapLineLength": 80,
+  "html.format.wrapLineLength": 100,
   "editor.wordWrap": "on",
   "editor.formatOnSave": true,
   "prettier.arrowParens": "always",
   "eslint.format.enable": true,
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "eslint.alwaysShowStatus": true,
-  "eslint.probe": ["javascript", "javascriptreact", "vue", "markdown"]
+  "eslint.probe": ["javascript", "javascriptreact", "vue", "markdown"],
+  "editor.fontSize": 13,
+  "editor.wordWrapColumn": 100,
+  "prettier.printWidth": 100
 }

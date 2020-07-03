@@ -1,0 +1,1 @@
+export { RescuerDetails } from './Rescuer';

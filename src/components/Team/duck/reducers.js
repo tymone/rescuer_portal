@@ -1,7 +1,7 @@
 import types from './types';
 
 const INITIAL_STATE = {
-  id: 12,
+  count: 12,
   list: [
     {
       id: 0,
@@ -10,7 +10,7 @@ const INITIAL_STATE = {
       branch: 'KSRG-J',
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
-      doctor: 1546297200000,
+      doctor: '2020-01-01',
       trainingGroup: '1',
       included: {
         osrg1: true,
@@ -18,14 +18,14 @@ const INITIAL_STATE = {
         ground1: true,
         osrg2: false,
         under2: true,
-        ground2: false
+        ground2: false,
       },
-      duty: '',
+      duty: '2020-11',
       inaccessible: {
         from: '',
-        to: ''
+        to: '',
       },
-      suspend: false
+      suspend: 'no',
     },
     {
       id: 1,
@@ -34,7 +34,7 @@ const INITIAL_STATE = {
       branch: 'WPP-J',
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
-      doctor: 1546383600000,
+      doctor: '2020-02-01',
       trainingGroup: '2',
       included: {
         osrg1: false,
@@ -42,14 +42,14 @@ const INITIAL_STATE = {
         ground1: false,
         osrg2: false,
         under2: false,
-        ground2: false
+        ground2: false,
       },
-      duty: '',
+      duty: '2020-10',
       inaccessible: {
         from: '',
-        to: ''
+        to: '',
       },
-      suspend: false
+      suspend: 'no',
     },
     {
       id: 2,
@@ -58,7 +58,7 @@ const INITIAL_STATE = {
       branch: 'MMUD-J',
       minePosition: 'ślusarz',
       KSRGPosition: 'ratownik',
-      doctor: 1546470000000,
+      doctor: '2020-03-01',
       trainingGroup: '3',
       included: {
         osrg1: false,
@@ -66,14 +66,14 @@ const INITIAL_STATE = {
         ground1: false,
         osrg2: false,
         under2: false,
-        ground2: false
+        ground2: false,
       },
-      duty: '',
+      duty: '2020-07',
       inaccessible: {
         from: '',
-        to: ''
+        to: '',
       },
-      suspend: false
+      suspend: 'no',
     },
     {
       id: 3,
@@ -82,7 +82,7 @@ const INITIAL_STATE = {
       branch: 'WPM-J',
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
-      doctor: 1546556400000,
+      doctor: '2020-04-01',
       trainingGroup: '4',
       included: {
         osrg1: false,
@@ -90,14 +90,14 @@ const INITIAL_STATE = {
         ground1: false,
         osrg2: false,
         under2: false,
-        ground2: false
+        ground2: false,
       },
       duty: '',
       inaccessible: {
         from: '',
-        to: ''
+        to: '',
       },
-      suspend: false
+      suspend: 'no',
     },
     {
       id: 4,
@@ -106,7 +106,7 @@ const INITIAL_STATE = {
       branch: 'GZL1-J',
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
-      doctor: 1549321200000,
+      doctor: '2020-05-02',
       trainingGroup: '2',
       included: {
         osrg1: false,
@@ -114,14 +114,14 @@ const INITIAL_STATE = {
         ground1: false,
         osrg2: false,
         under2: false,
-        ground2: false
+        ground2: false,
       },
       duty: '',
       inaccessible: {
         from: '',
-        to: ''
+        to: '',
       },
-      suspend: false
+      suspend: 'no',
     },
     {
       id: 5,
@@ -130,7 +130,7 @@ const INITIAL_STATE = {
       branch: 'KSRG-J',
       minePosition: 'górnik',
       KSRGPosition: 'zastępowy',
-      doctor: 1549407600000,
+      doctor: '2020-06-01',
       trainingGroup: '5',
       included: {
         osrg1: false,
@@ -138,14 +138,14 @@ const INITIAL_STATE = {
         ground1: false,
         osrg2: false,
         under2: false,
-        ground2: false
+        ground2: false,
       },
       duty: '',
       inaccessible: {
         from: '',
-        to: ''
+        to: '',
       },
-      suspend: false
+      suspend: 'no',
     },
     {
       id: 6,
@@ -154,7 +154,7 @@ const INITIAL_STATE = {
       branch: 'KSRG-J',
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
-      doctor: 1549494000000,
+      doctor: '2020-07-01',
       trainingGroup: '5',
       included: {
         osrg1: false,
@@ -162,14 +162,14 @@ const INITIAL_STATE = {
         ground1: false,
         osrg2: false,
         under2: false,
-        ground2: false
+        ground2: false,
       },
       duty: '',
       inaccessible: {
         from: '',
-        to: ''
+        to: '',
       },
-      suspend: false
+      suspend: 'no',
     },
     {
       id: 7,
@@ -178,7 +178,7 @@ const INITIAL_STATE = {
       branch: 'KSRG-J',
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
-      doctor: 1549580400000,
+      doctor: '2020-08-01',
       trainingGroup: '4',
       included: {
         osrg1: false,
@@ -186,14 +186,14 @@ const INITIAL_STATE = {
         ground1: false,
         osrg2: false,
         under2: false,
-        ground2: false
+        ground2: false,
       },
       duty: '',
       inaccessible: {
         from: '',
-        to: ''
+        to: '',
       },
-      suspend: false
+      suspend: 'no',
     },
     {
       id: 8,
@@ -202,7 +202,7 @@ const INITIAL_STATE = {
       branch: 'WOM-J',
       minePosition: 'sztygar zmianowy',
       KSRGPosition: 'ratownik',
-      doctor: 1549666800000,
+      doctor: '2020-09-01',
       trainingGroup: '5',
       included: {
         osrg1: false,
@@ -210,14 +210,14 @@ const INITIAL_STATE = {
         ground1: false,
         osrg2: false,
         under2: false,
-        ground2: false
+        ground2: false,
       },
       duty: '',
       inaccessible: {
         from: '',
-        to: ''
+        to: '',
       },
-      suspend: false
+      suspend: 'no',
     },
     {
       id: 9,
@@ -226,7 +226,7 @@ const INITIAL_STATE = {
       branch: 'WPP-J',
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
-      doctor: 1549753200000,
+      doctor: '2020-10-01',
       trainingGroup: '1',
       included: {
         osrg1: false,
@@ -234,14 +234,14 @@ const INITIAL_STATE = {
         ground1: false,
         osrg2: false,
         under2: false,
-        ground2: false
+        ground2: false,
       },
       duty: '',
       inaccessible: {
         from: '',
-        to: ''
+        to: '',
       },
-      suspend: false
+      suspend: 'no',
     },
     {
       id: 10,
@@ -250,7 +250,7 @@ const INITIAL_STATE = {
       branch: 'GZL2-J',
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
-      doctor: 1562796000000,
+      doctor: '2020-11-01',
       trainingGroup: '2',
       included: {
         osrg1: false,
@@ -258,14 +258,14 @@ const INITIAL_STATE = {
         ground1: false,
         osrg2: false,
         under2: false,
-        ground2: false
+        ground2: false,
       },
       duty: '',
       inaccessible: {
         from: '',
-        to: ''
+        to: '',
       },
-      suspend: false
+      suspend: 'no',
     },
     {
       id: 11,
@@ -274,7 +274,7 @@ const INITIAL_STATE = {
       branch: 'G2-J',
       minePosition: 'górnik',
       KSRGPosition: 'ratownik',
-      doctor: 1568152800000,
+      doctor: '2020-12-01',
       trainingGroup: '3',
       included: {
         osrg1: false,
@@ -282,14 +282,14 @@ const INITIAL_STATE = {
         ground1: false,
         osrg2: false,
         under2: false,
-        ground2: false
+        ground2: false,
       },
       duty: '',
       inaccessible: {
         from: '',
-        to: ''
+        to: '',
       },
-      suspend: false
+      suspend: 'no',
     },
     {
       id: 12,
@@ -298,7 +298,7 @@ const INITIAL_STATE = {
       branch: 'KSRG-J',
       minePosition: 'górnik',
       KSRGPosition: 'mechanik',
-      doctor: 1568162800000,
+      doctor: '2020-12-01',
       trainingGroup: '3',
       included: {
         osrg1: false,
@@ -306,16 +306,16 @@ const INITIAL_STATE = {
         ground1: false,
         osrg2: false,
         under2: false,
-        ground2: false
+        ground2: false,
       },
       duty: '',
       inaccessible: {
         from: '',
-        to: ''
+        to: '',
       },
-      suspend: true
-    }
-  ]
+      suspend: 'no',
+    },
+  ],
 };
 
 const teamReducer = (state = INITIAL_STATE, action) => {
@@ -323,21 +323,21 @@ const teamReducer = (state = INITIAL_STATE, action) => {
     case types.ADD_RESCUER:
       return {
         ...state,
-        id: action.item.id,
-        list: [...state.list, action.item]
+        count: action.item.id,
+        list: [...state.list, action.item],
       };
     case types.REMOVE_RESCUER:
       const newList = state.list.filter((item) => item.id !== action.id);
       return {
         ...state,
-        list: newList
+        list: newList,
       };
     case types.UPDATE_RESCUER:
-      let id = state.list.findIndex((rescuer) => rescuer.id === Number(action.item.id));
+      const id = state.list.findIndex((rescuer) => rescuer.id === Number(action.item.id));
       state.list.splice(id, 1, action.item);
       return {
         ...state,
-        list: [...state.list]
+        list: [...state.list],
       };
     default:
       return state;
