@@ -1,24 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { StyledListWrapper } from './StyledTasks';
+import { ReadTasks } from './Read';
 
-import TaskList from './Read/TaskList';
-
-const Tasks = ({ tasks }) => {
+const Tasks = ({ tasksList }) => {
+  const getTasksList = () => {
+    if (tasksList.length !== 0) {
+      return <ReadTasks tasksList={tasksList} />;
+    }
+    return <p>Brak listy zadań lub wystąpił błąd.</p>;
+  };
   return (
     <>
       <h1>Lista zadań</h1>
-      <StyledListWrapper>
-        <TaskList tasks={tasks.filter((task) => task.status === 'to do')} title="do wykonania" />
-        <TaskList tasks={tasks.filter((task) => task.status === 'in progress')} title="w trakcie wykonywania" />
-        <TaskList tasks={tasks.filter((task) => task.status === 'done')} title="wykonane" />
-      </StyledListWrapper>
+      {getTasksList()}
     </>
   );
 };
 
 const mapStateToProps = ({ tasks }) => ({
-  tasks: tasks.list,
+  tasksList: tasks.list,
 });
+
+Tasks.propTypes = {
+  tasksList: PropTypes.array,
+};
 export default connect(mapStateToProps)(Tasks);

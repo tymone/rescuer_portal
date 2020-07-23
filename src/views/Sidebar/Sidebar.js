@@ -20,7 +20,7 @@ class Sidebar extends Component {
         title: 'Ćwiczenia',
         sublinks: ['dodaj', 'edytuj'],
       },
-      { href: '/zadania', icon: 'fas fa-tasks', title: 'Zadania', sublinks: ['dodaj', 'edytuj'] },
+      { href: '/zadania', icon: 'fas fa-tasks', title: 'Zadania', sublinks: ['dodaj'] },
     ];
 
     return links.map((link) => (

@@ -2,13 +2,15 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import HomePage from 'components/HomePage';
-import { ScheduleRead, ScheduleCreate, ScheduleUpdateList, ScheduleUpdate } from 'components/Schedule';
+import {
+  ScheduleRead,
+  ScheduleCreate,
+  ScheduleUpdateList,
+  ScheduleUpdate,
+} from 'components/Schedule';
 import { AddRescuer, ReadTeam, UpdateTeam, RescuerDetails } from 'components/Team';
 import { ReadTrain, Details, CreateGroup, EditTrainList, EditTrain } from 'components/Train';
-import Tasks from 'components/Tasks/Tasks';
-import AddTask from 'components/Tasks/Create/AddTask';
-import TaskDetails from 'components/Tasks/Read/TaskDetails';
-import EditTask from 'components/Tasks/Update/EditTask';
+import { Tasks, TaskDetails, AddTask, EditTask } from 'components/Tasks';
 import PageNotFound from 'components/PageNotFound';
 import { StyledSection } from './StyledSection';
 

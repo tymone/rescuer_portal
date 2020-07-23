@@ -5,9 +5,7 @@ const HomePage = () => (
   <StyledHomePage>
     <h1>Strona przeznaczona do zarządzania czasem pracy pracowników.</h1>
     <p>
-      Strona
-      <u>aktualnie</u>
-      podzielona na 5 podsekcji, z czego:
+      Strona <u>aktualnie</u> podzielona na 5 podsekcji, z czego:
     </p>
     <p>
       <strong>Strona główna</strong>- w której znajdą się aktualności z branży lub ważne informacje
