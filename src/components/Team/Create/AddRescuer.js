@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import actions from 'data/actions/team.actions';
 import RescuerTemplate from '../Template/Rescuer/RescuerTemplate';
-import actions from '../duck/actions';
 
 const AddRescuer = ({ history, add }) => {
   let rescuer = {};

@@ -1,4 +1,4 @@
-import types from './types';
+import { ADD_SCHEDULE, UPDATE_SCHEDULE } from 'data/types';
 
 const INITIAL_STATE = {
   counter: 2,
@@ -503,13 +503,13 @@ const INITIAL_STATE = {
 
 const scheduleReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case types.ADD_SCHEDULE:
+    case ADD_SCHEDULE:
       return {
         ...state,
         counter: action.item.id,
         list: [action.item, ...state.list],
       };
-    case types.UPDATE_SCHEDULE:
+    case UPDATE_SCHEDULE:
       const id = state.list.findIndex((item) => item.id === action.item.id);
       state.list.splice(id, 1, action.item);
       return {

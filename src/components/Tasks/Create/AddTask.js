@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { Task } from 'components/Tasks/Template';
 
-import actions from '../duck/actions';
+import actions from 'data/actions/tasks.actions';
 
 class AddTask extends Component {
   state = {

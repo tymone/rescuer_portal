@@ -1,4 +1,4 @@
-import types from './types';
+import { ADD_RESCUER, REMOVE_RESCUER, UPDATE_RESCUER } from 'data/types';
 
 const INITIAL_STATE = {
   count: 12,
@@ -320,19 +320,19 @@ const INITIAL_STATE = {
 
 const teamReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case types.ADD_RESCUER:
+    case ADD_RESCUER:
       return {
         ...state,
         count: action.item.id,
         list: [...state.list, action.item],
       };
-    case types.REMOVE_RESCUER:
+    case REMOVE_RESCUER:
       const newList = state.list.filter((item) => item.id !== action.id);
       return {
         ...state,
         list: newList,
       };
-    case types.UPDATE_RESCUER:
+    case UPDATE_RESCUER:
       const id = state.list.findIndex((rescuer) => rescuer.id === Number(action.item.id));
       state.list.splice(id, 1, action.item);
       return {

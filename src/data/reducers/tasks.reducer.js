@@ -1,4 +1,4 @@
-import types from './types';
+import { ADD_TASK, EDIT_TASK, REMOVE_TASK } from 'data/types';
 
 const INITIAL_STATE = {
   counter: 13,
@@ -153,19 +153,19 @@ const INITIAL_STATE = {
 
 const tasksReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case types.ADD_TASK:
+    case ADD_TASK:
       return {
         ...state,
         counter: action.id,
         list: [action.item, ...state.list],
       };
-    case types.EDIT_TASK:
+    case EDIT_TASK:
       const newList = state.list.filter((item) => item.id !== Number(action.id));
       return {
         ...state,
         list: [...newList, action.item],
       };
-    case types.REMOVE_TASK:
+    case REMOVE_TASK:
       const getTasks = state.list.filter((item) => item.id !== Number(action.id));
       return {
         list: [...getTasks],

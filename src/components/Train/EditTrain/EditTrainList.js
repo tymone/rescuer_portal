@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import actions from '../duck/actions';
+import actions from 'data/actions/trainingGroups.actions';
 
 import { StyledListItem } from './StyledEditTrain';
 

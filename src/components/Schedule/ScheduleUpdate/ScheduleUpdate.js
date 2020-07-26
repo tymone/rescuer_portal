@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import actions from '../duck/actions';
+import actions from 'data/actions/schedule.actions';
 import Week from '../Template/Table/Week';
 
 class ScheduleUpdate extends Component {

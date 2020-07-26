@@ -1,4 +1,4 @@
-import types from './types';
+import { ADD_TRAIN_SCHEDULE, REMOVE_TRAIN_SCHEDULE, UPDATE_TRAIN_SCHEDULE } from 'data/types';
 
 const INITIAL_STATE = {
   list: [
@@ -107,18 +107,18 @@ const INITIAL_STATE = {
 
 const trainingGroupsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case types.ADD_TRAIN_SCHEDULE:
+    case ADD_TRAIN_SCHEDULE:
       return {
         ...state,
         list: [...state.list, action.item],
       };
-    case types.REMOVE_TRAIN_SCHEDULE:
+    case REMOVE_TRAIN_SCHEDULE:
       const newList = state.list.filter((group) => group.year !== action.id);
       return {
         ...state,
         list: newList,
       };
-    case types.UPDATE_TRAIN_SCHEDULE:
+    case UPDATE_TRAIN_SCHEDULE:
       const getList = state.list;
       const index = state.list.findIndex((item) => item.year === action.item.year);
       getList.splice(index, 1, action.item);

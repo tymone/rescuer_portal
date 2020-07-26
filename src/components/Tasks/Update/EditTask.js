@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { Task } from 'components/Tasks/Template';
-import actions from '../duck/actions';
+import actions from 'data/actions/tasks.actions';
 
 class EditTask extends Component {
   state = {

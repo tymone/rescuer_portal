@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import actions from '../duck/actions';
+import actions from 'data/actions/trainingGroups.actions';
 
 import { Table } from '../Template';
 

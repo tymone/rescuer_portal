@@ -1,0 +1,3 @@
+export const ADD_RESCUER = 'ADD_RESCUER';
+export const REMOVE_RESCUER = 'REMOVE_RESCUER';
+export const UPDATE_RESCUER = 'UPDATE_RESCUER';
