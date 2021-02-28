@@ -1,49 +1,25 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import SubLink from './SubLink';
-import { StyledSidebar, StyledNav, StyledUl } from './StyledSidebar';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class Sidebar extends Component {
-  setLink = () => {
-    const links = [
-      { href: '/', icon: 'fas fa-home', title: 'Strona główna', exact: true },
-      {
-        href: '/harmonogram',
-        icon: 'far fa-calendar-alt',
-        title: 'Harmonogram',
-        sublinks: ['dodaj', 'edytuj'],
-      },
-      { href: '/druzyna', icon: 'fas fa-users', title: 'Drużyna KSRG', sublinks: ['dodaj'] },
-      {
-        href: '/cwiczenia',
-        icon: 'fas fa-graduation-cap',
-        title: 'Ćwiczenia',
-        sublinks: ['dodaj', 'edytuj'],
-      },
-      { href: '/zadania', icon: 'fas fa-tasks', title: 'Zadania', sublinks: ['dodaj'] },
-    ];
+import { links } from './Links';
+import { StyledSidebar, StyledUl } from './StyledSidebar';
+import { LinkItem } from './components';
 
-    return links.map((link) => (
-      <li key={link.title}>
-        <NavLink to={link.href} exact={link.exact ? link.exact : false}>
-          <i className={link.icon} />
-          {link.title}
-        </NavLink>
-        {link.sublinks ? <SubLink links={link} /> : null}
-      </li>
-    ));
-  };
+const Sidebar = ({ sidebarStatus }) => (
+  <StyledSidebar sidebarStatus={sidebarStatus}>
+    <nav>
+      <StyledUl>
+        {links.map((link) => (
+          <li key={link.title}>
+            <LinkItem link={link} />
+          </li>
+        ))}
+      </StyledUl>
+    </nav>
+  </StyledSidebar>
+);
 
-  render() {
-    const { sidebarStatus } = this.props;
-    return (
-      <StyledSidebar sidebarStatus={sidebarStatus}>
-        <StyledNav>
-          <StyledUl>{this.setLink()}</StyledUl>
-        </StyledNav>
-      </StyledSidebar>
-    );
-  }
-}
-
+Sidebar.propTypes = {
+  sidebarStatus: PropTypes.bool,
+};
 export default Sidebar;

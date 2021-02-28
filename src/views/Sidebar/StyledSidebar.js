@@ -1,39 +1,45 @@
 import styled from 'styled-components';
 
 export const StyledSidebar = styled.aside`
-  background-color: #cdcccc;
+  background-color: ${({ theme }) => theme.color.white};
   width: ${({ sidebarStatus }) => (sidebarStatus ? '250px' : '0px')};
   opacity: ${({ sidebarStatus }) => (sidebarStatus ? '1' : '0')};
   transition: 0.2s;
 `;
 
-export const StyledNav = styled.nav`
+export const StyledUl = styled.ul`
+  margin-top: 20px;
   li {
-    margin: 20px 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     a {
+      padding: 10px 0;
+      flex-grow: 1;
       text-decoration: none;
       color: ${({ theme }) => theme.color.softBlack};
-      i {
-        padding-right: 10px;
-        font-size: 18px;
-      }
-      &:hover {
-        color: ${({ theme }) => theme.color.black};
-        text-decoration: underline;
-      }
+    }
+    i {
+      display: inline-block;
+      padding: 0 10px;
+      font-size: 24px;
+      width: 50px;
+      margin: auto;
+    }
+    &:hover {
+      background-color: ${({ theme }) => theme.color.softGray};
     }
   }
-  .active {
+  li > .active {
     text-decoration: underline;
   }
 `;
 
-export const StyledUl = styled.ul``;
-
 export const StyledSublink = styled.ul`
-  display: block;
-  padding-bottom: 10px;
+  width: 100%;
   li {
-    margin: 10px 0 0 35px;
+    a {
+      padding: 10px 50px;
+    }
   }
 `;
