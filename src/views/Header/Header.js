@@ -6,6 +6,7 @@ import { StyledHeader } from './StyledHeader';
 const Header = ({ sidebarStatus, toggle }) => (
   <StyledHeader>
     <i className={`fas fa-${sidebarStatus ? 'outdent' : 'indent'}`} onClick={toggle} />
+    <span>Logowanie</span>
   </StyledHeader>
 );
 

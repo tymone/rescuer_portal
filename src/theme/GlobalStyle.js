@@ -10,13 +10,12 @@ const GlobalStyle = createGlobalStyle`
   }
   #root{
     display: flex;
+    flex-direction: column;
     height: 100vh;
-    flex-wrap: wrap;
   }
 
   main{
-    width: 100%;
-    height: calc(100% - 60px);
+    flex-grow: 1;
     display: flex;
   }
   button{

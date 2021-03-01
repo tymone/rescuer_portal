@@ -4,10 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from 'theme/GlobalStyle';
 import theme from 'theme/theme';
 
-import Header from './Header';
-import Sidebar from './Sidebar';
-import Section from './Section';
-import Footer from './Footer';
+import { Header, Sidebar, Section, Footer } from 'views';
 
 class Root extends Component {
   state = {

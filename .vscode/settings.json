@@ -9,5 +9,6 @@
   "eslint.probe": ["javascript", "javascriptreact", "vue", "markdown"],
   "editor.fontSize": 14,
   "editor.wordWrapColumn": 100,
-  "prettier.printWidth": 100
+  "prettier.printWidth": 100,
+  "workbench.sideBar.location": "left"
 }
