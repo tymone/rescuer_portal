@@ -5,7 +5,6 @@ export const StyledHomePage = styled.div`
   margin: 30px auto;
   padding: 30px;
   text-align: center;
-  border: 2px solid black;
   p {
     font-size: 20px;
   }
