@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const StyledTitle = styled.div`
-  text-align: center;
+  /* text-align: center; */
   font-size: 30px;
   font-weight: bold;
-  margin: 30px auto;
+  /* margin: 30px auto; */
+  padding: 30px 0 30px 10px;
 `;
 
 export const StyledInput = styled.input`

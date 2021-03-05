@@ -1,1 +1,1 @@
-export { default } from './ScheduleRead';
+export { default as ScheduleRead } from './ScheduleRead';

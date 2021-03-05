@@ -4,7 +4,8 @@ export const StyledSidebar = styled.aside`
   background-color: ${({ theme }) => theme.color.white};
   width: ${({ sidebarStatus }) => (sidebarStatus ? '250px' : '0px')};
   opacity: ${({ sidebarStatus }) => (sidebarStatus ? '1' : '0')};
-  transition: 0.2s;
+  transition: opacity 0.2s, width 0.2s 0.2s;
+  flex-shrink: 0;
 `;
 
 export const StyledUl = styled.ul`
